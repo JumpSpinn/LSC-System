@@ -375,6 +375,9 @@ $(() => {
         if(_currentCustomerIsState){
             _currentCustomerPayType= "Staatlich"
             sendAuftragSuccess()
+        } else if(_currentCustomerIsServicePartner){
+            _currentCustomerPayType= "Sammelrechnung"
+            sendAuftragSuccess()
         } else {
             $('#popup_confirm_abholung .page_popup_header_title').html(_currentCustomerName)
             showPopup('popup_confirm_abholung')
