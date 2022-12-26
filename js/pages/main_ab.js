@@ -734,10 +734,10 @@ function initAuftragsblatt(){
             </div>\
         '
 
-        if(appendCount > 10){
-            $('.mainab_auftragsblatt_row.auftragsblatt_prices_1').append(container)
-        } else {
+        if(appendCount > 15){
             $('.mainab_auftragsblatt_row.auftragsblatt_prices_2').append(container)
+        } else {
+            $('.mainab_auftragsblatt_row.auftragsblatt_prices_1').append(container)
         }
     })
 
