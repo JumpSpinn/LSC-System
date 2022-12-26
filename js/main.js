@@ -6,26 +6,6 @@ var _currentPageFile = ""
 var _prevPageFile = ""
 var _main_ab_isLoading = false
 
-// DEBUG VALUES
-var _debug = false
-
-$(() => {
-    if(_debug){
-        _currentSidebarID = 1
-        _currentSidebarSubMenuID = 0
-        _currentUsername = "Kane Black"
-
-        updateAccountActivity(_currentUsername + " hat sich eingeloggt!", LOGTYPE.LOGGEDIN)
-        $('#checkPassword').css('display', 'none')
-
-        _currentUserPosition.push({id: 10, name: 'Geschäftsführer', sidebarPermissions: [], pagePermissions: []})
-        $('#currentLoggedInUserPosition').html(_currentUserPosition[0].name)
-        $('#currentLoggedInUser').html('Kane Black')
-        initSidebar()
-        $('.system_container').css('display', 'flex')
-    }
-})
-
 function showPopup(popupID){
     $('.page_popup_wrapper#' + popupID).css("display", "flex").hide().fadeIn(150)
 }
@@ -74,16 +54,12 @@ function initPage(){
 }
 
 function initSidebar(){
-    if(_debug){
-        var _userPermissions = _currentUserPosition[0].sidebarPermissions
-    } else {
-        var _userPermissions = JSON.parse(_currentUserPosition.sidebarPermissions)
-    }
+    var _userPermissions = JSON.parse(_currentUserPosition.sidebarPermissions)
 
     $('.sidebar_links').html('')
     _sidebar.forEach((sidebar) => {
         let hasSidebarPermission = _userPermissions.find(i => i.id == sidebar.sidebarID)
-        if(hasSidebarPermission != null || _debug){
+        if(hasSidebarPermission != null){
             if(sidebar.sidebarMenu.length > 0){
                 let sidebarContainer = '\
                     <li class="sidebar '+(_currentSidebarID == sidebar.sidebarID ? 'active' : '')+'" data-sidebarid="'+sidebar.sidebarID+'">\
@@ -135,7 +111,7 @@ function initSidebar(){
     let sidebar = _sidebar.find(s => s.sidebarID == _currentSidebarID)
     if(sidebar != null){
         let hasSidebarPermission = _userPermissions.find(i => i.id == _currentSidebarID)
-        if(hasSidebarPermission != null || _debug){
+        if(hasSidebarPermission != null){
             if(_currentSidebarSubMenuID == 0){
                 if(sidebar.file != ""){
                     _currentPageFile = sidebar.file
