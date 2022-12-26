@@ -110,7 +110,7 @@ $(() => {
 
             // Convert Message for correct view
             let rawMessage = _currentEditMessage.message
-            let convertedMessage = rawMessage.replaceAll("&lt;br /&gt;", "\r\n").replaceAll("&amp;", "&").replaceAll('&quot;', "'")
+            let convertedMessage = rawMessage.replaceAll("&lt;br /&gt;", "\r\n").replaceAll("&amp;", "&").replaceAll("&quot;", "'")
             $('#edit_message_msg').val(convertedMessage)
 
             let state = MESSAGE_STATES.find(i => i.id == _currentEditMessage.state)
