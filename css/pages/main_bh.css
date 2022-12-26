@@ -64,6 +64,14 @@
     flex-direction: column;
 }
 
+.bh_entry_content_title{
+    display: flex;
+    font-size: .9rem;
+    color: white;
+    font-weight: 100;
+    opacity: .7;
+}
+
 .bh_entry_content_btns{
     display: flex;
     flex-direction: row;
