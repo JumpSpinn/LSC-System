@@ -83,8 +83,12 @@
 }
 
 .schwarzes_brett_content_link{
-    color: red;
     cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 0px 5px;
+    color: white;
+    background-color: rgb(57, 28, 87);
 }
 
 .schwarzes_brett_header_title p.messageState_0{
