@@ -44,7 +44,6 @@ function showMitarbeiter(array = _mitarbeiter){
                     <div class="mitarbeiter_entry_user">\
                         <span class="mitarbeiter_entry_user_title">'+user.firstname+' '+user.lastname+'</span>\
                         <span class="mitarbeiter_entry_user_subtitle">'+(userPosition == null ? 'Kein Rang zugeordnet!' : userPosition.name)+'</span>\
-                        <span class="mitarbeiter_entry_user_lastAction">Letzte Aktivität: '+(user.lastAction == 0 ? "-" : convertTimestamp(user.lastAction))+'</span>\
                     </div>\
                     <div class="mitarbeiter_entry_btns">\
                         <em class="mdi mdi-lead-pencil edit_current_member"></em>\
