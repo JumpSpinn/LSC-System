@@ -333,24 +333,50 @@ $(() => {
     $('.mainab_auftragsblatt_row').on('input', '.auftragsblatt_checkbox_change', function(){
         let elmID = $(this).parent().data('id')
         let elmPrice = $(this).parent().data('price')
+        let elmName = $(this).parent().data('name')
         let isChecked = $(this)[0].checked
-        let inspection = _inspections.find(i => i.id == elmID)
-        if(inspection != null){
-            if(isChecked){
-                $(this).parent().addClass('active')
-                _choosedDatas.push({
-                    name: inspection.name,
-                    amount: 1,
-                    price: parseFloat(inspection.value),
-                    parkInMinutes: 0
-                })
-            } else {
-                $(this).parent().removeClass('active')
-                let find = _choosedDatas.find(i => i.name == inspection.name)
-                if(find != null){
-                    let ind = _choosedDatas.indexOf(find);
-                    if (ind > -1) {
-                        _choosedDatas.splice(ind, 1);
+
+        if(elmName != "Reparaturset"){
+            let inspection = _inspections.find(i => i.id == elmID)
+            if(inspection != null){
+                if(isChecked){
+                    $(this).parent().addClass('active')
+                    _choosedDatas.push({
+                        name: inspection.name,
+                        amount: 1,
+                        price: parseFloat(inspection.value),
+                        parkInMinutes: 0
+                    })
+                } else {
+                    $(this).parent().removeClass('active')
+                    let find = _choosedDatas.find(i => i.name == inspection.name)
+                    if(find != null){
+                        let ind = _choosedDatas.indexOf(find);
+                        if (ind > -1) {
+                            _choosedDatas.splice(ind, 1);
+                        }
+                    }
+                }
+            }
+        } else {
+            let price = _prices.find(i => i.id == elmID)
+            if(price != null){
+                if(isChecked){
+                    $(this).parent().addClass('active')
+                    _choosedDatas.push({
+                        name: price.name,
+                        amount: 1,
+                        price: parseFloat(price.vk),
+                        parkInMinutes: 0
+                    })
+                } else {
+                    $(this).parent().removeClass('active')
+                    let find = _choosedDatas.find(i => i.name == price.name)
+                    if(find != null){
+                        let ind = _choosedDatas.indexOf(find);
+                        if (ind > -1) {
+                            _choosedDatas.splice(ind, 1);
+                        }
                     }
                 }
             }
@@ -730,9 +756,8 @@ function initAuftragsblatt(){
     _prices.forEach((price) => {
         appendCount++
         if(price.name == "Frontscheibe" && !withMarkup){ withMarkup = true }
-
         var container = '\
-            <div class="mainab_auftragsblatt_input '+(highlightAuftragsblatt(price.name) ? 'highlight' : '')+'" data-id="'+price.id+'" data-price="'+price.vk+'" data-markup="'+withMarkup+'">\
+            <div class="mainab_auftragsblatt_input '+(highlightAuftragsblatt(price.name) ? 'highlight' : '')+'" data-id="'+price.id+'" data-price="'+price.vk+'" data-markup="'+withMarkup+'" data-name="'+insp.name+'">\
                 <div class="mainab_auftragsblatt_input_name">'+price.name+'<p style="display: '+(price.percent == 0 ? "none" : "inline-block")+'" class="brutto">('+price.percent+'% Preisnachlass)</p></div>\
                 <input class="'+(price.name == "Reparaturset" ? 'auftragsblatt_checkbox_change' : 'auftragsblatt_input_change')+'" type="'+(price.name == "Reparaturset" ? 'checkbox' : 'input')+'" placeholder="0" autocomplete="off">\
             </div>\
@@ -747,7 +772,7 @@ function initAuftragsblatt(){
 
     _inspections.forEach((insp) => {
         var container = '\
-            <div class="mainab_auftragsblatt_input" data-id="'+insp.id+'" data-price="'+insp.value+'">\
+            <div class="mainab_auftragsblatt_input" data-id="'+insp.id+'" data-price="'+insp.value+'" data-name="'+insp.name+'">\
                 <label>'+insp.name+'</label>\
                 <input class="auftragsblatt_checkbox_change" type="checkbox">\
             </div>\
