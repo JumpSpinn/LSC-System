@@ -246,7 +246,7 @@
 } */
 
 .mainab_auftragsblatt_input.highlight{
-  border-left: 2px solid rgba(170, 255, 170, 0.1);
+  border-left: 3px solid rgba(170, 255, 170, 1);
 }
 
 .mainab_auftragsblatt_input label{
