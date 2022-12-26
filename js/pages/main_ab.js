@@ -734,15 +734,11 @@ function initAuftragsblatt(){
             </div>\
         '
 
-        if(appendCount < 2){
-            $('.mainab_auftragsblatt_row').append(container)
+        if(appendCount > 10){
+            $('.mainab_auftragsblatt_row.auftragsblatt_prices_1').append(container)
+        } else {
+            $('.mainab_auftragsblatt_row.auftragsblatt_prices_2').append(container)
         }
-
-        // if(appendCount > 20){
-        //     $('.mainab_auftragsblatt_row.auftragsblatt_inspektion').append(container)
-        // } else {
-        //     $('.mainab_auftragsblatt_row.auftragsblatt_prices').append(container)
-        // }
     })
 
     _inspections.forEach((insp) => {
@@ -752,7 +748,7 @@ function initAuftragsblatt(){
                 <input class="auftragsblatt_checkbox_change" type="checkbox">\
             </div>\
         '
-        //$('.mainab_auftragsblatt_row.auftragsblatt_inspektion').append(container)
+        $('.mainab_auftragsblatt_row.auftragsblatt_inspektion').append(container)
     })
 }
 
