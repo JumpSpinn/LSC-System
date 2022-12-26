@@ -90,7 +90,7 @@
             <div class="login_container" id="requestLogin" style="display: <?php echo ($loggedIn ? "none" : "flex"); ?>;">
                 <div class="login_brand">
                     <img src="/assets/img/logo_transparent.png">
-                    <span class="brand_title">Buchhaltungssystem</span>
+                    <span class="brand_title">Buchhaltungssystem22</span>
                 </div>
                 <div class="login_form">
                     <div class="login_input">
