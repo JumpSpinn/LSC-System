@@ -88,7 +88,11 @@
     border-radius: 5px;
     padding: 0px 5px;
     color: white;
-    background-color: rgb(57, 28, 87);
+    background-color: rgba(57, 28, 87, .5);
+}
+
+.schwarzes_brett_content_link:hover{
+    background-color: rgba(57, 28, 87, 1);
 }
 
 .schwarzes_brett_header_title p.messageState_0{
