@@ -102,8 +102,17 @@ $(() => {
         let message = _messages.find(i => i.id == messageID)
         if(message != null){
             _currentEditMessage = message
-            $('#edit_message_title').val(_currentEditMessage.title)
-            $('#edit_message_msg').val(_currentEditMessage.message.replaceAll("&lt;br /&gt;", "\r\n"))
+
+            // Convert Title for correct view
+            let rawTitle = _currentEditMessage.title
+            let convertedTitle = rawTitle.replaceAll("&amp;", "&")
+            $('#edit_message_title').val(convertedTitle)
+
+            // Convert Message for correct view
+            let rawMessage = _currentEditMessage.message
+            let convertedMessage = rawMessage.replaceAll("&lt;br /&gt;", "\r\n").replaceAll("&amp;", "&")
+            $('#edit_message_msg').val(convertedMessage)
+
             let state = MESSAGE_STATES.find(i => i.id == _currentEditMessage.state)
             $('#edit_message_state').val(state.name)
             showPopup('popup_edit_message')
