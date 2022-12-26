@@ -78,6 +78,7 @@
     word-wrap: break-word;
     padding: 10px;
     font-size: .9rem;
+    user-select: text;
 }
 
 .schwarzes_brett_header_title p.messageState_0{
