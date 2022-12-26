@@ -730,10 +730,11 @@ function initAuftragsblatt(){
     _prices.forEach((price) => {
         appendCount++
         if(price.name == "Frontscheibe" && !withMarkup){ withMarkup = true }
+
         var container = '\
             <div class="mainab_auftragsblatt_input '+(highlightAuftragsblatt(price.name) ? 'highlight' : '')+'" data-id="'+price.id+'" data-price="'+price.vk+'" data-markup="'+withMarkup+'">\
                 <div class="mainab_auftragsblatt_input_name">'+price.name+'<p style="display: '+(price.percent == 0 ? "none" : "inline-block")+'" class="brutto">('+price.percent+'% Preisnachlass)</p></div>\
-                <input class="auftragsblatt_input_change" type="number" placeholder="0" autocomplete="off">\
+                <input class="'+(price.name == "Reparaturset" ? 'auftragsblatt_checkbox_change' : 'auftragsblatt_input_change')+'" type="'+(price.name == "Reparaturset" ? 'checkbox' : 'input')+'" placeholder="0" autocomplete="off">\
             </div>\
         '
 
