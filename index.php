@@ -16,7 +16,7 @@
     session_start();
 
     $loggedIn = false;
-    $debug = true;
+    $debug = false;
 
     if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
         $loggedIn = true;

@@ -7,7 +7,7 @@ var _prevPageFile = ""
 var _main_ab_isLoading = false
 
 // DEBUG VALUES
-var _debug = true
+var _debug = false
 
 $(() => {
     if(_debug){
