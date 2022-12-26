@@ -798,7 +798,8 @@ function reset(){
 
     $('.mainab_auftragsblatt_row').html('')
     $('.mainab_auftragsblatt_row.auftragsblatt_inspektion').append('<div class="ab_notice">Bitte zuerst das Fahrzeugmodel auswählen!</div>')
-    $('.mainab_auftragsblatt_row.auftragsblatt_prices').append('<div class="ab_notice">Bitte zuerst das Fahrzeugmodel auswählen!</div>')
+    $('.mainab_auftragsblatt_row.auftragsblatt_prices_1').append('<div class="ab_notice">Bitte zuerst das Fahrzeugmodel auswählen!</div>')
+    $('.mainab_auftragsblatt_row.auftragsblatt_prices_2').append('<div class="ab_notice">Bitte zuerst das Fahrzeugmodel auswählen!</div>')
 
     $('#auftragsblatt_customer_name').html('-')
     $('#auftragsblatt_customer_number').html('-')
