@@ -239,10 +239,14 @@
   text-shadow: 0 1px 1px black;
 }
 
-.mainab_auftragsblatt_input.highlight{
+/* .mainab_auftragsblatt_input.highlight{
   color: white;
   background-image: linear-gradient(to right, rgba(170, 255, 170, 0.1), transparent);
   text-shadow: 0 1px 1px black;
+} */
+
+.mainab_auftragsblatt_input.highlight{
+  border-left: 2px solid rgba(170, 255, 170, 0.1);
 }
 
 .mainab_auftragsblatt_input label{
