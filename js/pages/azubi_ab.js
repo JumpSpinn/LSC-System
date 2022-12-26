@@ -779,6 +779,7 @@ function reset(){
     _searchedCustomerName = ""
     _searchedCustomerNumber = ""
     _redeemedGutschein = false
+    _currentCustomerIsState = false
     _currentEnteredVehicle = ""
     _currentCustomerName = ""
     _currentCustomerNumber = 0

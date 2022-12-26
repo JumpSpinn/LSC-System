@@ -778,6 +778,7 @@ function reset(){
     _generalDataLoaded = false
     _servicePartnerLoaded = false
     _currentCustomerIsServicePartner = false
+    _currentCustomerIsState = false
     _searchedCustomerName = ""
     _searchedCustomerNumber = ""
     _redeemedGutschein = false
