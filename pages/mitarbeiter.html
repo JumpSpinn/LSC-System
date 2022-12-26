@@ -1,0 +1,138 @@
+<div class="page_header">
+    <div class="page_header_name">
+        <div class="page_header_title">Mitarbeiter</div>
+        <div class="page_header_subtitle">Liste aller aktuellen Mitarbeiter von Los Santos Customs.</div>
+    </div>
+    <div class="page_header_btns">
+        <div class="page_header_btn" id="create_mitarbeiter">Neuen Mitarbeiter anlegen</div>
+    </div>
+</div>
+<div class="mitarbeiter_content_container"></div>
+
+<!-- Popup's -->
+<div class="page_popup_wrapper" id="popup_new_mitarbeiter">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Mitarbeiter anlegen</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_new_mitarbeiter"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Vorname:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Vornamen angeben.." id="new_mitarbeiter_firstname" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Nachname:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Nachname angeben.." id="new_mitarbeiter_lastname" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Telefonnummer:</span>
+                <input type="text" placeholder="Telefonnummer angeben.." id="new_mitarbeiter_phonenumber" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Position/Rang:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Position/Rang angeben.." id="new_mitarbeiter_position" autocomplete="off">
+                <div class="page_popup_suggestions mitarbeiterRang">
+                    <!-- <div class="page_popup_suggestion">Azubi</div> -->
+                </div>
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="new_mitarbeiter_save"><em class="mdi mdi-check"></em>Mitarbeiter anlegen</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_edit_mitarbeiter">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Mitarbeiter bearbeiten</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_edit_mitarbeiter"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Vorname:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Vornamen angeben.." id="edit_mitarbeiter_firstname" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Nachname:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Nachname angeben.." id="edit_mitarbeiter_lastname" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Telefonnummer:</span>
+                <input type="text" placeholder="Telefonnummer angeben.." id="edit_mitarbeiter_phonenumber" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Position/Rang:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Position/Rang angeben.." id="edit_mitarbeiter_position" autocomplete="off">
+                <div class="page_popup_suggestions mitarbeiterRang"></div>
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Kontoverbindung (IBAN):</span>
+                <input type="text" placeholder="Kontoverbindung angeben.." id="edit_mitarbeiter_iban" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Aktueller Status:</span>
+                <input type="text" placeholder="Status angeben.." id="edit_mitarbeiter_state" autocomplete="off">
+                <div class="page_popup_suggestions mitarbeiterState"></div>
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Begründung (Status):</span>
+                <input type="text" placeholder="Begründung (Status) angeben.." id="edit_mitarbeiter_stateReason" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Abmahnungen:</span>
+                <input type="text" placeholder="Abmahnungen angeben.." id="edit_mitarbeiter_warnings" autocomplete="off">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="edit_mitarbeiter_save"><em class="mdi mdi-check"></em>Änderung speichern</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_delete_mitarbeiter">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Mitarbeiter löschen</span>
+            <span class="page_popup_header_subtitle">Bist du dir sicher, dass du diesen Mitarbeiter löschen möchtest?</span>
+            <em class="mdi mdi-close" id="close_delete_mitarbeiter"></em>
+        </div>
+        <div class="page_popup_content">
+
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="delete_mitarbeiter_confirm"><em class="mdi mdi-delete"></em>Ja, löschen!</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_resetMember_password">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title"></span>
+            <span class="page_popup_header_subtitle"></span>
+            <em class="mdi mdi-close" id="close_resetMember_password"></em>
+        </div>
+        <div class="page_popup_content"></div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="reset_resetMember_password"><em class="mdi mdi-lock-reset"></em>Ja, Passwort zurücksetzen!</div>
+        </div>
+    </div>
+</div>
+
+<!-- Search -->
+<div class="page_search_container">
+    <div class="page_search_icon">
+        <em class="mdi mdi-magnify"></em>
+    </div>
+    <div class="page_search_input">
+        <input type="text" placeholder="Nach Mitarbeiter suchen.." id="search">
+    </div>
+</div>
+
+<div class="loading_wrapper">
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+</div>

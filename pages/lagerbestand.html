@@ -1,0 +1,93 @@
+<div class="page_header">
+    <div class="page_header_name">
+        <div class="page_header_title">Lagerbestand</div>
+        <div class="page_header_subtitle">Hier ist der aktuelle Lagerbestand aufgelistet wie er im Fraktionsschrank aktuell vorliegt.</div>
+    </div>
+    <div class="page_header_btns">
+        <div class="page_header_btn" id="create_storage">Neuen Bestand anlegen</div>
+    </div>
+</div>
+<div class="storage_content_container"></div>
+
+<!-- Popup's -->
+<div class="page_popup_wrapper" id="popup_new_storage">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Bestand anlegen</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_new_storage"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Bezeichnung:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Bezeichnung angeben.." id="new_storage_name" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Gewünschter Bestand:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Gewünschten Bestand angeben.." id="new_storage_minAmount" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Aktueller Bestand:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Aktuellen Bestand angeben.." id="new_storage_currentAmount" autocomplete="off">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="new_storage_save"><em class="mdi mdi-check"></em>Bestand anlegen</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_edit_storage">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Bestand bearbeiten</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_edit_storage"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Bezeichnung:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Bezeichnung angeben.." id="edit_storage_name" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Gewünschter Bestand:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Gewünschten Bestand angeben.." id="edit_storage_minAmount" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Aktueller Bestand:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Aktuellen Bestand angeben.." id="edit_storage_currentAmount" autocomplete="off">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="edit_storage_save"><em class="mdi mdi-check"></em>Änderung speichern</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_delete_storage">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Bestand löschen</span>
+            <span class="page_popup_header_subtitle">Bist du dir sicher, dass du diesen Bestand löschen möchtest?</span>
+            <em class="mdi mdi-close" id="close_delete_storage"></em>
+        </div>
+        <div class="page_popup_content"></div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="delete_storage_confirm"><em class="mdi mdi-delete"></em>Ja, löschen!</div>
+        </div>
+    </div>
+</div>
+
+<!-- Search -->
+<div class="page_search_container">
+    <div class="page_search_icon">
+        <em class="mdi mdi-magnify"></em>
+    </div>
+    <div class="page_search_input">
+        <input type="text" placeholder="Nach der Bezeichnung suchen.." id="search">
+    </div>
+</div>
+
+<div class="loading_wrapper">
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+</div>

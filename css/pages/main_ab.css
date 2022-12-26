@@ -1,0 +1,407 @@
+.mainbh_header_btn{
+  display: none;
+}
+
+.mainab_content_container{
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.mainab_search_customer_container{
+  display: none;
+  width: 550px;
+  background-color: rgba(0,0,0,.2);
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,.035);
+}
+
+.mainab_search_customer_header{
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  line-height: 24px;
+  background-color: rgba(5,5,5,.3);
+  border-radius: 4px;
+  padding: 10px 0px;
+}
+
+.mainab_search_customer_title{
+  font-size: 1.5rem;
+}
+
+.mainab_search_customer_subtitle{
+  font-size: 1.02rem;
+  opacity: .4;
+}
+
+.mainab_search_customer_content{
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+}
+
+.mainab_search_customer_row{
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+.mainab_search_customer_row span{
+  font-size: .9rem;
+  padding: 0px 0px 5px 0px;
+}
+
+.mainab_search_customer_row input{
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  padding: 5px 10px;
+  background-color: rgba(255,255,255,.05);
+  user-select: none !important;
+}
+
+.mainab_search_customer_btns{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 20px 15px 20px;
+  gap: 10px;
+}
+
+.mainab_search_customer_btn{
+  width: 100%;
+  font-size: .8rem;
+  padding: 5px 10px;
+  border-radius: 3px;
+  background-color: rgb(57, 28, 87);
+  text-align: center;
+  cursor: pointer;
+}
+
+.mainab_search_customer_btn:hover{
+  background-color: rgb(83, 41, 128);
+}
+
+.mainab_auftragsblatt_container{
+  display: none;
+  flex-grow: 1;
+  height: 100%;
+  flex-direction: column;
+}
+
+.mainab_auftragsblatt_customerdetails{
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(0,0,0,.3);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.mainab_auftragsblatt_customer_row{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.mainab_auftragsblatt_customer_row span{
+  font-size: .9rem;
+  opacity: .5;
+}
+
+.mainab_auftragsblatt_customer_row p{
+  font-size: .8rem;
+}
+
+.mainab_auftragsblatt_customer_row p.redeemedCode{
+  color: rgb(170, 255, 170);
+}
+
+#exitAuftrag{
+  background-color: rgb(116, 10, 19);
+}
+
+#exitAuftrag:hover{
+  background-color: rgb(155, 23, 34);
+}
+
+.mainab_vehicle_container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgba(0,0,0,.3);
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+.mainab_vehicle_model,
+.mainab_vehicle_numberplate{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.mainab_vehicle_model span,
+.mainab_vehicle_numberplate span{
+  font-size: .9rem;
+  padding: 0px 0px 3px 0px;
+}
+
+.mainab_vehicle_model input,
+.mainab_vehicle_numberplate input{
+  border: none;
+  outline: none;
+  background-color: transparent;
+  padding: 5px 5px;
+  color: white;
+  margin-top: 3px;
+  border-radius: 3px;
+  width: 90%;
+  background-image: linear-gradient(to right, rgba(255,255,255,.05), transparent);
+}
+
+.mainab_vehicle_numberplate input{
+  text-transform: uppercase;
+}
+
+.mainab_vehicle_numberplate input::placeholder{
+  text-transform: none;
+}
+
+.mainab_vehicle_search_container{
+  position: absolute;
+  top: 55px;
+  left: 0px;
+  width: 100%;
+  max-height: 168px;
+  border-radius: 5px;
+  overflow-y: auto;
+  background-color: rgb(31, 31, 31);
+  box-shadow: 0 0 5px black;
+  z-index: 5;
+}
+
+.mainab_vehicle_search{
+  width: 100%;
+  font-size: .8rem;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.mainab_vehicle_search:hover{
+  background-color: rgb(83, 41, 128);
+}
+
+.mainab_auftragsblatt_wrapper{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  margin-top: 5px;
+  flex-grow: 1;
+  height: 500px;
+  overflow: hidden;
+}
+
+.mainab_auftragsblatt_row{
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  width: 100%;
+  background-color: rgba(0,0,0,.3);
+  border-radius: 5px;
+  padding: 0px;
+  overflow-y: auto;
+}
+
+.mainab_auftragsblatt_input{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  padding: 4px;
+  margin-bottom: 1px;
+  font-size: .8rem;
+}
+
+.mainab_auftragsblatt_input.active{
+  color: white;
+  background-image: linear-gradient(to right, rgba(214, 170, 255, 0.2), transparent);
+  text-shadow: 0 1px 1px black;
+}
+
+.mainab_auftragsblatt_input.highlight{
+  color: white;
+  background-image: linear-gradient(to right, rgba(170, 255, 170, 0.1), transparent);
+  text-shadow: 0 1px 1px black;
+}
+
+.mainab_auftragsblatt_input label{
+  display: flex;
+  flex-grow: 1;
+}
+
+.mainab_auftragsblatt_input:hover{
+  background-color: rgba(255,255,255,.05);
+}
+
+.mainab_auftragsblatt_input_name{
+  display: flex;
+  flex-grow: 1;
+}
+
+.mainab_auftragsblatt_input input{
+  border: none;
+  outline: none;
+  font-size: .8rem;
+  text-align: center;
+  width: 100px;
+  background-color: transparent;
+  background-color: rgba(255,255,255,.05);
+  border-radius: 3px;
+  color: rgb(170, 255, 170);
+}
+
+.mainab_auftragsblatt_input input::-webkit-outer-spin-button,
+.mainab_auftragsblatt_input input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.mainab_auftragsblatt_input input[type="checkbox"]{
+  transform: scale(.85);
+}
+
+.mainab_auftragsblatt_input p{
+  padding-left: 5px;
+  color: rgb(170, 255, 170);
+}
+
+.mainab_auftragsblatt_preisauflistung{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgba(0,0,0,.3);
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+.mainab_auftragsblatt_preisauflistung_row{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.mainab_auftragsblatt_preisauflistung_row span{
+  font-size: .9rem;
+  opacity: .5;
+}
+
+.mainab_auftragsblatt_preisauflistung_row p{
+  font-size: .8rem;
+}
+
+.mainab_auftragsblatt_preisauflistung_row p.brutto{
+  color: rgb(170, 255, 170);
+}
+
+.ab_notice{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: .8rem;
+  opacity: .5;
+}
+
+/* Search Customer Results */
+.mainab_search_customer_results{
+  position: absolute;
+  bottom: 30px;
+  left: 0px;
+  width: 100%;
+  background-color: rgb(31, 31, 31);
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 5px;
+}
+
+.mainab_search_customer_result{
+  font-size: .8rem;
+  padding: 2px 5px;
+  cursor: pointer;
+}
+
+.mainab_search_customer_result:hover{
+  background-color: rgb(83, 41, 128);
+}
+
+/* SPINNER */
+.lds-ellipsis {
+  display: none;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}

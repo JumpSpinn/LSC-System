@@ -1,0 +1,105 @@
+.schwarzes_brett_content_container{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    padding: 5px;
+    overflow-y: auto;
+}
+
+.schwarzes_brett_entry_container{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0,0,0,.3);
+    border-radius: 3px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.schwarzes_brett_header{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0,0,0,.5);
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    padding: 10px;
+    line-height: 17px;
+}
+
+.schwarzes_brett_header_title{
+    font-size: 1rem;
+}
+
+.schwarzes_brett_header_title p{
+    display: inline-block;
+    margin-left: 5px;
+    border-radius: 5px;
+    font-size: .8rem;
+    padding: 2px 5px;
+}
+
+.schwarzes_brett_header_subtitle{
+    font-size: .8rem;
+    opacity: .4;
+}
+
+.schwarzes_brett_header em{
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: rgb(57, 28, 87);
+    cursor: pointer;
+}
+
+.schwarzes_brett_header em:hover{
+    background-color: rgb(83, 41, 128);
+}
+
+.schwarzes_brett_header_details{
+    display: flex;
+    flex-direction: column;
+}
+
+.schwarzes_brett_btns{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.schwarzes_brett_content{
+    display: flex;
+    flex-grow: 1;
+    word-wrap: break-word;
+    padding: 10px;
+    font-size: .9rem;
+}
+
+.schwarzes_brett_header_title p.messageState_0{
+    background-color: rgb(53, 53, 53);
+    color: white;
+    text-shadow: 0 1px 1px black;
+}
+
+.schwarzes_brett_header_title p.messageState_1{
+    background-color: rgb(53, 141, 163);
+    color: white;
+    text-shadow: 0 1px 1px black;
+}
+
+.schwarzes_brett_header_title p.messageState_2{
+    background-color: rgb(44, 116, 60);
+    color: white;
+    text-shadow: 0 1px 1px black;
+}
+
+.schwarzes_brett_header_title p.messageState_3{
+    background-color: rgb(255, 91, 91);
+    color: white;
+    text-shadow: 0 1px 1px black;
+}

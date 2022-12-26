@@ -1,0 +1,110 @@
+.bh_content_container{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    overflow-y: auto;
+}
+
+.bh_content_col_container{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.bh_content_col{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    width: 50%;
+}
+
+.bh_table_container{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0,0,0,.3);
+    border-radius: 3px;
+    padding: 5px;
+    height: max-content;
+    margin-bottom: 5px;
+}
+
+.bh_table_container.resetMargin{
+    margin-bottom: 0px;
+}
+
+.bh_table_header{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0,0,0,.5);
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    padding: 10px;
+    line-height: 17px;
+    height: max-content;
+}
+
+.bh_table_header span{
+    font-size: .9rem;
+}
+
+.bh_table_header span p{
+    display: inline-block;
+}
+
+.bh_table_header em{
+    height: 25px;
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: rgb(57, 28, 87);
+    cursor: pointer;
+}
+
+.bh_table_header em:hover{
+    background-color: rgb(83, 41, 128);
+}
+
+.bh_table_content{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+}
+
+.bh_table_content:hover{
+    background-color: rgba(255,255,255,.1);
+}
+
+.bh_table_content span{
+    display: flex;
+    width: 100%;
+    font-size: .8rem;
+}
+
+.bh_table_btn{
+    height: 25px;
+    width: 25px;
+}
+
+.bh_table_content em{
+    height: 25px;
+    width: 25px;
+    font-size: .7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: rgb(57, 28, 87);
+    cursor: pointer;
+}
+
+.bh_table_content em:hover{
+    background-color: rgb(83, 41, 128);
+}

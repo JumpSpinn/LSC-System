@@ -1,0 +1,83 @@
+<div class="page_header">
+    <div class="page_header_name">
+        <div class="page_header_title">Ränge</div>
+        <div class="page_header_subtitle">Ränge/Positionen für alle Mitarbeiter von Los Santos Customs.</div>
+    </div>
+    <div class="page_header_btns">
+        <div class="page_header_btn" id="new_rank">Neuen Rang anlegen</div>
+    </div>
+</div>
+<div class="raenge_content_container"></div>
+
+<!-- Popup's -->
+<div class="page_popup_wrapper" id="popup_new_rank">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Rang anlegen</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_new_rank"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Rangbezeichnung:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Rangbezeichnung angeben.." id="new_rank_name" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Allgemeine Berechtigungen:<p>(Pflichtfeld)</p></span>
+                <div class="page_popup_selections sidebarPermissions"></div>
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Sonstige Berechtigungen:</span>
+                <div class="page_popup_selections pagePermissions"></div>
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="new_rank_save"><em class="mdi mdi-check"></em>Rang anlegen</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_edit_rank">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Rang anlegen</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_edit_rank"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Rangbezeichnung:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Rangbezeichnung angeben.." id="edit_rank_name" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Berechtigungen setzen:<p>(Pflichtfeld)</p></span>
+                <div class="page_popup_selections sidebarPermissions"></div>
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Sonstige Berechtigungen:</span>
+                <div class="page_popup_selections pagePermissions"></div>
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="edit_rank_save"><em class="mdi mdi-check"></em>Änderung speichern</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_delete_rank">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Rang löschen</span>
+            <span class="page_popup_header_subtitle">Bist du dir sicher, dass du diesen Rang löschen möchtest?</span>
+            <em class="mdi mdi-close" id="close_delete_rank"></em>
+        </div>
+        <div class="page_popup_content"></div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="delete_rank_confirm"><em class="mdi mdi-delete"></em>Ja, löschen!</div>
+        </div>
+    </div>
+</div>
+
+<div class="loading_wrapper">
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+</div>

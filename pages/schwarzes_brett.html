@@ -1,0 +1,87 @@
+<div class="page_header">
+    <div class="page_header_name">
+        <div class="page_header_title">Schwarzes Brett</div>
+        <div class="page_header_subtitle">Wichtige Mitteilungen & Informationen rund um Los Santos Customs</div>
+    </div>
+    <div class="page_header_btns">
+        <div class="page_header_btn" id="create_message">Neue Mitteilung erstellen</div>
+    </div>
+</div>
+<div class="schwarzes_brett_content_container"></div>
+
+<!-- Popup's -->
+<div class="page_popup_wrapper" id="popup_new_message">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Mitteilung erstellen</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_new_message"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Kurzen Titel angeben:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Kurzen Titel angeben.." id="new_message_title" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Mitteilung:<p>(Pflichtfeld)</p></span>
+                <textarea id="new_message_msg" placeholder="Mitteilung angeben.." autocomplete="off"></textarea>
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Wie wichtig ist die Mitteilung?</span>
+                <input type="text" placeholder="Allgemein/Bewerber/Besprechung/Wichtig" id="new_message_state" autocomplete="off">
+                <div class="page_popup_suggestions messageStates">
+                </div>
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="new_message_save"><em class="mdi mdi-check"></em>Mitteilung erstellen</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_edit_message">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Mitteilung bearbeiten</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_edit_message"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Kurzen Titel angeben:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Kurzen Titel angeben.." autocomplete="off" id="edit_message_title">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Mitteilung:<p>(Pflichtfeld)</p></span>
+                <textarea id="edit_message_msg" placeholder="Mitteilung angeben.." autocomplete="off"></textarea>
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Wie wichtig ist die Mitteilung?</span>
+                <input type="text" placeholder="Allgemein/Bewerber/Besprechung/Wichtig" id="edit_message_state" autocomplete="off">
+                <div class="page_popup_suggestions messageStates">
+                </div>
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="edit_message_save"><em class="mdi mdi-check"></em>Änderung speichern</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_delete_message">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Mitteilung löschen</span>
+            <span class="page_popup_header_subtitle">Bist du dir sicher, dass du diese Mitteilung löschen möchtest?</span>
+            <em class="mdi mdi-close" id="close_delete_message"></em>
+        </div>
+        <div class="page_popup_content"></div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="delete_message_confirm"><em class="mdi mdi-delete"></em>Ja, löschen!</div>
+        </div>
+    </div>
+</div>
+
+<div class="loading_wrapper">
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+</div>

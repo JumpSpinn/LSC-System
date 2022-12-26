@@ -1,0 +1,125 @@
+<div class="page_header">
+    <div class="page_header_name">
+        <div class="page_header_title">Kundenkartei</div>
+        <div class="page_header_subtitle">Hier sind alle aktuellen Kunden von Los Santos Customs aufgelistet.</div>
+    </div>
+    <div class="page_header_btns">
+        <div class="page_header_btn" id="create_customer">Neuen Kunden anlegen</div>
+    </div>
+</div>
+<div class="mitarbeiter_content_container"></div>
+
+<!-- Popup's -->
+<div class="page_popup_wrapper" id="popup_new_customer">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Kunden anlegen</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_new_customer"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Kundenname:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Kundenname angeben.." id="new_customer_name" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Einreisedatum:<p>(Pflichtfeld)</p></span>
+                <input type="date" placeholder="Einreisedatum angeben.." id="new_customer_enterState" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Telefonnummer:</span>
+                <input type="text" placeholder="Telefonnummer angeben.." id="new_customer_phonenumber" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Rabatt:</span>
+                <input type="text" placeholder="Rabatt angeben.." id="new_customer_rabatt" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Notiz zum Kunden:</span>
+                <input type="text" placeholder="Notiz angeben.." id="new_customer_notice" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Kunde staatlich? (0: Nein | 1: Ja)</span>
+                <input type="text" placeholder=".." id="new_customer_isState" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Kunden sperren? (0: Nein | 1: Ja)</span>
+                <input type="text" placeholder=".." id="new_customer_disabled" autocomplete="off">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="new_customer_save"><em class="mdi mdi-check"></em>Kunden anlegen</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_edit_customer">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Kunden bearbeiten</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_edit_customer"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Kundenname:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Kundenname angeben.." id="edit_customer_name" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Einreisedatum:<p>(Pflichtfeld)</p></span>
+                <input type="date" placeholder="Einreisedatum angeben.." id="edit_customer_enterState" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Telefonnummer:</span>
+                <input type="text" placeholder="Telefonnummer angeben.." id="edit_customer_phonenumber" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Rabatt:</span>
+                <input type="text" placeholder="Rabatt angeben.." id="edit_customer_rabatt" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Notiz zum Kunden:</span>
+                <input type="text" placeholder="Notiz angeben.." id="edit_customer_notice" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Kunde staatlich? (0: Nein | 1: Ja)</span>
+                <input type="text" placeholder=".." id="edit_customer_isState" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Kunden sperren? (0: Nein | 1: Ja)</span>
+                <input type="text" placeholder=".." id="edit_customer_disabled" autocomplete="off">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="edit_customer_save"><em class="mdi mdi-check"></em>Änderung speichern</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_delete_customer">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Kunden löschen</span>
+            <span class="page_popup_header_subtitle">Bist du dir sicher, dass du diesen Kunden löschen möchtest?</span>
+            <em class="mdi mdi-close" id="close_delete_customer"></em>
+        </div>
+        <div class="page_popup_content"></div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="delete_customer_confirm"><em class="mdi mdi-delete"></em>Ja, löschen!</div>
+        </div>
+    </div>
+</div>
+
+<!-- Search -->
+<div class="page_search_container">
+    <div class="page_search_icon">
+        <em class="mdi mdi-magnify"></em>
+    </div>
+    <div class="page_search_input">
+        <input type="text" placeholder="Nach Kundennamen suchen.." id="search">
+    </div>
+</div>
+
+<div class="loading_wrapper">
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+</div>

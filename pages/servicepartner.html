@@ -1,0 +1,117 @@
+<div class="page_header">
+    <div class="page_header_name">
+        <div class="page_header_title">Servicepartner</div>
+        <div class="page_header_subtitle">Offizielle Vertragspartner/Servicepartner von Los Santos Customs</div>
+    </div>
+    <div class="page_header_btns">
+        <div class="page_header_btn" id="create_partner">Neuen Servicepartner anlegen</div>
+    </div>
+</div>
+<div class="mitarbeiter_content_container"></div>
+
+<!-- Popup's -->
+<div class="page_popup_wrapper" id="popup_new_partner">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Servicepartner anlegen</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_new_partner"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Kundenname:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Kundenname angeben.." id="new_partner_customerName" autocomplete="off">
+                <div class="page_popup_suggestions customerName">
+                    <!-- <div class="page_popup_suggestion">Azubi</div> -->
+                </div>
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Ansprechpartner:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Ansprechpartner angeben.." id="new_partner_contactName" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Wohnsitz (PLZ):<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Wohnsitz angeben.." id="new_partner_plz" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Rabatt:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Rabatt angeben.." id="new_partner_rabatt" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Abmachung:</span>
+                <textarea id="new_partner_notice" placeholder="Abmachung angeben.." autocomplete="off"></textarea>
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="new_partner_save"><em class="mdi mdi-check"></em>Servicepartner anlegen</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_edit_partner">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Servicepartner bearbeiten</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_edit_partner"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Kundenname:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Kundenname angeben.." id="edit_partner_customerName" autocomplete="off">
+                <div class="page_popup_suggestions customerName">
+                    <!-- <div class="page_popup_suggestion">Azubi</div> -->
+                </div>
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Ansprechpartner:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Ansprechpartner angeben.." id="edit_partner_contactName" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Wohnsitz (PLZ):<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Wohnsitz angeben.." id="edit_partner_plz" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Rabatt:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Rabatt angeben.." id="edit_partner_rabatt" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Abmachung:</span>
+                <textarea id="edit_partner_notice" placeholder="Abmachung angeben.." autocomplete="off"></textarea>
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="edit_partner_save"><em class="mdi mdi-check"></em>Änderung speichern</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_delete_partner">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Mitarbeiter löschen</span>
+            <span class="page_popup_header_subtitle">Bist du dir sicher, dass du diesen Mitarbeiter löschen möchtest?</span>
+            <em class="mdi mdi-close" id="close_delete_partner"></em>
+        </div>
+        <div class="page_popup_content">
+
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="delete_partner_confirm"><em class="mdi mdi-delete"></em>Ja, löschen!</div>
+        </div>
+    </div>
+</div>
+
+<!-- Search -->
+<div class="page_search_container">
+    <div class="page_search_icon">
+        <em class="mdi mdi-magnify"></em>
+    </div>
+    <div class="page_search_input">
+        <input type="text" placeholder="Nach Servicepartner suchen.." id="search">
+    </div>
+</div>
+
+<div class="loading_wrapper">
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+</div>

@@ -1,0 +1,93 @@
+<div class="page_header">
+    <div class="page_header_name">
+        <div class="page_header_title">Gutscheine</div>
+        <div class="page_header_subtitle">Hier sind alle Gutscheine aufgelistet, die bisher erstellt worden sind.</div>
+    </div>
+    <div class="page_header_btns">
+        <div class="page_header_btn" id="create_coupon">Neuen Gutschein erstellen</div>
+    </div>
+</div>
+<div class="mitarbeiter_content_container"></div>
+
+<!-- Popup's -->
+<div class="page_popup_wrapper" id="popup_new_coupon">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Gutschein erstellen</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_new_coupon"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Gutscheincode:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Gutscheincode angeben.." id="new_coupon_code" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Rabattart:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Rabattart angeben.." id="new_coupon_type" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Rabatthöhe:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Rabatthöhe angeben.." id="new_coupon_value" autocomplete="off">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="new_coupon_save"><em class="mdi mdi-check"></em>Gutschein erstellen</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_edit_coupon">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Gutschein bearbeiten</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_edit_coupon"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Gutscheincode:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Gutscheincode angeben.." id="edit_coupon_code" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Rabattart:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Rabattart angeben.." id="edit_coupon_type" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Rabatthöhe:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Rabatthöhe angeben.." id="edit_coupon_value" autocomplete="off">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="edit_coupon_save"><em class="mdi mdi-check"></em>Änderung speichern</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_delete_coupon">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Gutschein löschen</span>
+            <span class="page_popup_header_subtitle">Bist du dir sicher, dass du diesen Gutschein löschen möchtest?</span>
+            <em class="mdi mdi-close" id="close_delete_coupon"></em>
+        </div>
+        <div class="page_popup_content"></div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="delete_coupon_confirm"><em class="mdi mdi-delete"></em>Ja, löschen!</div>
+        </div>
+    </div>
+</div>
+
+<!-- Search -->
+<div class="page_search_container">
+    <div class="page_search_icon">
+        <em class="mdi mdi-magnify"></em>
+    </div>
+    <div class="page_search_input">
+        <input type="text" placeholder="Nach Gutscheincode suchen.." id="search">
+    </div>
+</div>
+
+<div class="loading_wrapper">
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+</div>

@@ -1,0 +1,374 @@
+<div class="page_header">
+    <div class="page_header_name">
+        <div class="page_header_title">Buchhaltungsdaten</div>
+        <div class="page_header_subtitle">Dies ist das Kernstück vom gesamten System. Hier sind alle wichtigen Daten aufgelistet, die für das Buchhaltungssystem wichtig sind.</div>
+    </div>
+    <div class="page_header_btns"></div>
+</div>
+<div class="bh_content_container">
+    <!-- Gewinnspanne, Steuern -->
+    <div class="bh_content_col_container">
+        <div class="bh_content_col">
+            <div class="bh_table_container resetMargin">
+                <div class="bh_table_header">
+                    <span>Aktuelle Gewinnspanne: <p id="bhGeneralData_gewinnspanne">-</p>%</span>
+                    <em class="mdi mdi-lead-pencil" id="editGewinnspanne"></em>
+                </div>
+            </div>
+        </div>
+        <div class="bh_content_col">
+            <div class="bh_table_container resetMargin">
+                <div class="bh_table_header">
+                    <span>Aktuelle Steuern: <p id="bhGeneralData_steuern">-</p>%</span>
+                    <em class="mdi mdi-lead-pencil" id="editSteuern"></em>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Motorschaden %, Arbeitszeit Minuten -->
+    <div class="bh_content_col_container">
+        <div class="bh_content_col">
+            <div class="bh_table_container resetMargin">
+                <div class="bh_table_header">
+                    <span>Motorschaden in % vom EK (Fahrzeug): <p id="bhGeneralData_motorschaden">-</p>%</span>
+                    <em class="mdi mdi-lead-pencil" id="editMotorschaden"></em>
+                </div>
+            </div>
+        </div>
+        <div class="bh_content_col">
+            <div class="bh_table_container resetMargin">
+                <div class="bh_table_header">
+                    <span>Arbeitszeit (Einparkdauer) pro Minute: $<p id="bhGeneralData_einparkMin">-</p></span>
+                    <em class="mdi mdi-lead-pencil" id="editEinparkMin"></em>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fahrzeugtypen -->
+    <div class="bh_content_col_container">
+        <div class="bh_content_col">
+            <div class="bh_table_container">
+                <div class="bh_table_header">
+                    <span>Fahrzeugtypen</span>
+                    <em class="mdi mdi-plus" id="createCarType"></em>
+                </div>
+                <div class="carTypes"></div>
+            </div>
+            <!-- Inspektionspreise -->
+            <div class="bh_table_container">
+                <div class="bh_table_header">
+                    <span>Inspektionspreise</span>
+                    <em class="mdi mdi-plus" id="createInspection"></em>
+                </div>
+                <div class="inspections"></div>
+            </div>
+            <!-- Einparkdauer -->
+            <div class="bh_table_container">
+                <div class="bh_table_header">
+                    <span>Einparkdauer</span>
+                    <em class="mdi mdi-plus" id="createParkHour"></em>
+                </div>
+                <div class="parkHours"></div>
+            </div>
+        </div>
+        <!-- Kosten -->
+        <div class="bh_content_col">
+            <div class="bh_table_container">
+                <div class="bh_table_header">
+                    <span>Kosten</span>
+                    <em class="mdi mdi-plus" id="createPrice"></em>
+                </div>
+                <div class="prices"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Popup -->
+<div class="page_popup_wrapper" id="popup_edit_gewinnspanne">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Gewinnspanne bearbeiten</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_edit_gewinnspanne"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Aktuelle Gewinnspanne:</span>
+                <input type="text" placeholder="Gewinnspanne angeben.." id="edit_gewinnspanne_value">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="edit_gewinnspanne_save"><em class="mdi mdi-check"></em>Änderung speichern</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_edit_steuern">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Steuern bearbeiten</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_edit_steuern"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Aktuelle Steuern:</span>
+                <input type="text" placeholder="Steuern angeben.." id="edit_steuern_value">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="edit_steuern_save"><em class="mdi mdi-check"></em>Änderung speichern</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_edit_motorschaden">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Motorschaden in % bearbeiten</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_edit_motorschaden"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Motorschaden in %:</span>
+                <input type="text" placeholder="Motorschaden in % angeben.." id="edit_motorschaden_value">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="edit_motorschaden_save"><em class="mdi mdi-check"></em>Änderung speichern</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_edit_einparkMin">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Einparkdauer bearbeiten</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_edit_einparkMin"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Einparkdauer:</span>
+                <input type="text" placeholder="Einparkdauer angeben.." id="edit_einparkMin_value">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="edit_einparkMin_save"><em class="mdi mdi-check"></em>Änderung speichern</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_new_carType">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Fahrzeugtyp anlegen</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_new_carType"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Bezeichnung:</span>
+                <input type="text" placeholder="Bezeichnung angeben.." id="new_carType_name">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Einkaufspreis (bis):</span>
+                <input type="text" placeholder="Einkaufspreis angeben.." id="new_carType_purchasingPrice">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Preisaufschlag:</span>
+                <input type="text" placeholder="Preisaufschlag angeben.." id="new_carType_markup">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Kosten Totalschaden in Prozent:</span>
+                <input type="text" placeholder="Kosten Totalschaden in Prozent angeben.." id="new_carType_percent">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="new_carType_save"><em class="mdi mdi-check"></em>Fahrzeugtyp anlegen</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_edit_carType">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Fahrzeugtyp bearbeiten</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_edit_carType"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Bezeichnung:</span>
+                <input type="text" placeholder="Bezeichnung angeben.." id="edit_carType_name">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Einkaufspreis (bis):</span>
+                <input type="text" placeholder="Einkaufspreis angeben.." id="edit_carType_purchasingPrice">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Preisaufschlag:</span>
+                <input type="text" placeholder="Preisaufschlag angeben.." id="edit_carType_markup">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Kosten Totalschaden in Prozent:</span>
+                <input type="text" placeholder="Kosten Totalschaden in Prozent angeben.." id="edit_carType_percent">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="edit_carType_delete"><em class="mdi mdi-delete"></em>Eintrag löschen</div>
+            <div class="page_popup_btn" id="edit_carType_save"><em class="mdi mdi-check"></em>Änderung speichern</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_new_inspection">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Inspektion anlegen</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_new_inspection"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Bezeichnung:</span>
+                <input type="text" placeholder="Bezeichnung angeben.." id="new_inspection_name">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Preis:</span>
+                <input type="text" placeholder="Preis angeben.." id="new_inspection_value">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="new_inspection_save"><em class="mdi mdi-check"></em>Inspektion anlegen</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_edit_inspection">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Inspektion bearbeiten</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_edit_inspection"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Bezeichnung:</span>
+                <input type="text" placeholder="Bezeichnung angeben.." id="edit_inspection_name">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Preis:</span>
+                <input type="text" placeholder="Preis angeben.." id="edit_inspection_value">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="edit_inspection_delete"><em class="mdi mdi-delete"></em>Eintrag löschen</div>
+            <div class="page_popup_btn" id="edit_inspection_save"><em class="mdi mdi-check"></em>Änderung speichern</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_new_parkHour">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Einparkdauer anlegen</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_new_parkHour"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Bezeichnung:</span>
+                <input type="text" placeholder="Bezeichnung angeben.." id="new_parkHour_name">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Minuten:</span>
+                <input type="text" placeholder="Minuten angeben.." id="new_parkHour_value">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="new_parkHour_save"><em class="mdi mdi-check"></em>Einparkdauer anlegen</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_edit_parkHour">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Einparkdauer bearbeiten</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_edit_parkHour"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Bezeichnung:</span>
+                <input type="text" placeholder="Bezeichnung angeben.." id="edit_parkHour_name">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Minuten:</span>
+                <input type="text" placeholder="Minuten angeben.." id="edit_parkHour_value">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="edit_parkHour_delete"><em class="mdi mdi-delete"></em>Eintrag löschen</div>
+            <div class="page_popup_btn" id="edit_parkHour_save"><em class="mdi mdi-check"></em>Änderung speichern</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_new_prices">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Preis anlegen</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_new_prices"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Bezeichnung:</span>
+                <input type="text" placeholder="Bezeichnung angeben.." id="new_prices_name">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Einkaufspreis:</span>
+                <input type="text" placeholder="Einkaufspreis angeben.." id="new_prices_ek">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Preisnachlass:</span>
+                <input type="text" placeholder="Preisnachlass angeben.." id="new_prices_percent">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="new_prices_save"><em class="mdi mdi-check"></em>Preis anlegen</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_edit_prices">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Preis bearbeiten</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_edit_prices"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Bezeichnung:</span>
+                <input type="text" placeholder="Bezeichnung angeben.." id="edit_prices_name">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Einkaufspreis:</span>
+                <input type="text" placeholder="Einkaufspreis angeben.." id="edit_prices_ek">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Preisnachlass:</span>
+                <input type="text" placeholder="Preisnachlass angeben.." id="edit_prices_percent">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="edit_prices_delete"><em class="mdi mdi-delete"></em>Eintrag löschen</div>
+            <div class="page_popup_btn" id="edit_prices_save"><em class="mdi mdi-check"></em>Änderung speichern</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,174 @@
+:root {
+    --white: #fff;
+    --black: #000;
+
+    --notify-default-background: #121629;
+    --notify-default-textColor: #b8c1ec;
+    --notify-default-borderColor: #515fa4;
+    --notify-default-progressColor: #515fa4;
+
+    --notify-success-background: #078052;
+    --notify-success-textColor: #fffffe;
+    --notify-success-borderColor: #066842;
+    --notify-success-progressColor: #043d28;
+
+    --notify-warning-background: #f28042;
+    --notify-warning-textColor: #fffffe;
+    --notify-warning-borderColor: #7e3700;
+    --notify-warning-progressColor: #b45420;
+
+    --notify-danger-background: #f25042;
+    --notify-danger-textColor: #fffffe;
+    --notify-danger-borderColor: #770e00;
+    --notify-danger-progressColor: #691a13;
+
+    --notify-info-background: #42f2dd;
+    --notify-info-textColor: #121629;
+    --notify-info-borderColor: #005a6c;
+    --notify-info-progressColor: #25aac2;
+
+    --progress: 0.0;
+}
+
+.gnwx-notify {
+    box-sizing: border-box;
+    padding: 0.3rem 0.5rem 0.5rem 0.5rem;
+    background: var(--notify-default-background);
+    border: 1px solid var(--notify-default-borderColor);
+    border-radius: 0.25rem;
+    position: relative;
+    cursor: pointer;
+    color: var(--notify-default-textColor);
+    transition: transform 300ms ease-in-out;
+    overflow: hidden;
+    box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.25);
+}
+
+.gnwx-notify-container[data-position$="-right"] .gnwx-notify {
+    transform: translateX(110%);
+}
+
+.gnwx-notify-container[data-position$="-left"] .gnwx-notify {
+    transform: translateX(-110%);
+}
+
+.gnwx-notify-container[data-position="top-center"] .gnwx-notify {
+    transform: translateY(-110vh);
+}
+
+.gnwx-notify-container[data-position$="bottom-center"] .gnwx-notify {
+    transform: translateY(110vh);
+}
+
+.gnwx-notify-container .gnwx-notify.gnwx-show {
+    transform: translate(0, 0);
+    transition: transform 250ms ease-in-out;
+}
+
+.gnwx-notify.gnwx-progress::before {
+    content: "";
+    position: absolute;
+    height: 0.2rem;
+    width: calc(100% * var(--progress));
+    background: var(--notify-default-progressColor);
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.gnwx-notify.gnwx-can-close::after {
+    content: "\00D7";
+    position: absolute;
+    top: 2px;
+    right: 5px;
+}
+
+.gnwx-notify-container {
+    position: fixed;
+    margin: 10px;
+    max-width: 250px;
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 9999;
+}
+
+.gnwx-notify-container[data-position^="top-"] {
+    top: 0;
+}
+
+.gnwx-notify-container[data-position$="-right"] {
+    right: 0;
+}
+
+.gnwx-notify-container[data-position$="-left"] {
+    left: 0;
+}
+
+.gnwx-notify-container[data-position$="-center"] {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.gnwx-notify-container[data-position^="bottom-"] {
+    bottom: 0;
+}
+
+.gnwx-notify-container[data-position="center-center"] {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.gnwx-notify-container[data-position="center-right"] {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.gnwx-notify-container[data-position="center-left"] {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.gnwx-success {
+    background: var(--notify-success-background);
+    border: 1px solid var(--notify-success-borderColor);
+    color: var(--notify-success-textColor);
+}
+
+.gnwx-notify.gnwx-success.gnwx-progress::before {
+    background: var(--notify-success-progressColor);
+}
+
+.gnwx-warning {
+    background: var(--notify-warning-background);
+    border: 1px solid var(--notify-warning-borderColor);
+    color: var(--notify-success-textColor);
+}
+
+.gnwx-notify.gnwx-warning.gnwx-progress::before {
+    background: var(--notify-warning-progressColor);
+}
+
+.gnwx-danger {
+    background: var(--notify-danger-background);
+    border: 1px solid var(--notify-danger-borderColor);
+    color: var(--notify-danger-textColor);
+}
+
+.gnwx-notify.gnwx-danger.gnwx-progress::before {
+    background: var(--notify-danger-progressColor);
+}
+
+.gnwx-info {
+    background: var(--notify-info-background);
+    border: 1px solid var(--notify-info-borderColor);
+    color: var(--notify-info-textColor);
+}
+
+.gnwx-notify.gnwx-info.gnwx-progress::before {
+    background: var(--notify-info-progressColor);
+}

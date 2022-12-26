@@ -1,0 +1,154 @@
+.mitarbeiter_content_container{
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    padding: 5px;
+    overflow-y: auto;
+}
+
+.mitarbeiter_entry{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0,0,0,.3);
+    border-radius: 3px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.mitarbeiter_entry_header{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0,0,0,.5);
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    padding: 10px;
+    line-height: 17px;
+}
+
+.mitarbeiter_entry_user{
+    display: flex;
+    flex-direction: column;
+}
+
+.mitarbeiter_entry_user_subtitle{
+    font-size: .9rem;
+    opacity: .5;
+}
+
+.mitarbeiter_entry_user_lastAction{
+    font-size: .75rem;
+    opacity: .3;
+    margin-bottom: -3px;
+}
+
+.mitarbeiter_entry_btns{
+    display: flex;
+    gap: 10px;
+}
+
+.mitarbeiter_entry_btns em{
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: rgb(57, 28, 87);
+    cursor: pointer;
+}
+
+.mitarbeiter_entry_btns em:hover{
+    background-color: rgb(83, 41, 128);
+}
+
+.mitarbeiter_entry_details{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    word-wrap: break-word;
+    padding: 10px;
+    font-size: .9rem;
+}
+
+.mitarbeiter_entry_row{
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.mitarbeiter_entry_row:last-child{
+    margin-bottom: 0px;
+}
+
+.mitarbeiter_entry_col{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.mitarbeiter_entry_col_header{
+    opacity: .5;
+    font-size: .8rem;
+}
+
+.mitarbeiterState_0,
+.mitarbeiterState_1,
+.mitarbeiterState_2,
+.mitarbeiterState_3,
+.mitarbeiterState_4{
+    border-radius: 5px;
+    padding: 1px 5px;
+    width: max-content;
+    text-shadow: 0 1px 1px black;
+}
+
+.mitarbeiterState_0{
+    background-color: green;
+    color: white;
+}
+
+.mitarbeiterState_1{
+    background-color: rgb(255, 123, 0);
+    color: white;
+}
+
+.mitarbeiterState_2{
+    background-color: rgb(18, 96, 185);
+    color: white;
+}
+
+.mitarbeiterState_3{
+    background-color: rgb(212, 67, 123);
+    color: white;
+}
+
+.mitarbeiterState_4{
+    background-color: red;
+    color: white;
+}
+
+.resetPassword{
+    cursor: pointer;
+    padding-right: 5px;
+    opacity: .5;
+}
+
+.resetPassword:hover{
+    opacity: 1;
+}
+
+.memberPasswordField{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    width: 180px;
+    font-size: unset;
+    user-select: none !important;
+    cursor: default;
+}

@@ -1,0 +1,131 @@
+<div class="page_header">
+    <div class="page_header_name">
+        <div class="page_header_title">Fuhrparkmanagement</div>
+        <div class="page_header_subtitle">Aktueller Fuhrpark von Los Santos Customs.</div>
+    </div>
+    <div class="page_header_btns">
+        <div class="page_header_btn" id="create_fleet">Neues Fahrzeug anlegen</div>
+    </div>
+</div>
+<div class="mitarbeiter_content_container"></div>
+
+<!-- Popup's -->
+<div class="page_popup_wrapper" id="popup_new_fleet">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Fahrzeug anlegen</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_new_fleet"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Fahrzeugmodell:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Fahrzeugmodell angeben.." id="new_fleet_model" autocomplete="off">
+                <div class="page_popup_suggestions serverVehicle"></div>
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Kennzeichen:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Kennzeichen angeben.." id="new_fleet_numberplate" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Kilometerstand:</span>
+                <input type="text" placeholder="Kilometerstand angeben.." id="new_fleet_km" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Aktueller Ölstand:</span>
+                <input type="text" placeholder="Ölstand angeben.." id="new_fleet_oil" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Aktuelle Batterie:</span>
+                <input type="text" placeholder="Batterie angeben.." id="new_fleet_battery" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Nächste Wartung:</span>
+                <input type="date" placeholder="Nächste Wartung angeben.." id="new_fleet_nextService" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Zugewiesener Mitarbeiter:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Zugewiesenen Mitarbeiter angeben.." id="new_fleet_currentMember" autocomplete="off">
+                <div class="page_popup_suggestions foundMembers">
+                </div>
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="new_fleet_save"><em class="mdi mdi-check"></em>Fahrzeug anlegen</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_edit_fleet">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Fahrzeug bearbeiten</span>
+            <span class="page_popup_header_subtitle">Bitte achte darauf, dass du alle Pflichtfelder ausfüllst!</span>
+            <em class="mdi mdi-close" id="close_edit_fleet"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Fahrzeugmodell:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Fahrzeugmodell angeben.." id="edit_fleet_model" autocomplete="off">
+                <div class="page_popup_suggestions serverVehicle"></div>
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Kennzeichen:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Kennzeichen angeben.." id="edit_fleet_numberplate" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Kilometerstand:</span>
+                <input type="text" placeholder="Kilometerstand angeben.." id="edit_fleet_km" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Aktueller Ölstand:</span>
+                <input type="text" placeholder="Ölstand angeben.." id="edit_fleet_oil" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Aktuelle Batterie:</span>
+                <input type="text" placeholder="Batterie angeben.." id="edit_fleet_battery" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Nächste Wartung:</span>
+                <input type="date" placeholder="Nächste Wartung angeben.." id="edit_fleet_nextService" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Zugewiesener Mitarbeiter:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Zugewiesenen Mitarbeiter angeben.." id="edit_fleet_currentMember" autocomplete="off">
+                <div class="page_popup_suggestions foundMembers">
+                </div>
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="edit_fleet_save"><em class="mdi mdi-check"></em>Änderung speichern</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_delete_fleet">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Fahrzeug löschen</span>
+            <span class="page_popup_header_subtitle">Bist du dir sicher, dass du dieses Fahrzeug löschen möchtest?</span>
+            <em class="mdi mdi-close" id="close_delete_fleet"></em>
+        </div>
+        <div class="page_popup_content"></div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="delete_fleet_confirm"><em class="mdi mdi-delete"></em>Ja, löschen!</div>
+        </div>
+    </div>
+</div>
+
+<!-- Search -->
+<div class="page_search_container">
+    <div class="page_search_icon">
+        <em class="mdi mdi-magnify"></em>
+    </div>
+    <div class="page_search_input">
+        <input type="text" placeholder="Nach Fahrzeugmodel/Kennzeichen suchen.." id="search">
+    </div>
+</div>
+
+<div class="loading_wrapper">
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+</div>

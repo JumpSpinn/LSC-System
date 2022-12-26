@@ -1,0 +1,206 @@
+.bh_entry_container{
+    position: relative;
+    display: flex;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,.3);
+    color: white;
+    height: max-content;
+    flex-direction: row;
+    margin-bottom: 5px;
+    border: 1px solid transparent;
+}
+
+.bh_entry_container::before{
+    content: attr(data-id);
+    position: absolute;
+    top: 11px;
+    font-size: 3rem;
+    right: 2%;
+    transform: translateX(-50%) rotate(-5deg);
+    font-weight: 600;
+    color: white;
+    opacity: .05;
+}
+
+.bh_entry_container:last-child{
+    margin-bottom: 0px;
+}
+
+.bh_entry_container.isState{
+    box-shadow: inset 0 0 10px rgba(133, 66, 204, .5);
+    border: 1px solid rgb(133, 66, 204);
+}
+
+.bh_entry_container.isServicePartner{
+    box-shadow: inset 0 0 10px rgba(204, 117, 66, .5);
+    border: 1px solid rgb(204, 117, 66);
+}
+
+.bh_entry_container.active{
+    box-shadow: inset 0 0 10px rgba(66, 204, 147, 0.5);
+    border: 1px solid rgba(66, 204, 140, 1);
+    animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+    0%{
+        box-shadow: inset 0 0 10px rgba(66, 204, 147, 0.5);
+        border: 1px solid rgba(66, 204, 140, 1);
+    }
+    50%{
+        box-shadow: inset 0 0 10px rgba(66, 204, 147, 0.25);
+        border: 1px solid rgba(66, 204, 140, .5);
+    }
+    100%{
+        box-shadow: inset 0 0 10px rgba(66, 204, 147, 0.5);
+        border: 1px solid rgba(66, 204, 140, 1);
+    }
+}
+
+.bh_entry_content_container{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.bh_entry_content_btns{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    z-index: 5;
+}
+
+.bh_entry_content_btn em{
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: rgb(57, 28, 87);
+    cursor: pointer;
+}
+
+.bh_entry_content_btn em:hover{
+    background-color: rgb(83, 41, 128);
+}
+
+.bh_entry_content_col{
+    display: flex;
+    flex-direction: row;
+}
+
+.bh_entry_content_col:first-child{
+    padding-bottom: 7px;
+}
+
+.bh_entry_content_row{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.bh_entry_content_row span{
+    font-size: .8rem;
+    opacity: .5;
+}
+
+.bh_entry_content_row p{
+    font-size: .8rem;
+}
+
+.bh_entry_content_row p.red{
+    color: rgb(228, 90, 102);
+}
+
+.bh_entry_content_row p.green{
+    color: rgb(170, 255, 170);
+}
+
+.buchhaltung_more_information_container{
+    position: absolute;
+    top: 50%;
+    left: 57%;
+    transform: translate(-50%, -50%);
+    width: 65%;
+    background-color: rgba(0,0,0,.98);
+    z-index: 5;
+    box-shadow: 0 0 30px rgba(0,0,0,.5);
+    display: none;
+}
+
+.buchhaltung_more_information_header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: rgba(0,0,0,.7);
+    border-bottom: 1px solid rgba(66, 204, 140, 1);
+}
+
+.buchhaltung_more_information_header em{
+    cursor: pointer;
+    opacity: .5;
+}
+
+.buchhaltung_more_information_header em:hover{
+    opacity: 1;
+}
+
+.buchhaltung_more_information_content{
+    padding: 5px;
+}
+
+.buchhaltung_more_information_customer{
+    display: flex;
+    flex-grow: 1;
+    padding: 5px 10px;
+    background-color: rgba(255,255,255,.05);
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.buchhaltung_more_information_customer_row{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.buchhaltung_more_information_customer_row span{
+    font-size: .8rem;
+    opacity: .5;
+}
+
+.buchhaltung_more_information_customer_row p{
+    font-size: .8rem;
+}
+
+.buchhaltung_more_information_repaired{
+    display: flex;
+    gap: 5px;
+}
+
+.buchhaltung_more_information_repaired_col{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+    background-color: rgba(255,255,255,.05);
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: .8rem;
+}
+
+.buchhaltung_more_information_repaired_row{
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+    height: max-content;
+    padding: 3px;
+}

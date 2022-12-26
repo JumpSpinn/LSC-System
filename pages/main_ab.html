@@ -1,0 +1,240 @@
+<div class="page_header">
+    <div class="page_header_name">
+        <div class="page_header_title">Auftragsblatt</div>
+        <div class="page_header_subtitle">Bitte kontrolliere deine Eingaben, bevor du dein Auftrag in die Buchhaltung abschickst.</div>
+    </div>
+    <div class="page_header_btns">
+        <div class="page_header_btn mainbh_header_btn" id="sendAuftrag">Auftrag abschicken</div>
+        <div class="page_header_btn mainbh_header_btn" id="requestGutschein">Gutscheincode einlösen</div>
+        <div class="page_header_btn mainbh_header_btn" id="exitAuftrag">Auftrag abbrechen</div>
+    </div>
+</div>
+<div class="mainab_content_container">
+    <!-- KUNDEN SUCHEN -->
+    <div class="mainab_search_customer_container" id="search_customer_modal">
+        <div class="mainab_search_customer_header">
+            <div class="mainab_search_customer_title">Neuen Auftrag aufnehmen</div>
+            <div class="mainab_search_customer_subtitle">Bitte suche zunächst nach dem Kunden</div>
+        </div>
+        <div class="mainab_search_customer_content">
+            <div class="mainab_search_customer_row">
+                <span>Kunden mithilfe vom Namen suchen:</span>
+                <input type="text" placeholder="Name vom Kunden angeben.." id="search_customer_name" autocomplete="off">
+                <div class="mainab_search_customer_results"></div>
+            </div>
+            <div class="mainab_search_customer_row">
+                <span>Kunden mithilfe der Kundennummer suchen:</span>
+                <input type="text" placeholder="Kundennummer angeben.." id="search_customer_number" autocomplete="off">
+            </div>
+        </div>
+        <div class="mainab_search_customer_btns">
+            <div class="mainab_search_customer_btn" id="search_customer">Kunde suchen</div>
+        </div>
+    </div>
+    <!-- KUNDE EXISTIERT NICHT -->
+    <div class="mainab_search_customer_container" id="cant_find_customer">
+        <div class="mainab_search_customer_header">
+            <div class="mainab_search_customer_title">Kein Treffer gefunden!</div>
+            <div class="mainab_search_customer_subtitle">Möchtest du den Kunden in die Kundenkartei aufnehmen?</div>
+        </div>
+        <div class="mainab_search_customer_content">
+            <div class="mainab_search_customer_row">
+                <span>Name des Kunden:</span>
+                <input type="text" placeholder="Name vom Kunden angeben.." id="cant_find_customer_name" autocomplete="off">
+            </div>
+            <div class="mainab_search_customer_row">
+                <span>Kundennummer:</span>
+                <input type="text" placeholder="Kundennummer angeben.." id="cant_find_customer_number" autocomplete="off">
+            </div>
+        </div>
+        <div class="mainab_search_customer_btns">
+            <div class="mainab_search_customer_btn" id="restart_search_customer">Nein</div>
+            <div class="mainab_search_customer_btn" id="request_new_customer">Kunde anlegen & Auftrag fortfahren</div>
+        </div>
+    </div>
+    <!-- NEUEN KUNDEN ANLEGEN -->
+    <div class="mainab_search_customer_container" id="add_new_customer">
+        <div class="mainab_search_customer_header">
+            <div class="mainab_search_customer_title">Kunden anlegen</div>
+            <div class="mainab_search_customer_subtitle">Bitte fülle alle Felder aus!</div>
+        </div>
+        <div class="mainab_search_customer_content">
+            <div class="mainab_search_customer_row">
+                <span>Name vom Kunden:</span>
+                <input type="text" placeholder="Name vom Kunden angeben.." id="add_new_customer_name" autocomplete="off">
+            </div>
+            <div class="mainab_search_customer_row">
+                <span>Einreisedatum:</span>
+                <input type="date" placeholder="Einreisedatum angeben.." id="add_new_customer_number" autocomplete="off">
+            </div>
+        </div>
+        <div class="mainab_search_customer_btns">
+            <div class="mainab_search_customer_btn" id="add_new_customer_abort">Abbrechen & zur Suche zurückkehren</div>
+            <div class="mainab_search_customer_btn" id="create_new_customer">Kunden anlegen</div>
+        </div>
+    </div>
+    <!-- Auftragsblatt -->
+    <div class="mainab_auftragsblatt_container">
+        <!-- Kundendetails -->
+        <div class="mainab_auftragsblatt_customerdetails">
+            <div class="mainab_auftragsblatt_customer_row">
+                <span>Kundenname:</span>
+                <p id="auftragsblatt_customer_name">-</p>
+            </div>
+            <div class="mainab_auftragsblatt_customer_row">
+                <span>Kundennummer:</span>
+                <p id="auftragsblatt_customer_number">-</p>
+            </div>
+            <div class="mainab_auftragsblatt_customer_row">
+                <span>Eingereist am:</span>
+                <p id="auftragsblatt_customer_enterState">-</p>
+            </div>
+            <div class="mainab_auftragsblatt_customer_row">
+                <span>Aktueller Rabatt:</span>
+                <p id="auftragsblatt_customer_rabatt">-</p>
+            </div>
+            <div class="mainab_auftragsblatt_customer_row">
+                <span>Fahrzeugtyp:</span>
+                <p id="auftragsblatt_vehicle_type">-</p>
+            </div>
+            <div class="mainab_auftragsblatt_customer_row">
+                <span>Aufschlag (Teile):</span>
+                <p id="auftragsblatt_vehicle_markup">-</p>
+            </div>
+            <div class="mainab_auftragsblatt_customer_row">
+                <span>Kosten (Totalschaden):</span>
+                <p id="auftragsblatt_vehicle_percent">-</p>
+            </div>
+        </div>
+        <!-- Preisauflistung -->
+        <div class="mainab_auftragsblatt_preisauflistung">
+            <div class="mainab_auftragsblatt_preisauflistung_row">
+                <span>Summe:</span>
+                <p id="auftrag_pricelist_summe">-</p>
+            </div>
+            <div class="mainab_auftragsblatt_preisauflistung_row">
+                <span>Gewinnspanne:</span>
+                <p id="auftrag_pricelist_gewinnspanne">-</p>
+            </div>
+            <div class="mainab_auftragsblatt_preisauflistung_row">
+                <span>Arbeitszeit:</span>
+                <p id="auftrag_pricelist_arbeitszeit">-</p>
+            </div>
+            <div class="mainab_auftragsblatt_preisauflistung_row">
+                <span>Netto:</span>
+                <p id="auftrag_pricelist_netto">-</p>
+            </div>
+            <div class="mainab_auftragsblatt_preisauflistung_row">
+                <span>Steuern:</span>
+                <p id="auftrag_pricelist_steuern">-</p>
+            </div>
+            <div class="mainab_auftragsblatt_preisauflistung_row">
+                <span>Brutto:</span>
+                <p id="auftrag_pricelist_brutto" class="brutto">-</p>
+            </div>
+            <div class="mainab_auftragsblatt_preisauflistung_row">
+                <span>Einparkdauer:</span>
+                <p id="auftrag_pricelist_einparkdauer" class="brutto">-</p>
+            </div>
+        </div>
+        <!-- Fahrzeug / Kennzeichen -->
+        <div class="mainab_vehicle_container">
+            <div class="mainab_vehicle_model">
+                <span>Fahrzeugmodel angeben:</span>
+                <input type="text" autocomplete="off" placeholder="Model angeben.." id="auftrag_vehicle_model" autocomplete="off">
+                <div class="mainab_vehicle_search_container"></div>
+            </div>
+            <div class="mainab_vehicle_numberplate">
+                <span>Kennzeichen angeben:</span>
+                <input type="text" autocomplete="off" placeholder="Kennzeichen angeben.." id="auftrag_vehicle_numberplate" autocomplete="off">
+            </div>
+        </div>
+        <!-- Auftragsblatt Wrapper -->
+        <div class="mainab_auftragsblatt_wrapper">
+             <!-- Preise -->
+             <div class="mainab_auftragsblatt_row auftragsblatt_prices"></div>
+             <!-- Inspektion -->
+             <div class="mainab_auftragsblatt_row auftragsblatt_inspektion"></div>
+        </div>
+    </div>
+    <!-- LOADING -->
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+</div>
+
+<!-- Popups -->
+<div class="page_popup_wrapper" id="popup_search_gutschein">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Gutscheincode einlösen</span>
+            <span class="page_popup_header_subtitle">Beispiel für ein Gutscheincode: 2022-50-001 | Achte auf die Schreibweise!</span>
+            <em class="mdi mdi-close" id="close_search_gutschein"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Gutscheincode:</span>
+                <input type="text" placeholder="Gutscheincode angeben.." id="search_gutschein_code">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="search_gutschein_confirm"><em class="mdi mdi-check"></em>Gutscheincode prüfen</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_cancel_auftrag">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Auftrag abbrechen</span>
+            <span class="page_popup_header_subtitle">Möchtest du diesen Auftrag wirklich abbrechen?</span>
+            <em class="mdi mdi-close" id="close_cancel_auftrag"></em>
+        </div>
+        <div class="page_popup_content"></div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="cnacel_auftrag_confirm"><em class="mdi mdi-close-thick"></em>Aktuellen Auftrag abbrechen</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_customer_free_repair">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Kostenlose Reparatur!</span>
+            <span class="page_popup_header_subtitle">Der Kunde ist frisch eingereist!</span>
+        </div>
+        <div class="page_popup_content"></div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="customer_free_repair_confirm"><em class="mdi mdi-check"></em>Alles Klar!</div>
+        </div>
+    </div>
+</div>
+
+<!-- Abfragen -->
+<div class="page_popup_wrapper" id="popup_confirm_abholung">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Kundenname</span>
+            <span class="page_popup_header_subtitle">Bezahlt dieser Kunde die Rechnung bei Abholung?</span>
+            <em class="mdi mdi-close" id="popup_confirm_abholung_close"></em>
+        </div>
+        <div class="page_popup_content"></div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="popup_confirm_abholung_no"><em class="mdi mdi-close-thick"></em>Nein</div>
+            <div class="page_popup_btn" id="popup_confirm_abholung_yes"><em class="mdi mdi-garage-variant"></em>Ja, bei Abholung!</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_confirm_rechnung">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Kundenname</span>
+            <span class="page_popup_header_subtitle">Hat dieser Kunde die Rechnung in Höhe von X bezahlt?</span>
+            <em class="mdi mdi-close" id="popup_confirm_rechnung_close"></em>
+        </div>
+        <div class="page_popup_content"></div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="popup_confirm_rechnung_no"><em class="mdi mdi-close-thick"></em>Nein</div>
+            <div class="page_popup_btn" id="popup_confirm_rechnung_yes"><em class="mdi mdi-check"></em>Ja</div>
+        </div>
+    </div>
+</div>
