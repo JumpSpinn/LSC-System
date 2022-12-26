@@ -732,10 +732,11 @@ function initAuftragsblatt(){
                 <input class="auftragsblatt_input_change" type="number" placeholder="0" autocomplete="off">\
             </div>\
         '
-        if(appendCount > 20){
-            $('.mainab_auftragsblatt_row.auftragsblatt_inspektion').append(container)
+
+        if(appendCount > 15){
+            $('.mainab_auftragsblatt_row.auftragsblatt_prices_2').append(container)
         } else {
-            $('.mainab_auftragsblatt_row.auftragsblatt_prices').append(container)
+            $('.mainab_auftragsblatt_row.auftragsblatt_prices_1').append(container)
         }
     })
 
