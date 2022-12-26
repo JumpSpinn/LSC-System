@@ -81,6 +81,11 @@
     user-select: text;
 }
 
+.schwarzes_brett_content_link{
+    color: red;
+    cursor: pointer;
+}
+
 .schwarzes_brett_header_title p.messageState_0{
     background-color: rgb(53, 53, 53);
     color: white;

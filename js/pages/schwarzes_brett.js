@@ -250,6 +250,13 @@ function showMessages(array = _messages){
         $('.schwarzes_brett_content_container').append(container)
     })
     toggleLoading(false)
+
+    $('.schwarzes_brett_content').each(function(){
+        var str = $(this).html()
+        var regex = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\-.]*(\?\S+)?)?)?)/ig
+        var replaced_text = str.replace(regex, "<a href='$1' target='_blank' class='schwarzes_brett_content_link'>$1</a>")
+        $(this).html(replaced_text)
+    })
 }
 
 function showStates(){
