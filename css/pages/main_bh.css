@@ -11,18 +11,6 @@
     border: 1px solid transparent;
 }
 
-.bh_entry_container::before{
-    content: attr(data-id);
-    position: absolute;
-    top: 11px;
-    font-size: 3rem;
-    right: 2%;
-    transform: translateX(-50%) rotate(-5deg);
-    font-weight: 600;
-    color: white;
-    opacity: .05;
-}
-
 .bh_entry_container:last-child{
     margin-bottom: 0px;
 }
@@ -65,11 +53,13 @@
 }
 
 .bh_entry_content_title{
+    position: absolute;
     display: flex;
-    font-size: .9rem;
+    font-size: .75rem;
     color: white;
     font-weight: 100;
     opacity: .7;
+    right: 10px;
 }
 
 .bh_entry_content_btns{
