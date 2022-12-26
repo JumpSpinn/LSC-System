@@ -45,10 +45,7 @@ function showMitarbeiter(array = _mitarbeiter){
                         <span class="mitarbeiter_entry_user_title">'+user.firstname+' '+user.lastname+'</span>\
                         <span class="mitarbeiter_entry_user_subtitle">'+(userPosition == null ? 'Kein Rang zugeordnet!' : userPosition.name)+'</span>\
                     </div>\
-                    <div class="mitarbeiter_entry_btns">\
-                        <em class="mdi mdi-lead-pencil edit_current_member"></em>\
-                        <em class="mdi mdi-trash-can delete_current_member"></em>\
-                    </div>\
+                    <div class="mitarbeiter_entry_btns"></div>\
                 </div>\
                 <div class="mitarbeiter_entry_details">\
                     <div class="mitarbeiter_entry_row">\
