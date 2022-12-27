@@ -61,18 +61,7 @@ $(() => {
     })
 
     $('#createRechnung').click(() => {
-        $.ajax({
-            url: "scripts/add/rechnung.php",
-            type: "POST",
-            data: { },
-            beforeSend: function() { },
-            success: function(response) {
-                location.href = 'https://un-rp-buchhaltung.lossantoscustoms.de/scripts/add/rechnung.php'
-            },
-            error: function(){
-                
-            }
-        })
+        // TODO
     })
 })
 
@@ -87,6 +76,7 @@ function showBuchhaltung(array = _buchhaltung){
         let container = '\
             <div class="bh_entry_container '+(mainDatas.isState ? 'isState' : (mainDatas.isServicePartner ? 'isServicePartner' : ''))+'" data-id="'+bh.id+'">\
                 <div class="bh_entry_content_container">\
+                    <div class="bh_entry_content_title">Auftrag #'+bh.id+'</div>\
                     <div class="bh_entry_content_col">\
                         <div class="bh_entry_content_row">\
                             <span>Datum:</span>\

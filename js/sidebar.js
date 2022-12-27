@@ -56,6 +56,10 @@ var _sidebar = [
         file: "",
         sidebarMenu: [
             {
+                sidebarMenuID: 34,
+                name: "Mitarbeiter",
+                file: "mitarbeiter_public",
+            },{
                 sidebarMenuID: 31,
                 name: "Fuhrparkmanagement",
                 file: "fuhrpark",

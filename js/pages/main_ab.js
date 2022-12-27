@@ -73,6 +73,10 @@ var debug = false
 var _mainDatas = []
 var _choosedDatas = []
 
+// Einparkdauer berechnen
+var _einparkdauerTimerInterval = null
+var _currentVehicleEinparkdauerTimer = 0
+
 $(() => {
     if(debug){
         reset()
@@ -333,24 +337,50 @@ $(() => {
     $('.mainab_auftragsblatt_row').on('input', '.auftragsblatt_checkbox_change', function(){
         let elmID = $(this).parent().data('id')
         let elmPrice = $(this).parent().data('price')
+        let elmName = $(this).parent().data('name')
         let isChecked = $(this)[0].checked
-        let inspection = _inspections.find(i => i.id == elmID)
-        if(inspection != null){
-            if(isChecked){
-                $(this).parent().addClass('active')
-                _choosedDatas.push({
-                    name: inspection.name,
-                    amount: 1,
-                    price: parseFloat(inspection.value),
-                    parkInMinutes: 0
-                })
-            } else {
-                $(this).parent().removeClass('active')
-                let find = _choosedDatas.find(i => i.name == inspection.name)
-                if(find != null){
-                    let ind = _choosedDatas.indexOf(find);
-                    if (ind > -1) {
-                        _choosedDatas.splice(ind, 1);
+
+        if(elmName != "Reparaturset"){
+            let inspection = _inspections.find(i => i.id == elmID)
+            if(inspection != null){
+                if(isChecked){
+                    $(this).parent().addClass('active')
+                    _choosedDatas.push({
+                        name: inspection.name,
+                        amount: 1,
+                        price: parseFloat(inspection.value),
+                        parkInMinutes: 0
+                    })
+                } else {
+                    $(this).parent().removeClass('active')
+                    let find = _choosedDatas.find(i => i.name == inspection.name)
+                    if(find != null){
+                        let ind = _choosedDatas.indexOf(find);
+                        if (ind > -1) {
+                            _choosedDatas.splice(ind, 1);
+                        }
+                    }
+                }
+            }
+        } else {
+            let price = _prices.find(i => i.id == elmID)
+            if(price != null){
+                if(isChecked){
+                    $(this).parent().addClass('active')
+                    _choosedDatas.push({
+                        name: price.name,
+                        amount: 1,
+                        price: parseFloat(price.vk),
+                        parkInMinutes: 0
+                    })
+                } else {
+                    $(this).parent().removeClass('active')
+                    let find = _choosedDatas.find(i => i.name == price.name)
+                    if(find != null){
+                        let ind = _choosedDatas.indexOf(find);
+                        if (ind > -1) {
+                            _choosedDatas.splice(ind, 1);
+                        }
                     }
                 }
             }
@@ -375,6 +405,9 @@ $(() => {
         }
         if(_currentCustomerIsState){
             _currentCustomerPayType= "Staatlich"
+            sendAuftragSuccess()
+        } else if(_currentCustomerIsServicePartner){
+            _currentCustomerPayType= "Sammelrechnung"
             sendAuftragSuccess()
         } else {
             $('#popup_confirm_abholung .page_popup_header_title').html(_currentCustomerName)
@@ -502,6 +535,7 @@ function switchState(state){
             $('#sendAuftrag').css('display', 'flex')
             $('#exitAuftrag').css('display', 'flex')
             $('.mainab_auftragsblatt_container').css('display', 'flex')
+            startEinparkdauerTimer()
             break;
         case STATES.ADD_NEW_CUSTOMER:
             $('#add_new_customer_name').val(_searchedCustomerName)
@@ -709,13 +743,15 @@ function calcPrices(){
     _currentPrice_netto = _currentPrice_netto - markup
 
     // show prices
-    $('#auftrag_pricelist_einparkdauer').html((_currentVehicleEinparkdauer == 0 ? '-' : _currentVehicleEinparkdauer + " Minuten"))
+    $('#auftrag_pricelist_einparkdauer').html((_currentVehicleEinparkdauer == 0 ? '-' : _currentVehicleEinparkdauer + " Min."))
     $('#auftrag_pricelist_summe').html((_currentPrice_summe == 0 ? '-' : "$" + parseFloat(_currentPrice_summe).toFixed(2)))
     $('#auftrag_pricelist_gewinnspanne').html((_currentPrice_gewinnspanne == 0 ? '-' : "$" + parseFloat(_currentPrice_gewinnspanne).toFixed(2)))
     $('#auftrag_pricelist_arbeitszeit').html((_currentPrice_arbeitszeit == 0 ? '-' : "$" + parseFloat(_currentPrice_arbeitszeit).toFixed(2)))
     $('#auftrag_pricelist_netto').html((_currentPrice_netto == 0 ? '-' : "$" + parseFloat(_currentPrice_netto).toFixed(2)))
     $('#auftrag_pricelist_steuern').html((_currentPrice_steuern == 0 ? '-' : "$" + parseFloat(_currentPrice_steuern).toFixed(2)))
     $('#auftrag_pricelist_brutto').html((_currentPrice_brutto == 0 ? '-' : "$" + parseFloat(_currentPrice_brutto).toFixed(2)))
+
+    updateEinparkdauerText()
 }
 
 function initAuftragsblatt(){
@@ -728,21 +764,22 @@ function initAuftragsblatt(){
         appendCount++
         if(price.name == "Frontscheibe" && !withMarkup){ withMarkup = true }
         var container = '\
-            <div class="mainab_auftragsblatt_input '+(highlightAuftragsblatt(price.name) ? 'highlight' : '')+'" data-id="'+price.id+'" data-price="'+price.vk+'" data-markup="'+withMarkup+'">\
+            <div class="mainab_auftragsblatt_input '+(highlightAuftragsblatt(price.name) ? 'highlight' : '')+'" data-id="'+price.id+'" data-price="'+price.vk+'" data-markup="'+withMarkup+'" data-name="'+price.name+'">\
                 <div class="mainab_auftragsblatt_input_name">'+price.name+'<p style="display: '+(price.percent == 0 ? "none" : "inline-block")+'" class="brutto">('+price.percent+'% Preisnachlass)</p></div>\
-                <input class="auftragsblatt_input_change" type="number" placeholder="0" autocomplete="off">\
+                <input class="'+(price.name == "Reparaturset" ? 'auftragsblatt_checkbox_change' : 'auftragsblatt_input_change')+'" type="'+(price.name == "Reparaturset" ? 'checkbox' : 'input')+'" placeholder="0" autocomplete="off">\
             </div>\
         '
-        if(appendCount > 20){
-            $('.mainab_auftragsblatt_row.auftragsblatt_inspektion').append(container)
+
+        if(appendCount > 15){
+            $('.mainab_auftragsblatt_row.auftragsblatt_prices_2').append(container)
         } else {
-            $('.mainab_auftragsblatt_row.auftragsblatt_prices').append(container)
+            $('.mainab_auftragsblatt_row.auftragsblatt_prices_1').append(container)
         }
     })
 
     _inspections.forEach((insp) => {
         var container = '\
-            <div class="mainab_auftragsblatt_input" data-id="'+insp.id+'" data-price="'+insp.value+'">\
+            <div class="mainab_auftragsblatt_input" data-id="'+insp.id+'" data-price="'+insp.value+'" data-name="'+insp.name+'">\
                 <label>'+insp.name+'</label>\
                 <input class="auftragsblatt_checkbox_change" type="checkbox">\
             </div>\
@@ -777,6 +814,7 @@ function reset(){
     _generalDataLoaded = false
     _servicePartnerLoaded = false
     _currentCustomerIsServicePartner = false
+    _currentCustomerIsState = false
     _searchedCustomerName = ""
     _searchedCustomerNumber = ""
     _redeemedGutschein = false
@@ -799,7 +837,8 @@ function reset(){
 
     $('.mainab_auftragsblatt_row').html('')
     $('.mainab_auftragsblatt_row.auftragsblatt_inspektion').append('<div class="ab_notice">Bitte zuerst das Fahrzeugmodel auswählen!</div>')
-    $('.mainab_auftragsblatt_row.auftragsblatt_prices').append('<div class="ab_notice">Bitte zuerst das Fahrzeugmodel auswählen!</div>')
+    $('.mainab_auftragsblatt_row.auftragsblatt_prices_1').append('<div class="ab_notice">Bitte zuerst das Fahrzeugmodel auswählen!</div>')
+    $('.mainab_auftragsblatt_row.auftragsblatt_prices_2').append('<div class="ab_notice">Bitte zuerst das Fahrzeugmodel auswählen!</div>')
 
     $('#auftragsblatt_customer_name').html('-')
     $('#auftragsblatt_customer_number').html('-')
@@ -817,6 +856,8 @@ function reset(){
     $('#auftrag_pricelist_einparkdauer').html('-')
     $('#auftrag_vehicle_model').val('')
     $('#auftrag_vehicle_numberplate').val('')
+
+    stopEinparkdauerTimer()
 }
 
 function addMainData(){
@@ -863,6 +904,7 @@ function sendAuftragSuccess(){
             updateAccountActivity(_currentUsername + " hat den Auftrag #"+response+" mit dem Kunden "+_currentCustomerName+" in die Buchhaltung eingetragen!", LOGTYPE.ADDED)
             new GNWX_NOTIFY({ text: "Auftrag #"+response+" wurde erfolgreich in die Buchhaltung eingetragen", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
             switchState(STATES.SERACH_CUSTOMER)
+            reset()
         },
         error: function(){
             _redeemedGutschein = false
@@ -883,5 +925,43 @@ function getSerachCustomerResults(){
         }
     } else {
         $('.mainab_search_customer_results').html('')
+    }
+}
+
+function startEinparkdauerTimer(){
+    let seconds = 0
+    _currentVehicleEinparkdauerTimer = 0
+    if(_einparkdauerTimerInterval == null){
+        _einparkdauerTimerInterval = setInterval(() => {
+            seconds++
+            if(seconds >= 60){
+                seconds = 0
+                updateEinparkdauerTimer()
+            }
+            updateEinparkdauerText()
+        }, 1000);
+    }
+}
+
+function stopEinparkdauerTimer(){
+    if(_einparkdauerTimerInterval != null){
+        clearInterval(_einparkdauerTimerInterval)
+        _einparkdauerTimerInterval = null
+    }
+}
+
+function updateEinparkdauerTimer(){
+    _currentVehicleEinparkdauerTimer += 1
+}
+
+function updateEinparkdauerText(){
+    if(_currentVehicleEinparkdauer > 0){
+        let dauer = _currentVehicleEinparkdauer
+        let currentTimer = _currentVehicleEinparkdauerTimer
+        let newDauer = dauer - currentTimer
+        if(newDauer <= 0){
+            newDauer = 0
+        }
+        $('#auftrag_pricelist_einparkdauer').html(newDauer + " Min. | " + _currentVehicleEinparkdauerTimer + " Min. vergangen!")
     }
 }

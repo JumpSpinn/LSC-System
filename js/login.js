@@ -115,7 +115,6 @@ function checkPassword(){
                 $('#checkPassword').css('display', 'none')
 
                 getData_positions(function(array){
-                    console.log(array)
                     let positions = JSON.parse(array)
                     let position = positions.find(p => p.id == resSplit[2])
                     if(position != null){

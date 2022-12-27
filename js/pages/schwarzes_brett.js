@@ -102,8 +102,17 @@ $(() => {
         let message = _messages.find(i => i.id == messageID)
         if(message != null){
             _currentEditMessage = message
-            $('#edit_message_title').val(_currentEditMessage.title)
-            $('#edit_message_msg').val(_currentEditMessage.message.replaceAll("&lt;br /&gt;", "\r\n"))
+
+            // Convert Title for correct view
+            let rawTitle = _currentEditMessage.title
+            let convertedTitle = rawTitle.replaceAll("&amp;", "&")
+            $('#edit_message_title').val(convertedTitle)
+
+            // Convert Message for correct view
+            let rawMessage = _currentEditMessage.message
+            let convertedMessage = rawMessage.replaceAll("&lt;br /&gt;", "\r\n").replaceAll("&amp;", "&").replaceAll("&quot;", "'")
+            $('#edit_message_msg').val(convertedMessage)
+
             let state = MESSAGE_STATES.find(i => i.id == _currentEditMessage.state)
             $('#edit_message_state').val(state.name)
             showPopup('popup_edit_message')
@@ -241,6 +250,13 @@ function showMessages(array = _messages){
         $('.schwarzes_brett_content_container').append(container)
     })
     toggleLoading(false)
+
+    $('.schwarzes_brett_content').each(function(){
+        var str = $(this).html()
+        var regex = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\-.]*(\?\S+)?)?)?)/ig
+        var replaced_text = str.replace(regex, "<a href='$1' target='_blank' class='schwarzes_brett_content_link'>$1</a>")
+        $(this).html(replaced_text)
+    })
 }
 
 function showStates(){

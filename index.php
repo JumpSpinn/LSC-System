@@ -1,9 +1,6 @@
 <?php
     header("Expires: Tue, 01 Jan 2000 00:00:00 GMT");
     header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-    // header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-    // header("Cache-Control: post-check=0, pre-check=0", false);
-    // header("Pragma: no-cache");
     header('Cache-Control: no-cache');
     header('Pragma: no-cache');
     header("X-XSS-Protection: 1; mode=block");
@@ -57,7 +54,6 @@
         <script src="/js/search.js"></script>
 
         <!-- CSS -->
-        <!-- <link rel="stylesheet" href="/assets/php-pdf-master/css/style.css"> -->
         <link rel="stylesheet" href="/assets/materialicons/css/materialdesignicons.min.css">
         <link rel="stylesheet" href="/css/base.css?<?php echo rand(0, 1000); ?>">
 
@@ -66,10 +62,10 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" /> 
     
         <?php
+
             session_set_cookie_params([
                 'lifetime' => 60*60*60*60,
                 'path' => '/',
-                'domain' => $_SERVER['HTTP_HOST'],
             ]);
             session_start();
 
@@ -82,6 +78,7 @@
             } else {
                 $loggedIn = false;
             }
+
         ?>
     </head>
     <body>
@@ -159,6 +156,7 @@
                     <div class="sidebar_elements">
                         <ul class="sidebar_links"></ul>
                     </div>
+                    <div class="sidebar_discord_server_container"><a href="https://discord.gg/yDBvWPMW" target="_blank">Internes System (Discord) beitreten</a></div>
                     <div class="sidebar_system_version">Version <?php echo $version; ?></div>
                 </div>
                 <!-- PAGES -->

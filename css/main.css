@@ -275,6 +275,23 @@
     opacity: .3;
 }
 
+.sidebar_discord_server_container{
+    color: white;
+    width: 100%;
+    text-align: center;
+    font-size: .7rem;
+    cursor: pointer;
+}
+
+.sidebar_discord_server_container a{
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar_discord_server_container a:hover{
+    color: rgb(148, 74, 228);
+}
+
 /* SIDEBAR ACTIVE */
 
 .sidebar_links li.active .sidebar_sub_menu{
