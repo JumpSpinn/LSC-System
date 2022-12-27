@@ -67,7 +67,7 @@ var _generalDataLoaded = false
 var _servicePartnerLoaded = false
 
 // Dev
-var debug = true
+var debug = false
 
 // Buchhaltung Arrays
 var _mainDatas = []
