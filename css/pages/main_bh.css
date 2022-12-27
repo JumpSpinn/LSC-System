@@ -203,6 +203,12 @@
     padding: 3px;
 }
 
+.mitarbeiter_content_container.buchhaltung{
+    display: block;
+    flex-grow: unset;
+    flex-direction: unset;
+}
+
 .buchhaltung_search_container{
     display: flex;
     flex-grow: 1;
