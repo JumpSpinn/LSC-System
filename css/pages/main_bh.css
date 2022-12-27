@@ -202,3 +202,11 @@
     height: max-content;
     padding: 3px;
 }
+
+.buchhaltung_search_container{
+    display: flex;
+    flex-grow: 1;
+    height: 35px;
+    background-color: red;
+    color: white;
+}

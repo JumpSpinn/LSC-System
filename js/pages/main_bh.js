@@ -61,18 +61,7 @@ $(() => {
     })
 
     $('#createRechnung').click(() => {
-        $.ajax({
-            url: "scripts/add/rechnung.php",
-            type: "POST",
-            data: { },
-            beforeSend: function() { },
-            success: function(response) {
-                location.href = 'https://un-rp-buchhaltung.lossantoscustoms.de/scripts/add/rechnung.php'
-            },
-            error: function(){
-                
-            }
-        })
+        // TODO
     })
 })
 
