@@ -213,7 +213,8 @@
     display: flex;
     flex-grow: 1;
     height: 35px;
-    background-color: red;
+    background-color: rgba(0,0,0,.5);
+    border-bottom: 1px solid rgb(57, 28, 87);
     color: white;
 }
 
@@ -225,7 +226,7 @@
     color: white;
     height: 100%;
     width: 35px;
-    background-color: blue;
+    background-color: rgba(0,0,0,.5);
 }
 
 .buchhaltung_search_input{
@@ -239,4 +240,6 @@
     outline: none;
     color: white;
     font-size: .9rem;
+    display: flex;
+    flex-grow: 1;
 }
