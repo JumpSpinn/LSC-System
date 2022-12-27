@@ -479,16 +479,7 @@ function startEinparkdauerTimer(){
                 seconds = 0
                 updateEinparkdauerTimer()
             }
-            if(_currentVehicleEinparkdauer > 0){
-                let dauer = _currentVehicleEinparkdauer
-                let currentTimer = _currentVehicleEinparkdauerTimer
-                let newDauer = dauer - currentTimer
-                if(newDauer <= 0){
-                    newDauer = 0
-                }
-                $('#auftrag_pricelist_einparkdauer').html(newDauer + " Minuten")
-            }
-            console.log('current timer > ' + _currentVehicleEinparkdauerTimer)
+            updateEinparkdauerText()
         }, 1000);
     }
 }
@@ -503,6 +494,19 @@ function stopEinparkdauerTimer(){
 function updateEinparkdauerTimer(){
     _currentVehicleEinparkdauerTimer += 1
     console.log('update timer')
+}
+
+function updateEinparkdauerText(){
+    if(_currentVehicleEinparkdauer > 0){
+        let dauer = _currentVehicleEinparkdauer
+        let currentTimer = _currentVehicleEinparkdauerTimer
+        let newDauer = dauer - currentTimer
+        if(newDauer <= 0){
+            newDauer = 0
+        }
+        $('#auftrag_pricelist_einparkdauer').html(newDauer + " Minuten")
+    }
+    console.log('current timer > ' + _currentVehicleEinparkdauerTimer)
 }
 
 function showVehicles(){
@@ -786,6 +790,8 @@ function calcPrices(){
     $('#auftrag_pricelist_netto').html((_currentPrice_netto == 0 ? '-' : "$" + parseFloat(_currentPrice_netto).toFixed(2)))
     $('#auftrag_pricelist_steuern').html((_currentPrice_steuern == 0 ? '-' : "$" + parseFloat(_currentPrice_steuern).toFixed(2)))
     $('#auftrag_pricelist_brutto').html((_currentPrice_brutto == 0 ? '-' : "$" + parseFloat(_currentPrice_brutto).toFixed(2)))
+
+    updateEinparkdauerText()
 }
 
 function initAuftragsblatt(){
