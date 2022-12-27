@@ -16,7 +16,7 @@ var HIGHLIGHT_NAMES = [
     { name: "Freisprechanlage" },
     { name: "Alarmsystem" },
     { name: "Kickstarter-Umbaukit" },
-    { name: "Abschlepp/ Anfahrt/ Umdrehen Gebühren" },
+    { name: "Abschlepp/ Umdrehen Gebühren" },
 ]
 
 var _searchedCustomerName = ""
