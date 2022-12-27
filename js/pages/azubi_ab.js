@@ -508,6 +508,7 @@ function switchState(state){
             $('#sendAuftrag').css('display', 'flex')
             $('#exitAuftrag').css('display', 'flex')
             $('.mainab_auftragsblatt_container').css('display', 'flex')
+            startEinparkdauerTimer()
             break;
         case STATES.ADD_NEW_CUSTOMER:
             $('#add_new_customer_name').val(_searchedCustomerName)
@@ -722,6 +723,7 @@ function calcPrices(){
     $('#auftrag_pricelist_netto').html((_currentPrice_netto == 0 ? '-' : "$" + parseFloat(_currentPrice_netto).toFixed(2)))
     $('#auftrag_pricelist_steuern').html((_currentPrice_steuern == 0 ? '-' : "$" + parseFloat(_currentPrice_steuern).toFixed(2)))
     $('#auftrag_pricelist_brutto').html((_currentPrice_brutto == 0 ? '-' : "$" + parseFloat(_currentPrice_brutto).toFixed(2)))
+    updateEinparkdauerText()
 }
 
 function initAuftragsblatt(){
@@ -825,6 +827,8 @@ function reset(){
     $('#auftrag_pricelist_einparkdauer').html('-')
     $('#auftrag_vehicle_model').val('')
     $('#auftrag_vehicle_numberplate').val('')
+
+    stopEinparkdauerTimer()
 }
 
 function addMainData(){
