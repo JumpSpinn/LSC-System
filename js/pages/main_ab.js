@@ -67,11 +67,15 @@ var _generalDataLoaded = false
 var _servicePartnerLoaded = false
 
 // Dev
-var debug = false
+var debug = true
 
 // Buchhaltung Arrays
 var _mainDatas = []
 var _choosedDatas = []
+
+// Einparkdauer berechnen
+var _einparkdauerTimerInterval = null
+var _currentVehicleEinparkdauerTimer = 0
 
 $(() => {
     if(debug){
@@ -465,6 +469,26 @@ $(() => {
     })
 })
 
+function startEinparkdauerTimer(){
+    if(_einparkdauerTimerInterval == null){
+        _einparkdauerTimerInterval = setInterval(() => {
+            updateEinparkdauerTimer()
+        }, 1000);
+    }
+    //_currentVehicleEinparkdauerTimer = 0
+}
+
+function stopEinparkdauerTimer(){
+    if(_einparkdauerTimerInterval != null){
+        clearInterval(_einparkdauerTimerInterval)
+        _einparkdauerTimerInterval = null
+    }
+}
+
+function updateEinparkdauerTimer(){
+    console.log('update timer for einparkdauer')
+}
+
 function showVehicles(){
     $('.mainab_vehicle_search_container').html('')
     let findVehicles = _serverVehicles.filter(p => p.model.toLowerCase().includes(_currentEnteredVehicle.toLowerCase()))
@@ -531,6 +555,7 @@ function switchState(state){
             $('#sendAuftrag').css('display', 'flex')
             $('#exitAuftrag').css('display', 'flex')
             $('.mainab_auftragsblatt_container').css('display', 'flex')
+            startEinparkdauerTimer()
             break;
         case STATES.ADD_NEW_CUSTOMER:
             $('#add_new_customer_name').val(_searchedCustomerName)
@@ -849,6 +874,8 @@ function reset(){
     $('#auftrag_pricelist_einparkdauer').html('-')
     $('#auftrag_vehicle_model').val('')
     $('#auftrag_vehicle_numberplate').val('')
+
+    stopEinparkdauerTimer()
 }
 
 function addMainData(){
