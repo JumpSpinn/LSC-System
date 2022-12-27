@@ -504,7 +504,7 @@ function updateEinparkdauerText(){
         if(newDauer <= 0){
             newDauer = 0
         }
-        $('#auftrag_pricelist_einparkdauer').html(newDauer + " Minuten")
+        $('#auftrag_pricelist_einparkdauer').html(newDauer + " Min. | " + _currentVehicleEinparkdauerTimer + " Min. vergangen!")
     }
     console.log('current timer > ' + _currentVehicleEinparkdauerTimer)
 }
@@ -783,7 +783,7 @@ function calcPrices(){
     _currentPrice_netto = _currentPrice_netto - markup
 
     // show prices
-    $('#auftrag_pricelist_einparkdauer').html((_currentVehicleEinparkdauer == 0 ? '-' : _currentVehicleEinparkdauer + " Minuten"))
+    $('#auftrag_pricelist_einparkdauer').html((_currentVehicleEinparkdauer == 0 ? '-' : _currentVehicleEinparkdauer + " Min."))
     $('#auftrag_pricelist_summe').html((_currentPrice_summe == 0 ? '-' : "$" + parseFloat(_currentPrice_summe).toFixed(2)))
     $('#auftrag_pricelist_gewinnspanne').html((_currentPrice_gewinnspanne == 0 ? '-' : "$" + parseFloat(_currentPrice_gewinnspanne).toFixed(2)))
     $('#auftrag_pricelist_arbeitszeit').html((_currentPrice_arbeitszeit == 0 ? '-' : "$" + parseFloat(_currentPrice_arbeitszeit).toFixed(2)))
