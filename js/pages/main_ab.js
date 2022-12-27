@@ -470,12 +470,27 @@ $(() => {
 })
 
 function startEinparkdauerTimer(){
+    let seconds = 0
+    _currentVehicleEinparkdauerTimer = 0
     if(_einparkdauerTimerInterval == null){
         _einparkdauerTimerInterval = setInterval(() => {
-            updateEinparkdauerTimer()
+            seconds++
+            if(seconds >= 60){
+                seconds = 0
+                updateEinparkdauerTimer()
+            }
+            if(_currentVehicleEinparkdauer > 0){
+                let dauer = _currentVehicleEinparkdauer
+                let currentTimer = _currentVehicleEinparkdauerTimer
+                let newDauer = dauer - currentTimer
+                if(newDauer <= 0){
+                    newDauer = 0
+                }
+                $('#auftrag_pricelist_einparkdauer').html(newDauer + " Minuten")
+            }
+            console.log('current timer > ' + _currentVehicleEinparkdauerTimer)
         }, 1000);
     }
-    //_currentVehicleEinparkdauerTimer = 0
 }
 
 function stopEinparkdauerTimer(){
@@ -486,7 +501,8 @@ function stopEinparkdauerTimer(){
 }
 
 function updateEinparkdauerTimer(){
-    console.log('update timer for einparkdauer')
+    _currentVehicleEinparkdauerTimer += 1
+    console.log('update timer')
 }
 
 function showVehicles(){
@@ -922,6 +938,7 @@ function sendAuftragSuccess(){
             updateAccountActivity(_currentUsername + " hat den Auftrag #"+response+" mit dem Kunden "+_currentCustomerName+" in die Buchhaltung eingetragen!", LOGTYPE.ADDED)
             new GNWX_NOTIFY({ text: "Auftrag #"+response+" wurde erfolgreich in die Buchhaltung eingetragen", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
             switchState(STATES.SERACH_CUSTOMER)
+            reset()
         },
         error: function(){
             _redeemedGutschein = false
