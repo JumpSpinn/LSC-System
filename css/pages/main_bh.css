@@ -216,3 +216,27 @@
     background-color: red;
     color: white;
 }
+
+.buchhaltung_search_icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    color: white;
+    height: 100%;
+    width: 35px;
+    background-color: blue;
+}
+
+.buchhaltung_search_input{
+    display: flex;
+    flex-grow: 1;
+}
+
+.buchhaltung_search_input input{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: .9rem;
+}
