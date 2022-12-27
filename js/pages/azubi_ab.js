@@ -73,6 +73,10 @@ var debug = false
 var _mainDatas = []
 var _choosedDatas = []
 
+// Einparkdauer berechnen
+var _einparkdauerTimerInterval = null
+var _currentVehicleEinparkdauerTimer = 0
+
 $(() => {
     if(debug){
         reset()
@@ -887,5 +891,43 @@ function getSerachCustomerResults(){
         }
     } else {
         $('.mainab_search_customer_results').html('')
+    }
+}
+
+function startEinparkdauerTimer(){
+    let seconds = 0
+    _currentVehicleEinparkdauerTimer = 0
+    if(_einparkdauerTimerInterval == null){
+        _einparkdauerTimerInterval = setInterval(() => {
+            seconds++
+            if(seconds >= 60){
+                seconds = 0
+                updateEinparkdauerTimer()
+            }
+            updateEinparkdauerText()
+        }, 1000);
+    }
+}
+
+function stopEinparkdauerTimer(){
+    if(_einparkdauerTimerInterval != null){
+        clearInterval(_einparkdauerTimerInterval)
+        _einparkdauerTimerInterval = null
+    }
+}
+
+function updateEinparkdauerTimer(){
+    _currentVehicleEinparkdauerTimer += 1
+}
+
+function updateEinparkdauerText(){
+    if(_currentVehicleEinparkdauer > 0){
+        let dauer = _currentVehicleEinparkdauer
+        let currentTimer = _currentVehicleEinparkdauerTimer
+        let newDauer = dauer - currentTimer
+        if(newDauer <= 0){
+            newDauer = 0
+        }
+        $('#auftrag_pricelist_einparkdauer').html(newDauer + " Min. | " + _currentVehicleEinparkdauerTimer + " Min. vergangen!")
     }
 }
