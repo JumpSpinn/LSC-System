@@ -203,6 +203,14 @@
     padding: 3px;
 }
 
+.buchhaltung_more_information_repaired_row.buchhaltung_green{
+    color: rgba(66, 204, 140, 1);
+}
+
+.buchhaltung_more_information_repaired_row.buchhaltung_purple{
+    color: rgb(155, 95, 253);
+}
+
 .mitarbeiter_content_container.buchhaltung{
     display: block;
     flex-grow: unset;
