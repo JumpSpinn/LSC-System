@@ -315,3 +315,47 @@ html {
     justify-content: center;
     align-items: center;
 }
+
+/* Global Loading | Flex */
+.global_loading_container{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 1px 10px rgba(0,0,0,.6);
+    z-index: 999;
+}
+
+#wrench_icon{
+    position: absolute;
+    transform: translateX(15px) rotate(0deg) translateY(-25px);
+    color: rgb(185, 166, 255);
+    font-size: 9rem;
+    opacity: .5;
+}
+
+#cog_icon{
+    position: absolute;
+    color: rgb(199, 165, 255);
+    font-size: 4rem;
+    transform: translateX(-10px) translateY(25px);
+    animation: rotate 4s linear infinite;
+}
+
+.global_loading_container p{
+    color: white;
+    transform: translateY(80px);
+}
+
+@keyframes rotate{
+    0%{
+        transform: translateX(-10px) translateY(25px) rotate(360deg);
+    }
+    100%{
+        transform: translateX(-10px) translateY(25px) rotate(-360deg);
+    }
+}

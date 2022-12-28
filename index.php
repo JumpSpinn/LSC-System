@@ -141,6 +141,12 @@
 
             <!-- SYSTEM -->
             <div class="system_container" style="display: <?php echo ($loggedIn ? "flex" : "none"); ?>;">
+                <!-- GLOBAL LOADING -->
+                <div class="global_loading_container">
+                    <em class="mdi mdi-wrench" id="wrench_icon"></em>
+                    <em class="mdi mdi-cog" id="cog_icon"></em>
+                    <p>Anfrage wird bearbeitet..</p>
+                </div>
                 <!-- SIDEBAR -->
                 <div class="sidebar_container">
                     <div class="sidebar_header_container">
