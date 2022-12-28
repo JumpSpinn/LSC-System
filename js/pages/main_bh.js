@@ -39,6 +39,7 @@ $(() => {
             choosedDatas.forEach((data) => {
                 let className = ''
                 if(data.name == "Reparaturset"){ className = 'buchhaltung_green' }
+                if(data.name.toLowerCase().includes('gebühren')){ className = 'buchhaltung_green' }
                 if(data.name.includes('überprüft') || data.name.includes('durchgeführt')){ className = 'buchhaltung_purple' }
 
                 let container = '\
