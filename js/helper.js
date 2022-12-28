@@ -76,8 +76,6 @@ function translateDate(date){
 
 function toggleLoading(toggle){
     $('.global_loading_container').css('display', (toggle ? 'flex' : 'none'))
-    //$('.loading_wrapper').css('display', (toggle ? 'flex' : 'none'))
-    //$('.lds-ellipsis').css('display', (toggle ? 'flex' : 'none'))
 }
 
 var PAGE_PERMISSION_TYPES = {

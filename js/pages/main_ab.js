@@ -486,7 +486,7 @@ function showVehicles(){
 
 function switchState(state){
     _main_ab_isLoading = false
-    $('.lds-ellipsis').css('display', 'none')
+    toggleLoading(false)
     $('#search_customer_modal').css('display', 'none')
     $('#cant_find_customer').css('display', 'none')
     $('.mainab_auftragsblatt_container').css('display', 'none')
@@ -511,7 +511,7 @@ function switchState(state){
             break;
         case STATES.LOADING:
             _main_ab_isLoading = true
-            $('.lds-ellipsis').css('display', 'inline-block')
+            toggleLoading(true)
             break;
         case STATES.CANTFIND_WANTTOADD:
             $('#cant_find_customer_name').val(_searchedCustomerName)
