@@ -734,12 +734,13 @@ function calcPrices(){
     // calc prices
     _currentPrice_gewinnspanne = parseFloat((_currentPrice_summe * (gewinnspanneValue / 100)))
     _currentPrice_netto = (_currentPrice_summe + _currentPrice_gewinnspanne + _currentPrice_arbeitszeit)
-    _currentPrice_steuern = (_currentPrice_netto * (steuernValue / 100))
-    _currentPrice_brutto = (_currentPrice_netto + _currentPrice_steuern)
 
     // customer rabatt
     let markup = _currentPrice_netto * (_currentCustomerRabatt / 100)
     _currentPrice_netto = _currentPrice_netto - markup
+
+    _currentPrice_steuern = (_currentPrice_netto * (steuernValue / 100))
+    _currentPrice_brutto = (_currentPrice_netto + _currentPrice_steuern)
 
     // show prices
     $('#auftrag_pricelist_einparkdauer').html((_currentVehicleEinparkdauer == 0 ? '-' : _currentVehicleEinparkdauer + " Min."))
