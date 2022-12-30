@@ -708,7 +708,7 @@ function getCarType(vehicle){
 
 function getTimestampFromDateString(dateString){
     let split = dateString.split('.')
-    const dateStr1 = split[2] + "." + split[1] + "." + split[0]
+    const dateStr1 = split[2] + "-" + split[1] + "-" + split[0]
     const date1 = new Date(dateStr1)
     const timestamp = date1.getTime()
     const inSeconds = Math.round(date1.getTime() / 1000)

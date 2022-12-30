@@ -520,8 +520,6 @@ function switchState(state){
             break;
         case STATES.AUFTRAGSBLATT:
             let enterStateTimestamp = getTimestampFromDateString(_currentCustomerEnterState)
-            console.log("1: " + enterStateTimestamp)
-            console.log("2: " + getCurrentTimestamp())
             if((enterStateTimestamp + 604800) >= getCurrentTimestamp()){
                 showPopup('popup_customer_free_repair')
             }
@@ -712,13 +710,9 @@ function getCarType(vehicle){
 function getTimestampFromDateString(dateString){
     let split = dateString.split('.')
     const dateStr1 = split[2] + "-" + split[1] + "-" + split[0]
-    console.log("11: " + dateStr1)
     const date1 = new Date(dateStr1)
-    console.log("22: " + date1)
     const timestamp = date1.getTime()
-    console.log("33: " + timestamp)
     const inSeconds = Math.round(date1.getTime() / 1000)
-    console.log("44: " + inSeconds)
     return inSeconds
 }
 
