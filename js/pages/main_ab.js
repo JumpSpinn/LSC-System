@@ -520,6 +520,8 @@ function switchState(state){
             break;
         case STATES.AUFTRAGSBLATT:
             let enterStateTimestamp = getTimestampFromDateString(_currentCustomerEnterState)
+            console.log("1: " + enterStateTimestamp)
+            console.log("2: " + getCurrentTimestamp())
             if((enterStateTimestamp + 604800) >= getCurrentTimestamp()){
                 showPopup('popup_customer_free_repair')
             }
