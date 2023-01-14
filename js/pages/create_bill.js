@@ -58,7 +58,7 @@ function showCreatedBills(){
             <div class="mitarbeiter_entry" data-billid="'+bill.id+'">\
                 <div class="mitarbeiter_entry_header">\
                     <div class="mitarbeiter_entry_user">\
-                        <span class="mitarbeiter_entry_user_title">R-2023-'+getBillNumber(bill.id)+'</span>\
+                        <span class="mitarbeiter_entry_user_title">R-'+getCurrentYear()+'-'+getBillNumber(bill.id)+'</span>\
                     </div>\
                     <div class="mitarbeiter_entry_btns">\
                         <em class="mdi mdi-eye"></em>\
@@ -102,4 +102,8 @@ function getBillNumber(billId){
         billNumber = "00" + billId
     }
     return billNumber
+}
+
+function getCurrentYear(){
+    return new Date().getFullYear()
 }
