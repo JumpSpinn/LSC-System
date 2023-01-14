@@ -49,7 +49,7 @@ $(() => {
         })
     })
 
-    $('.').on('click', '.viewBill', function(){
+    $('.mitarbeiter_content_container').on('click', '.viewBill', function(){
         let billID = $(this).parent().parent().parent().data('billid')
         let bill = _createdBills.find(b => b.id == billID)
         if(bill != null){
