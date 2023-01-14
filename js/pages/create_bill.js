@@ -12,7 +12,7 @@ $(() => {
     })
 
     $('.mitarbeiter_content_container').on('click', '.deleteBill', function(){
-        let billID = $(this).parent().parent().data('billid')
+        let billID = $(this).parent().parent().parent().data('billid')
         let bill = _createdBills.find(b => b.id == billID)
         if(bill != null){
             _currentBill = bill
@@ -53,16 +53,53 @@ $(() => {
 function showCreatedBills(){
     $('.mitarbeiter_content_container').html('')
     _createdBills.forEach((bill) => {
+        let billEntrys = JSON.parse(bill.data)
         let container = '\
-            <div class="bill_container" data-billid="'+bill.id+'">\
-                <div class="bill_details">Rechnung #'+bill.id+' | '+bill.createdBy+' | '+convertTimestamp(bill.createdTimestamp)+' | '+bill.createdFor+'</div>\
-                <div class="bill_actions">\
-                    <em class="mdi mdi-eye"></em>\
-                    <em class="mdi mdi-delete deleteBill"></em>\
+            <div class="mitarbeiter_entry" data-billid="'+bill.id+'">\
+                <div class="mitarbeiter_entry_header">\
+                    <div class="mitarbeiter_entry_user">\
+                        <span class="mitarbeiter_entry_user_title">R-2023-'+getBillNumber(bill.id)+'</span>\
+                    </div>\
+                    <div class="mitarbeiter_entry_btns">\
+                        <em class="mdi mdi-eye"></em>\
+                        <em class="mdi mdi-delete deleteBill"></em>\
+                    </div>\
+                </div>\
+                <div class="mitarbeiter_entry_details">\
+                    <div class="mitarbeiter_entry_row">\
+                        <div class="mitarbeiter_entry_col">\
+                            <div class="mitarbeiter_entry_col_header">Erstellt am:</div>\
+                            <div class="mitarbeiter_entry_col_desc">'+convertTimestamp(bill.createdTimestamp)+'</div>\
+                        </div>\
+                        <div class="mitarbeiter_entry_col">\
+                            <div class="mitarbeiter_entry_col_header">Erstellt von:</div>\
+                            <div class="mitarbeiter_entry_col_desc">'+bill.createdBy+'</div>\
+                        </div>\
+                        <div class="mitarbeiter_entry_col">\
+                            <div class="mitarbeiter_entry_col_header">Erstellt für:</div>\
+                            <div class="mitarbeiter_entry_col_desc">'+bill.createdFor+'</div>\
+                        </div>\
+                        <div class="mitarbeiter_entry_col">\
+                            <div class="mitarbeiter_entry_col_header">Rechnungspositionen:</div>\
+                            <div class="mitarbeiter_entry_col_desc">'+billEntrys.length+'</div>\
+                        </div>\
+                    </div>\
                 </div>\
             </div>\
         '
         $('.mitarbeiter_content_container').append(container)
     })
     toggleLoading(false)
+}
+
+function getBillNumber(billId){
+    let billNumber = ""
+    if(billId > 9 && billId < 100){
+        billNumber = "0" + billId
+    } else if(billId > 99 && billId < 1000){
+        billNumber = billId
+    } else if(billId < 10){
+        billNumber = "00" + billId
+    }
+    return billNumber
 }
