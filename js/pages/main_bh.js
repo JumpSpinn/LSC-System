@@ -68,6 +68,7 @@ $(() => {
     })
 
     $('#createRechnung').click(() => {
+        console.log('toggle popup')
         showPopup('popup_create_bill')
     })
 
