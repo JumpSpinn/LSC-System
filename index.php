@@ -58,12 +58,6 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" /> 
     
         <?php
-
-            // session_set_cookie_params([
-            //     'lifetime' => 60*60*60*60,
-            //     'path' => '/',
-            // ]);
-            // session_start();
             ini_set('session.gc_maxlifetime', 86400);
             session_set_cookie_params(86400);
             session_start();
