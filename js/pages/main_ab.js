@@ -835,6 +835,11 @@ function reset(){
     _currentPrice_steuern = 0
     _currentPrice_brutto = 0
     _currentCustomerPayType = ""
+    _currentVehicleEinparkdauerTimer = 0
+    if(_einparkdauerTimerInterval != null){
+        clearInterval(_einparkdauerTimerInterval)
+        _einparkdauerTimerInterval = null
+    }
 
     $('.mainab_auftragsblatt_row').html('')
     $('.mainab_auftragsblatt_row.auftragsblatt_inspektion').append('<div class="ab_notice">Bitte zuerst das Fahrzeugmodel auswählen!</div>')

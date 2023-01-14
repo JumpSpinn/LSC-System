@@ -1,11 +1,13 @@
 <?php
     require('../../assets/php-pdf-master/fpdf/fpdf.php');
     
-    session_set_cookie_params([
-        'lifetime' => 60*60*60*60,
-        'path' => '/' . $dir,
-        'domain' => $_SERVER['HTTP_HOST'],
-    ]);
+    // session_set_cookie_params([
+    //     'lifetime' => 60*60*60*60,
+    //     'path' => '/',
+    // ]);
+    // session_start();
+    ini_set('session.gc_maxlifetime', 3600);
+    session_set_cookie_params(3600);
     session_start();
     
 

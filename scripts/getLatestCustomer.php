@@ -1,13 +1,14 @@
 <?php
     require "../config/database.inc.php";
     
-    session_set_cookie_params([
-        'lifetime' => 60*60*60*60,
-        'path' => '/' . $dir,
-        'domain' => $_SERVER['HTTP_HOST'],
-    ]);
+    // session_set_cookie_params([
+    //     'lifetime' => 60*60*60*60,
+    //     'path' => '/',
+    // ]);
+    // session_start();
+    ini_set('session.gc_maxlifetime', 3600);
+    session_set_cookie_params(3600);
     session_start();
-    
 
     if($_SESSION['loggedIn']){
         $sql_query = "SELECT * FROM customers ORDER BY id DESC LIMIT 1";

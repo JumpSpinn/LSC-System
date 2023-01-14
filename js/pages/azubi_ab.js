@@ -804,6 +804,7 @@ function reset(){
     _choosedDatas = []
     _mainDatas = []
     _servicePartner = []
+    _allCustomers = []
     _serverVehiclesLoaded = false
     _pricesLoaded = false
     _parkHoursLoaded = false
@@ -812,10 +813,10 @@ function reset(){
     _generalDataLoaded = false
     _servicePartnerLoaded = false
     _currentCustomerIsServicePartner = false
+    _currentCustomerIsState = false
     _searchedCustomerName = ""
     _searchedCustomerNumber = ""
     _redeemedGutschein = false
-    _currentCustomerIsState = false
     _currentEnteredVehicle = ""
     _currentCustomerName = ""
     _currentCustomerNumber = 0
@@ -832,6 +833,11 @@ function reset(){
     _currentPrice_steuern = 0
     _currentPrice_brutto = 0
     _currentCustomerPayType = ""
+    _currentVehicleEinparkdauerTimer = 0
+    if(_einparkdauerTimerInterval != null){
+        clearInterval(_einparkdauerTimerInterval)
+        _einparkdauerTimerInterval = null
+    }
 
     $('.mainab_auftragsblatt_row').html('')
     $('.mainab_auftragsblatt_row.auftragsblatt_inspektion').append('<div class="ab_notice">Bitte zuerst das Fahrzeugmodel auswählen!</div>')
