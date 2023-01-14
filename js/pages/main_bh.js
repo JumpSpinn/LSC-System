@@ -66,7 +66,10 @@ $(() => {
     })
 
     $('#createRechnung').click(() => {
-        // TODO
+        let start = 1795
+        let end = 1805
+        let array = _buchhaltung.filter(f => f.id >= start && f.id <= end)
+        console.log(array)
     })
 })
 
