@@ -4,6 +4,7 @@ var _buchhaltungLoaded = false
 var _createBillData = []
 var _customers = []
 var _searchedCustomerName = ""
+var _createdBillFor = ""
 
 $(() => {
     if(hasPermission(PAGE_PERMISSION_TYPES.BUCHHALTUNG_CHECK)){
@@ -250,13 +251,39 @@ function createBill(){
         return
     }
     if(createBill_payType.toLowerCase() == "staatlich"){
+        _createdBillFor = (createBill_customerName == "" ? "Staatlich" : createBill_customerName)
         _createBillData = getAllStateEntrys(createBill_start, createBill_end, createBill_customerName)
     } else if(createBill_payType.toLowerCase() == "sammelrechnung"){
+        _createdBillFor = (createBill_customerName == "" ? "Servicepartner" : createBill_customerName)
         _createBillData = getAllServicepartnerEntrys(createBill_start, createBill_end, createBill_customerName)
     }
     initCreateBill()
 }
 
 function initCreateBill(){
-    console.log(_createBillData)
+    toggleLoading(true)
+    $.ajax({
+        url: "scripts/add/bill.php",
+        type: "POST",
+        data: {
+            createdBy: _currentUsername,
+            timestamp: getCurrentTimestamp(),
+            data: JSON.stringify(_createBillData)
+        },
+        beforeSend: function() { },
+        success: function(response) {
+            getData_buchhaltung(function(array){
+                _buchhaltung = JSON.parse(array)
+                _buchhaltungLoaded = true
+                showBuchhaltung()
+                closePopup()
+                updateAccountActivity(_currentUsername + " hat eine neue Rechnung (#"+response+") erstellt! (" + _createdBillFor + ")", LOGTYPE.ADDED)
+                new GNWX_NOTIFY({ text: "Rechnung (#"+response+") wurde erfolgreich erstellt!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
+                _createdBillFor = ""
+            })
+        },
+        error: function(){
+            updateAccountActivity("[ERROR] " + _currentUsername + " | Buchhaltung/Rechnung | ADD", LOGTYPE.ERROR)
+        }
+    })
 }

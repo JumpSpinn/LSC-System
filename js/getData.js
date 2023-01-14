@@ -141,3 +141,12 @@ function getData_buchhaltung(array){
         success: array
     })
 }
+
+function getData_createdBills(array){
+    $.ajax({
+        url: "scripts/getData/createdBills.php",
+        type: "POST",
+        beforeSend: function(){ },
+        success: array
+    })
+}
