@@ -38,7 +38,7 @@ $(() => {
                     _createdBillsLoaded = true
                     showCreatedBills()
                     closePopup()
-                    updateAccountActivity(_currentUsername + " hat die Rechnung #"+_currentBill.id+" gelöscht! (" + _currentBill.createdFor + ")", LOGTYPE.REMOVE)
+                    updateAccountActivity(_currentUsername + " hat die Rechnung #"+_currentBill.id+" gelöscht! (" + _currentBill.createdFor + ")", LOGTYPE.REMOVED)
                     new GNWX_NOTIFY({ text: "Rechnung (#"+_currentBill.id+") wurde erfolgreich gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     _currentBill = null
                 })
