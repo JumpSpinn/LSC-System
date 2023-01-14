@@ -6,8 +6,8 @@
     //     'path' => '/',
     // ]);
     // session_start();
-    ini_set('session.gc_maxlifetime', 3600);
-    session_set_cookie_params(3600);
+    ini_set('session.gc_maxlifetime', 86400);
+    session_set_cookie_params(86400);
     session_start();
 
     $stmt = $con->prepare("SELECT * FROM employees WHERE id=?");
