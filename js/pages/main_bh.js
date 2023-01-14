@@ -1,6 +1,8 @@
 var _buchhaltung = []
 var _buchhaltungLoaded = false
 
+var _createBillData = []
+
 $(() => {
     if(hasPermission(PAGE_PERMISSION_TYPES.BUCHHALTUNG_CHECK)){
         $('#checkBuchhaltung').css('display', 'flex')
@@ -66,10 +68,15 @@ $(() => {
     })
 
     $('#createRechnung').click(() => {
-        let start = 1795
-        let end = 1805
-        let array = _buchhaltung.filter(f => f.id >= start && f.id <= end)
-        console.log(array)
+        showPopup('popup_create_bill')
+    })
+
+    $('#close_create_bill').click(() => {
+        closePopup()
+    })
+
+    $('#create_bill_confirm').click(() => {
+        createBill()
     })
 })
 
@@ -146,4 +153,69 @@ function showBuchhaltung(array = _buchhaltung){
         $('.buchhaltung_list').append(container)
     })
     toggleLoading(false)
+}
+
+function getAllStateEntrys(startID, endID, stateName = ""){
+    let array = []
+    if(stateName == ""){
+        let filter = _buchhaltung.filter(f => f.id >= startID && f.id <= endID)
+        filter.forEach((entry) => {
+            let mainData = JSON.parse(entry.mainData)[0]
+            if(mainData.payType == "Staatlich"){
+                array.push(entry)
+            }
+        })
+    } else {
+        let filter = _buchhaltung.filter(f => f.id >= startID && f.id <= endID)
+        filter.forEach((entry) => {
+            let mainData = JSON.parse(entry.mainData)[0]
+            if(mainData.payType == "Staatlich" && mainData.customerName == stateName){
+                array.push(entry)
+            }
+        })
+    }
+    return array
+}
+
+function getAllServicepartnerEntrys(startID, endID, serviceName = ""){
+    let array = []
+    if(stateName == ""){
+        let filter = _buchhaltung.filter(f => f.id >= startID && f.id <= endID)
+        filter.forEach((entry) => {
+            let mainData = JSON.parse(entry.mainData)[0]
+            if(mainData.payType == "Sammelrechnung"){
+                array.push(entry)
+            }
+        })
+    } else {
+        let filter = _buchhaltung.filter(f => f.id >= startID && f.id <= endID)
+        filter.forEach((entry) => {
+            let mainData = JSON.parse(entry.mainData)[0]
+            if(mainData.payType == "Sammelrechnung" && mainData.customerName == serviceName){
+                array.push(entry)
+            }
+        })
+    }
+    return array
+}
+
+function createBill(){
+    let createBill_start = $('#create_bill_startValue').val()
+    let createBill_end = $('#create_bill_endValue').val()
+    let createBill_payType = $('#create_bill_payType').val()
+    let createBill_customerName = $('#create_bill_customerName').val()
+    if(!createBill_start && !createBill_end && !createBill_payType){
+        new GNWX_NOTIFY({ text: "Bitte fülle alle benötigten Felder aus!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
+        return
+    }
+    if(createBill_payType.toLowerCase() == "staatlich"){
+        _createBillData = getAllStateEntrys(createBill_start, createBill_end, createBill_customerName)
+    } else if(createBill_payType.toLowerCase() == "sammelrechnung"){
+        _createBillData = getAllServicepartnerEntrys(createBill_start, createBill_end, createBill_customerName)
+    }
+    initCreateBill()
+}
+
+function initCreateBill(){
+    console.log(_createBillData)
 }
