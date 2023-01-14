@@ -6,20 +6,17 @@
     session_start();
 
     $createdBy = $_POST['createdBy'];
-    $timestamp = $_POST['timestamp'];
+    $createdTimestamp = $_POST['createdTimestamp'];
     $data = $_POST['data'];
 
     if($_SESSION['loggedIn']){
-
-        $stmt = $con->prepare("INSERT INTO createdBills (`createdBy`, `timestamp`, `data`) VALUES (?,?,?)");
-        $stmt->bind_param("sis", $createdBy, $timestamp, $data);
-    
+        $stmt = $con->prepare("INSERT INTO createdBills (`createdBy`, `createdTimestamp`, `data`) VALUES (?,?,?)");
+        $stmt->bind_param("sis", $createdBy, $createdTimestamp, $data);
         if(!$stmt->execute()){
             echo 0;
         } else {
             echo $stmt->insert_id;
         }
-        
         $stmt->close();
     }
 ?>
