@@ -12,7 +12,7 @@
 
     if($_SESSION['loggedIn']){
         $stmt = $con->prepare("INSERT INTO createdBills (`createdBy`, `createdTimestamp`, `createdFor`, `data`) VALUES (?,?,?,?)");
-        $stmt->bind_param("sis", $createdBy, $createdTimestamp, $createdFor, $data);
+        $stmt->bind_param("siss", $createdBy, $createdTimestamp, $createdFor, $data);
 
         if(!$stmt->execute()){
             echo 0;
