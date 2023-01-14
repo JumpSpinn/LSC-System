@@ -58,15 +58,15 @@ $(() => {
         let disabled = $('#edit_customer_disabled').val()
         if(name && enterState && rabatt){
             if(isNaN(rabatt)){
-                new GNWX_NOTIFY({ text: "Rabatt darf nur Zahlen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Rabatt darf nur Zahlen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             if(rabatt > 100){
-                new GNWX_NOTIFY({ text: "Rabatt darf nicht höher als 100% sein!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Rabatt darf nicht höher als 100% sein!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             if(isNaN(phonenumber)){
-                new GNWX_NOTIFY({ text: "Telefonnummer darf nur Zahlen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Telefonnummer darf nur Zahlen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             $.ajax({
@@ -90,7 +90,7 @@ $(() => {
                         closePopup()
                         showKunden()
                         updateAccountActivity(_currentUsername + " hat einen Kunden bearbeitet! (" + _currentEditKunde.name + ")", LOGTYPE.EDITED)
-                        new GNWX_NOTIFY({ text: _currentEditKunde.name + " wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: _currentEditKunde.name + " wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -98,7 +98,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
@@ -117,7 +117,7 @@ $(() => {
                     closePopup()
                     showKunden()
                     updateAccountActivity(_currentUsername + " hat einen Kunden gelöscht! (" + _currentEditKunde.name + ")", LOGTYPE.REMOVED)
-                    new GNWX_NOTIFY({ text: _currentEditKunde.name + " wurde erfolgreich gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                    new GNWX_NOTIFY({ text: _currentEditKunde.name + " wurde erfolgreich gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                 })
             },
             error: function(){

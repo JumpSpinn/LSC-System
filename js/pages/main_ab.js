@@ -134,16 +134,16 @@ $(() => {
     $('#create_new_customer').click(() => {
         let customerName = $('#add_new_customer_name').val()
         if(customerName == ""){
-            new GNWX_NOTIFY({ text: "Kundenname muss angegeben sein!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Kundenname muss angegeben sein!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
             return
         }
         if(!isNaN(customerName)){
-            new GNWX_NOTIFY({ text: "Kundenname darf keine Zahl enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Kundenname darf keine Zahl enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
             return
         }
         let enterState = $('#add_new_customer_number').val()
         if(enterState == ""){
-            new GNWX_NOTIFY({ text: "Eintrittsdatum muss angegeben sein!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Eintrittsdatum muss angegeben sein!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
             return
         }
         let customerEnterState = translateDate(enterState)
@@ -166,7 +166,7 @@ $(() => {
 
     $('#requestGutschein').click(() => {
         if(_redeemedGutschein){
-            new GNWX_NOTIFY({ text: "Es wurde bereits ein Gutscheincode eingelöst!", position: "bottom-left", class: "gnwx-warning", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Es wurde bereits ein Gutscheincode eingelöst!", position: "bottom-left", class: "gnwx-warning", autoClose: 5000 });
             return
         }
         showPopup('popup_search_gutschein')
@@ -179,11 +179,11 @@ $(() => {
     $('#search_gutschein_confirm').click(() => {
         let enteredCode = $('#search_gutschein_code').val()
         if(enteredCode == ""){
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
             return
         }
         if(!enteredCode.includes('-')){
-            new GNWX_NOTIFY({ text: "Das ist kein gültiger Gutscheincode!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Das ist kein gültiger Gutscheincode!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
             return
         }
         $.ajax({
@@ -548,19 +548,19 @@ function searchCustomer(){
     let customerName = $('#search_customer_name').val()
     let customerNumber = $('#search_customer_number').val()
     if(!customerName && !customerNumber){
-        new GNWX_NOTIFY({ text: "Bitte fülle eins der beiden Felder aus!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+        new GNWX_NOTIFY({ text: "Bitte fülle eins der beiden Felder aus!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         return
     }
     if(customerName && customerNumber){
-        new GNWX_NOTIFY({ text: "Du kannst entweder nach den Kundennamen oder nach der Kundennummer suchen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+        new GNWX_NOTIFY({ text: "Du kannst entweder nach den Kundennamen oder nach der Kundennummer suchen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         return
     }
     if(customerNumber != "" && isNaN(customerNumber)){
-        new GNWX_NOTIFY({ text: "Kundennummer darf nur aus Zahlen bestehen sowie keine Leerzeichen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+        new GNWX_NOTIFY({ text: "Kundennummer darf nur aus Zahlen bestehen sowie keine Leerzeichen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         return
     }
     if(customerName != "" && !isNaN(customerName)){
-        new GNWX_NOTIFY({ text: "Kundenname darf nur aus Buchstaben bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+        new GNWX_NOTIFY({ text: "Kundenname darf nur aus Buchstaben bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         return
     }
 

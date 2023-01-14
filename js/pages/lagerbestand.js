@@ -31,11 +31,11 @@ $(() => {
         let currentAmount = $('#new_storage_currentAmount').val()
         if(name && minAmount && currentAmount){
             if(isNaN(minAmount)){
-                new GNWX_NOTIFY({ text: "Gewünschter Bestand darf nur Zahlen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Gewünschter Bestand darf nur Zahlen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             if(isNaN(currentAmount)){
-                new GNWX_NOTIFY({ text: "Aktueller Bestand darf nur Zahlen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Aktueller Bestand darf nur Zahlen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             $.ajax({
@@ -55,7 +55,7 @@ $(() => {
                         closePopup()
                         showStorage()
                         updateAccountActivity(_currentUsername + " hat ein neuen Bestand angelegt! (" + name + ")", LOGTYPE.ADDED)
-                        new GNWX_NOTIFY({ text: name + " wurde zum Bestand hinzugefügt!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: name + " wurde zum Bestand hinzugefügt!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -63,7 +63,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
@@ -95,7 +95,7 @@ $(() => {
                     closePopup()
                     showStorage()
                     updateAccountActivity(_currentUsername + " hat ein Bestand entfernt! (" + _currentEditStorage.name + ")", LOGTYPE.REMOVED)
-                    new GNWX_NOTIFY({ text: _currentEditStorage.name + " wurde aus dem Bestand entfernt!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                    new GNWX_NOTIFY({ text: _currentEditStorage.name + " wurde aus dem Bestand entfernt!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                 })
             },
             error: function(){
@@ -126,11 +126,11 @@ $(() => {
         let currentAmount = $('#edit_storage_currentAmount').val()
         if(name && minAmount && currentAmount){
             if(isNaN(minAmount)){
-                new GNWX_NOTIFY({ text: "Gewünschter Bestand darf nur Zahlen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Gewünschter Bestand darf nur Zahlen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             if(isNaN(currentAmount)){
-                new GNWX_NOTIFY({ text: "Aktueller Bestand darf nur Zahlen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Aktueller Bestand darf nur Zahlen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             $.ajax({
@@ -151,7 +151,7 @@ $(() => {
                         closePopup()
                         showStorage()
                         updateAccountActivity(_currentUsername + " hat ein Bestand bearbeitet! (" + _currentEditStorage.name + ")", LOGTYPE.EDITED)
-                        new GNWX_NOTIFY({ text: _currentEditStorage.name + " wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: _currentEditStorage.name + " wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -159,7 +159,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
