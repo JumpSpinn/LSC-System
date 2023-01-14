@@ -8,7 +8,7 @@
 <html>
     <head>
         <!-- TITLE -->
-        <title>Buchhaltungssystem2 | Los Santos Customs</title>
+        <title>Buchhaltungssystem | Los Santos Customs</title>
 
         <!-- META -->
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
