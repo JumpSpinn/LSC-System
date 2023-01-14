@@ -37,3 +37,91 @@
 .bill_actions em:hover{
     background-color: rgb(83, 41, 128);
 }
+
+/* View Bill */
+.bill_view_container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    height: 900px;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.bill_view_header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,.3);
+}
+
+.bill_view_header_col{
+    display: flex;
+    flex-direction: column;
+    line-height: 15px;
+}
+
+.bill_view_header_col span{
+    font-weight: 600;
+    font-size: .8rem;
+}
+
+.bill_view_header_col p{
+    font-size: .8rem;
+    text-transform: uppercase;
+    opacity: .8;
+}
+
+.bill_view_header_img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+}
+
+.bill_view_header_img img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.bill_view_details{
+    display: flex;
+    flex-direction: column;
+}
+
+.first_bill_details{
+    margin-bottom: 20px;
+}
+
+.bill_view_detail{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .75rem;
+}
+
+.bill_view_detail p{
+    display: inline-block;
+    font-weight: 600;
+}
+
+.bKursiv{
+    font-style: italic;
+}
+
+.bill_companyName{
+    font-size: .9rem;
+    padding-bottom: 5px;
+}
+
+.bill_view_detail span.bold{
+    font-weight: 600;
+}

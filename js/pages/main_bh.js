@@ -246,7 +246,10 @@ function createBill(){
     let createBill_end = $('#create_bill_endValue').val()
     let createBill_payType = $('#create_bill_payType').val()
     let createBill_customerName = $('#create_bill_customerName').val()
-    if(!createBill_start && !createBill_end && !createBill_payType){
+    let createBill_startDate = $('#create_bill_startDate').val()
+    let createBill_endDate = $('#create_bill_endDate').val()
+    let createBill_weekNumber = $('#create_bill_weekNumber').val()
+    if(!createBill_start && !createBill_end && !createBill_payType && !createBill_startDate && !createBill_endDate && !createBill_weekNumber){
         new GNWX_NOTIFY({ text: "Bitte fülle alle benötigten Felder aus!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         return
     }
@@ -257,10 +260,10 @@ function createBill(){
         _createdBillFor = (createBill_customerName == "" ? "Servicepartner" : createBill_customerName)
         _createBillData = getAllServicepartnerEntrys(createBill_start, createBill_end, createBill_customerName)
     }
-    initCreateBill()
+    initCreateBill(createBill_startDate, createBill_endDate, createBill_weekNumber)
 }
 
-function initCreateBill(){
+function initCreateBill(startDate, endDate, weekNumber){
     toggleLoading(true)
     let _data = []
     _createBillData.forEach((data) => {
@@ -273,6 +276,9 @@ function initCreateBill(){
             createdBy: _currentUsername,
             createdTimestamp: getCurrentTimestamp(),
             createdFor: _createdBillFor,
+            startDate: startDate,
+            endDate: endDate,
+            weekNumber: weekNumber,
             data: JSON.stringify(_data)
         },
         beforeSend: function() { },
