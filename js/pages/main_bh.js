@@ -2,6 +2,8 @@ var _buchhaltung = []
 var _buchhaltungLoaded = false
 
 var _createBillData = []
+var _customers = []
+var _searchedCustomerName = ""
 
 $(() => {
     if(hasPermission(PAGE_PERMISSION_TYPES.BUCHHALTUNG_CHECK)){
@@ -68,8 +70,15 @@ $(() => {
     })
 
     $('#createRechnung').click(() => {
-        console.log('toggle popup')
-        showPopup('popup_create_bill')
+        _createBillData = []
+        _customers = []
+        _searchedCustomerName = ""
+        toggleLoading(true)
+        getData_customers(function(array){
+            _customers = JSON.parse(array)
+            showPopup('popup_create_bill')
+            toggleLoading(false)
+        })
     })
 
     $('#close_create_bill').click(() => {
@@ -78,6 +87,22 @@ $(() => {
 
     $('#create_bill_confirm').click(() => {
         createBill()
+    })
+
+    $('#create_bill_customerName').on('keyup', function(){
+        let value = $(this).val()
+        _searchedCustomerName = value
+        getCustomerResult()
+    })
+
+    $('.mainab_search_customer_results').on('click', '.mainab_search_customer_result', function(){
+        let searchCustomerID = $(this).data('id')
+        let customer = _customers.find(i => i.id == searchCustomerID)
+        if(customer != null){
+            _searchedCustomerName = customer.name
+            $('#create_bill_customerName').val(_searchedCustomerName)
+            $('.mainab_search_customer_results').html('')
+        }
     })
 })
 
@@ -198,6 +223,21 @@ function getAllServicepartnerEntrys(startID, endID, serviceName = ""){
         })
     }
     return array
+}
+
+function getCustomerResult(){
+    $('.mainab_search_customer_results').html('')
+    if(_searchedCustomerName != ""){
+        let filter = _customers.filter(i => i.name.toLowerCase().includes(_searchedCustomerName.toLocaleLowerCase()))
+        if(filter.length > 0){
+            filter.forEach((result) => {
+                let container = '<div class="mainab_search_customer_result" data-id="'+result.id+'">'+result.name+'</div>'
+                $('.mainab_search_customer_results').append(container)
+            })
+        }
+    } else {
+        $('.mainab_search_customer_results').html('')
+    }
 }
 
 function createBill(){
