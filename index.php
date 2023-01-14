@@ -4,15 +4,11 @@
     header('Cache-Control: no-cache');
     header('Pragma: no-cache');
     header("X-XSS-Protection: 1; mode=block");
-
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
 ?>
 <html>
     <head>
         <!-- TITLE -->
-        <title>Buchhaltungssystem | Los Santos Customs</title>
+        <title>Buchhaltungssystem2 | Los Santos Customs</title>
 
         <!-- META -->
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
