@@ -262,13 +262,17 @@ function createBill(){
 
 function initCreateBill(){
     toggleLoading(true)
+    let _data = []
+    _createBillData.forEach((data) => {
+        _data.push(data.id)
+    })
     $.ajax({
         url: "scripts/add/bill.php",
         type: "POST",
         data: {
             createdBy: _currentUsername,
             createdTimestamp: getCurrentTimestamp(),
-            data: " Test"
+            data: JSON.stringify(_data)
         },
         beforeSend: function() { },
         success: function(response) {
