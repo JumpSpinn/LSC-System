@@ -180,7 +180,7 @@ function getAllStateEntrys(startID, endID, stateName = ""){
 
 function getAllServicepartnerEntrys(startID, endID, serviceName = ""){
     let array = []
-    if(stateName == ""){
+    if(serviceName == ""){
         let filter = _buchhaltung.filter(f => f.id >= startID && f.id <= endID)
         filter.forEach((entry) => {
             let mainData = JSON.parse(entry.mainData)[0]
