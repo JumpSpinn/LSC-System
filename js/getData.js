@@ -74,6 +74,9 @@ function getData_activityLogs(array){
     $.ajax({
         url: "scripts/getData/activityLogs.php",
         type: "POST",
+        data: {
+            filterTimestamp: (getCurrentTimestamp() - 1209600)
+        },
         beforeSend: function(){ },
         success: array
     })

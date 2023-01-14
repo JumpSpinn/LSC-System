@@ -5,9 +5,11 @@
     ini_set('session.gc_maxlifetime', 86400);
     session_set_cookie_params(86400);
     session_start();
+    
+    $filterTimestamp = $_POST['filterTimestamp'];
 
     if($_SESSION['loggedIn']){
-        $sql_query = "SELECT * FROM activityLog";
+        $sql_query = "SELECT * FROM activityLog WHERE `timestamp` >= $filterTimestamp";
         $result = mysqli_query($con, $sql_query);
         $json_array = array();
     
