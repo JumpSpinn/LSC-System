@@ -268,7 +268,7 @@ function initCreateBill(){
         data: {
             createdBy: _currentUsername,
             createdTimestamp: getCurrentTimestamp(),
-            data: JSON.stringify(_createBillData)
+            data: " Test"
         },
         beforeSend: function() { },
         success: function(response) {

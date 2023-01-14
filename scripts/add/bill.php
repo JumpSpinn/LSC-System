@@ -12,11 +12,13 @@
     if($_SESSION['loggedIn']){
         $stmt = $con->prepare("INSERT INTO createdBills (`createdBy`, `createdTimestamp`, `data`) VALUES (?,?,?)");
         $stmt->bind_param("sis", $createdBy, $createdTimestamp, $data);
+
         if(!$stmt->execute()){
             echo 0;
         } else {
             echo $stmt->insert_id;
         }
+        
         $stmt->close();
     }
 ?>
