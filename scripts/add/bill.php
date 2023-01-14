@@ -7,11 +7,12 @@
 
     $createdBy = $_POST['createdBy'];
     $createdTimestamp = $_POST['createdTimestamp'];
+    $createdFor = $_POST['createdFor'];
     $data = $_POST['data'];
 
     if($_SESSION['loggedIn']){
-        $stmt = $con->prepare("INSERT INTO createdBills (`createdBy`, `createdTimestamp`, `data`) VALUES (?,?,?)");
-        $stmt->bind_param("sis", $createdBy, $createdTimestamp, $data);
+        $stmt = $con->prepare("INSERT INTO createdBills (`createdBy`, `createdTimestamp`, `createdFor`, `data`) VALUES (?,?,?,?)");
+        $stmt->bind_param("sis", $createdBy, $createdTimestamp, $createdFor, $data);
 
         if(!$stmt->execute()){
             echo 0;

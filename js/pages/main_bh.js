@@ -272,6 +272,7 @@ function initCreateBill(){
         data: {
             createdBy: _currentUsername,
             createdTimestamp: getCurrentTimestamp(),
+            createdFor: _createdBillFor,
             data: JSON.stringify(_data)
         },
         beforeSend: function() { },
