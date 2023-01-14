@@ -48,6 +48,15 @@ $(() => {
             }
         })
     })
+
+    $('.').on('click', '.viewBill', function(){
+        let billID = $(this).parent().parent().parent().data('billid')
+        let bill = _createdBills.find(b => b.id == billID)
+        if(bill != null){
+            _currentBill = bill
+            showPopup('popup_view_bill')
+        }
+    })
 })
 
 function showCreatedBills(){
@@ -61,7 +70,7 @@ function showCreatedBills(){
                         <span class="mitarbeiter_entry_user_title">R-'+getCurrentYear()+'-'+getBillNumber(bill.id)+'</span>\
                     </div>\
                     <div class="mitarbeiter_entry_btns">\
-                        <em class="mdi mdi-eye"></em>\
+                        <em class="mdi mdi-eye viewBill"></em>\
                         <em class="mdi mdi-delete deleteBill"></em>\
                     </div>\
                 </div>\
