@@ -265,10 +265,6 @@ function createBill(){
 
 function initCreateBill(startDate, endDate, weekNumber){
     toggleLoading(true)
-    let _data = []
-    _createBillData.forEach((data) => {
-        _data.push(data.id)
-    })
     $.ajax({
         url: "scripts/add/bill.php",
         type: "POST",
@@ -279,7 +275,6 @@ function initCreateBill(startDate, endDate, weekNumber){
             startDate: startDate,
             endDate: endDate,
             weekNumber: weekNumber,
-            // data: JSON.stringify(_data)
             data: JSON.stringify(_createBillData)
         },
         beforeSend: function() { },

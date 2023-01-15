@@ -57,6 +57,12 @@ $(() => {
             showPopup('popup_view_bill')
         }
     })
+
+    $(document).keydown(function(e) {
+        if (e.which == 27) {
+            closePopup()
+        }
+    })
 })
 
 function showCreatedBills(){
