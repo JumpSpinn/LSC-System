@@ -409,6 +409,13 @@ $(() => {
             _currentCustomerPayType= "Sammelrechnung"
             sendAuftragSuccess()
         } else {
+            if(_currentVehicleEinparkdauer > 0){
+                let repKit = _choosedDatas.find(c => c.name.toLowerCase() == "Reparaturset")
+                if(repKit == null){
+                    new GNWX_NOTIFY({ text: "Auftrag kann noch nicht abgeschickt werden!", position: "bottom-left", class: "gnwx-warning", autoClose: 5000 });  
+                    return
+                }
+            }
             $('#popup_confirm_abholung .page_popup_header_title').html(_currentCustomerName)
             showPopup('popup_confirm_abholung')
         }
