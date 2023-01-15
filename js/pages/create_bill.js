@@ -4,6 +4,7 @@ var _currentBill = null
 var _currentBillPrice = 0
 var _viewBillAppendCount = 42
 var _viewBillAppendStartCount = 0
+var _viewBillAppendStartMaxCount = 0
 
 $(() => {
     toggleLoading(true)
@@ -106,6 +107,7 @@ $(() => {
 
     $('.bill_view_next_btn').click(() => {
         _viewBillAppendStartCount += _viewBillAppendCount
+        if(_viewBillAppendStartCount >= _viewBillAppendStartMaxCount){ _viewBillAppendStartMaxCount }
         initViewBill()
     })
 
@@ -174,6 +176,7 @@ function initViewBill(){
 
     let appended = 0
     let billData = JSON.parse(_currentBill.data)
+    _viewBillAppendStartMaxCount = billData.length
     billData.forEach((entry) => {
         let mainData = JSON.parse(entry.mainData)[0]
         let choosedData = JSON.parse(entry.choosedData)
