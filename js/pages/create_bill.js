@@ -188,15 +188,6 @@ function initViewBill(){
         addBillPrice((isState ? parseFloat(mainData.netto).toFixed(2) : parseFloat(mainData.brutto).toFixed(2)))
     })
     $('#viewBill_price').html('$'+_currentBillPrice.toFixed(2))
-    // let endingPrice = '\
-    //     <div class="bill_view_entry endingEntry">\
-    //         <div class="bill_view_entrys_header_col entry_col">Gesamtsumme:</div>\
-    //         <div class="bill_view_entrys_header_col entry_col"></div>\
-    //         <div class="bill_view_entrys_header_col entry_col"></div>\
-    //         <div class="bill_view_entrys_header_col entry_col">$'+_currentBillPrice.toFixed(2)+'</div>\
-    //     </div>\
-    // '
-    // $('.bill_view_entrys_list').append(endingPrice)
     showPopup('popup_view_bill')
 }
 
