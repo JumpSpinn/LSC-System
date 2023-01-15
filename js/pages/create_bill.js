@@ -63,11 +63,21 @@ $(() => {
             closePopup()
         }
     })
+
+    $('#search').on('input', function(){
+        let searchValue = $(this).val().toLowerCase()
+        let filter = _createdBills.filter(f => f.createdBy.toLowerCase().includes(searchValue) || f.createdFor.toLowerCase().includes(searchValue) || f.weekNumber.toLowerCase().includes(searchValue) || f.startDate.toLowerCase().includes(searchValue) || f.endDate.toLowerCase().includes(searchValue))
+        if(searchValue != ""){
+            showCreatedBills(filter)
+        } else {
+            showCreatedBills(_createdBills)
+        }
+    })
 })
 
-function showCreatedBills(){
+function showCreatedBills(array = _createdBills){
     $('.mitarbeiter_content_container').html('')
-    _createdBills.forEach((bill) => {
+    array.forEach((bill) => {
         let billEntrys = JSON.parse(bill.data)
         let container = '\
             <div class="mitarbeiter_entry" data-billid="'+bill.id+'">\
