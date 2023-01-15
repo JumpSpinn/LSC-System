@@ -121,7 +121,7 @@ function initViewBill(){
         let choosedData = JSON.parse(entry.choosedData)[0]
         console.log(choosedData)
         let isState = (mainData.payType.toLowerCase() == "staatlich" ? true : false)
-        let entry = '\
+        let entryContainer = '\
             <div class="bill_view_entry">\
                 <div class="bill_view_entrys_header_col entry_col">'+convertTimestamp(entry.timestamp)+'</div>\
                 <div class="bill_view_entrys_header_col entry_col">'+mainData.customerName+'</div>\
@@ -129,7 +129,7 @@ function initViewBill(){
                 <div class="bill_view_entrys_header_col entry_col">'+(isState ? mainData.netto : mainData.brutto)+'</div>\
             </div>\
         '
-        $('.bill_view_entrys_list').append(entry)
+        $('.bill_view_entrys_list').append(entryContainer)
     })
     let endingPrice = '\
         <div class="bill_view_entry endingEntry">\
