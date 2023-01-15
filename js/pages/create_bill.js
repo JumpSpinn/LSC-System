@@ -3,6 +3,8 @@ var _createdBillsLoaded = false
 var _currentBill = null
 var _currentBillPrice = 0
 
+let split = ""
+
 $(() => {
     toggleLoading(true)
     getData_createdBills(function(array){
@@ -120,13 +122,12 @@ function initViewBill(){
     billData.forEach((entry) => {
         let mainData = JSON.parse(entry.mainData)[0]
         let choosedData = JSON.parse(entry.choosedData)
-        console.log(choosedData)
         let isState = (mainData.payType.toLowerCase() == "staatlich" ? true : false)
         let entryContainer = '\
             <div class="bill_view_entry">\
                 <div class="bill_view_entrys_header_col entry_col">'+convertTimestampDateOnly(entry.timestamp)+'</div>\
                 <div class="bill_view_entrys_header_col entry_col">'+mainData.customerName+'</div>\
-                <div class="bill_view_entrys_header_col entry_col">coming soon..</div>\
+                <div class="bill_view_entrys_header_col entry_col">'+generateChoosedData(choosedData)+'</div>\
                 <div class="bill_view_entrys_header_col entry_col">$'+(isState ? parseFloat(mainData.netto).toFixed(2) : parseFloat(mainData.brutto).toFixed(2))+'</div>\
             </div>\
         '
@@ -163,4 +164,21 @@ function getCurrentYear(){
 
 function addBillPrice(value){
     _currentBillPrice += parseFloat(value)
+}
+
+function generateChoosedData(data){
+    let choosedData = ""
+    data.forEach((d) => {
+        if(d.name.toLowerCase() == "Reparaturset"){
+            choosedData += d.name + "_"
+        }
+        if(d.name.toLowerCase() == "Abschlepp/ Umdrehen Gebühren"){
+            choosedData += d.name + "_"
+        }
+        if(d.name.toLowerCase().includes(("überprüft" || "durchgeführt"))){
+            choosedData += "Inspektion_"
+        }
+    })
+    split = choosedData
+    return choosedData
 }
