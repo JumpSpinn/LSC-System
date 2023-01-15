@@ -54,7 +54,7 @@ $(() => {
         let bill = _createdBills.find(b => b.id == billID)
         if(bill != null){
             _currentBill = bill
-            showPopup('popup_view_bill')
+            initViewBill()
         }
     })
 
@@ -119,6 +119,7 @@ function initViewBill(){
 
     let endingPrice = ''
     let entry = ''
+    showPopup('popup_view_bill')
 }
 
 function getBillNumber(billId){
