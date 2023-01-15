@@ -171,19 +171,20 @@ function generateChoosedData(data){
     data.forEach((d) => {
         if(d.name.toLowerCase() == "reparaturset"){
             if(!choosedData.includes("Reparaturset")){
-                choosedData += d.name + "_"
+                choosedData += d.name + ", "
             }
         }
         if(d.name.toLowerCase() == "abschlepp/ umdrehen gebühren"){
             if(!choosedData.includes("Abschlepp/ Umdrehen Gebühren")){
-                choosedData += d.name + "_"
+                choosedData += d.name + ", "
             }
         }
         if(d.name.toLowerCase().includes(("überprüft" || "durchgeführt"))){
-            if(!choosedData.includes("Inspektion_")){
-                choosedData += "Inspektion_"
+            if(!choosedData.includes("Inspektion")){
+                choosedData += "Inspektion, "
             }
         }
     })
+    choosedData.substring(0, choosedData.length - 1)
     return choosedData.substring(0, 40) + '' + (choosedData.length > 40 ? '..' : '')
 }
