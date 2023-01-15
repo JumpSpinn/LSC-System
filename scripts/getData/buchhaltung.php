@@ -7,7 +7,7 @@
     session_start();
 
     if($_SESSION['loggedIn']){
-        $sql_query = "SELECT * FROM bh";
+        $sql_query = "SELECT * FROM bh WHERE createdBill = 0";
         $result = mysqli_query($con, $sql_query);
         $json_array = array();
     
