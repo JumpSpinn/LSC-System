@@ -113,9 +113,9 @@ function showCreatedBills(array = _createdBills){
                         <span class="mitarbeiter_entry_user_title">R-'+getCurrentYear()+'-'+getBillNumber(bill.id)+'</span>\
                     </div>\
                     <div class="mitarbeiter_entry_btns">\
-                        <em class="mdi mdi-check checkBill"></em>\
+                        <em class="mdi mdi-check checkBill" style="display: '+(bill.state == 0 ? "flex" : "none")+'"></em>\
                         <em class="mdi mdi-eye viewBill"></em>\
-                        <em class="mdi mdi-delete deleteBill"></em>\
+                        <em class="mdi mdi-delete deleteBill" style="display: '+(bill.state == 0 ? "flex" : "none")+'"></em>\
                     </div>\
                 </div>\
                 <div class="mitarbeiter_entry_details">\
