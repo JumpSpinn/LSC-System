@@ -113,9 +113,7 @@ $(() => {
 
 function showCreatedBills(array = _createdBills){
     $('.mitarbeiter_content_container').html('')
-    let appended = 0
     array.forEach((bill) => {
-        appended++
         let billEntrys = JSON.parse(bill.data)
         let container = '\
             <div class="mitarbeiter_entry" data-billid="'+bill.id+'">\
@@ -155,9 +153,7 @@ function showCreatedBills(array = _createdBills){
                 </div>\
             </div>\
         '
-        if(appended <= _viewBillAppendCount){
-            $('.mitarbeiter_content_container').append(container)
-        }
+        $('.mitarbeiter_content_container').append(container)
     })
     toggleLoading(false)
 }
@@ -171,8 +167,10 @@ function initViewBill(){
     $('#viewBill_endDate').html('<p>Ende</p>: ' + _currentBill.endDate)
     $('#viewBill_weekNumber').html('Kalenderwoche: ' + _currentBill.weekNumber)
 
+    let appended = 0
     let billData = JSON.parse(_currentBill.data)
     billData.forEach((entry) => {
+        appended++
         let mainData = JSON.parse(entry.mainData)[0]
         let choosedData = JSON.parse(entry.choosedData)
         let isState = (mainData.payType.toLowerCase() == "staatlich" ? true : false)
@@ -184,7 +182,9 @@ function initViewBill(){
                 <div class="bill_view_entrys_header_col entry_col">$'+(isState ? parseFloat(mainData.netto).toFixed(2) : parseFloat(mainData.brutto).toFixed(2))+'</div>\
             </div>\
         '
-        $('.bill_view_entrys_list').append(entryContainer)
+        if(appended <= _viewBillAppendCount){
+            $('.bill_view_entrys_list').append(entryContainer)
+        }
         addBillPrice((isState ? parseFloat(mainData.netto).toFixed(2) : parseFloat(mainData.brutto).toFixed(2)))
     })
     let endingPrice = '\
