@@ -172,7 +172,7 @@
     background-color: rgba(0,0,0,.15);
 }
 .bill_view_entry:nth-child(odd){
-    background-color: rgba(0,0,0,.1);
+    background-color: rgba(0,0,0,.185);
 }
 
 .bill_view_entrys_header_col:nth-child(1){
