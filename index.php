@@ -62,7 +62,7 @@
             session_set_cookie_params(86400);
             session_start();
 
-            $maintenanceMode = true;
+            $maintenanceMode = false;
             $loggedIn = false;
             $version = file_get_contents('version.txt');
 
