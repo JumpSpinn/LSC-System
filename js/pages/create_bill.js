@@ -2,7 +2,7 @@ var _createdBills = []
 var _createdBillsLoaded = false
 var _currentBill = null
 var _currentBillPrice = 0
-var _viewBillAppendCount = 43
+var _viewBillAppendCount = 42
 
 $(() => {
     toggleLoading(true)
