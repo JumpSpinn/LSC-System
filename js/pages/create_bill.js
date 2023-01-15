@@ -185,6 +185,9 @@ function generateChoosedData(data){
             }
         }
     })
-    choosedData.substring(0, choosedData.length - 2)
-    return choosedData.substring(0, 40) + '' + (choosedData.length > 40 ? '..' : '')
+    let s = choosedData.substring(0, choosedData.length - 2)
+    if(choosedData == ""){
+        console.log(data)
+    }
+    return s.substring(0, 40) + '' + (s.length > 40 ? '..' : '')
 }
