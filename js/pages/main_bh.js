@@ -207,7 +207,7 @@ function getAllStateEntrys(startID, endID, stateName = ""){
 function getAllServicepartnerEntrys(startID, endID, serviceName = ""){
     let array = []
     if(serviceName == ""){
-        let filter = _buchhaltung.filter(f => f.id >= startID && f.id <= endID)
+        let filter = _buchhaltung.filter(f => f.id >= parseInt(startID) && f.id <= parseInt(endID))
         filter.forEach((entry) => {
             let mainData = JSON.parse(entry.mainData)[0]
             if(mainData.payType == "Sammelrechnung"){
@@ -215,7 +215,7 @@ function getAllServicepartnerEntrys(startID, endID, serviceName = ""){
             }
         })
     } else {
-        let filter = _buchhaltung.filter(f => f.id >= startID && f.id <= endID)
+        let filter = _buchhaltung.filter(f => f.id >= parseInt(startID) && f.id <= parseInt(endID))
         filter.forEach((entry) => {
             let mainData = JSON.parse(entry.mainData)[0]
             if(mainData.payType == "Sammelrechnung" && mainData.customerName == serviceName){
