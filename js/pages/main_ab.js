@@ -413,7 +413,7 @@ $(() => {
             if(_currentVehicleEinparkdauer > 0){
                 let repKit = _choosedDatas.find(c => c.name.toLowerCase() == "Reparaturset")
                 if(repKit == null){
-                    new GNWX_NOTIFY({ text: "Auftrag kann noch nicht abgeschickt werden!", position: "bottom-left", class: "gnwx-warning", autoClose: 5000 });  
+                    new GNWX_NOTIFY({ text: "Auftrag kann noch nicht abgeschickt werden, da Dinge repariert wurden und kein Reparaturset angegeben wurde!", position: "bottom-left", class: "gnwx-warning", autoClose: 7500 });   
                     return
                 }
             }
