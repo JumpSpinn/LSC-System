@@ -174,6 +174,7 @@ function initViewBill(){
     $('#viewBill_weekNumber').html('Kalenderwoche: ' + _currentBill.weekNumber)
 
     let appended = 0
+    let count = 0
     let billData = JSON.parse(_currentBill.data)
     _viewBillAppendStartMaxCount = billData.length
     billData.forEach((entry) => {
@@ -188,8 +189,9 @@ function initViewBill(){
                 <div class="bill_view_entrys_header_col entry_col">$'+(isState ? parseFloat(mainData.netto).toFixed(2) : parseFloat(mainData.brutto).toFixed(2))+'</div>\
             </div>\
         '
-        appended++
-        if(appended <= _viewBillAppendCount && appended >= _viewBillAppendStartCount){
+        count++
+        if(appended <= _viewBillAppendCount && count >= _viewBillAppendStartCount){
+            appended++
             $('.bill_view_entrys_list').append(entryContainer)
         }
         addBillPrice((isState ? parseFloat(mainData.netto).toFixed(2) : parseFloat(mainData.brutto).toFixed(2)))
