@@ -174,8 +174,8 @@ function generateChoosedData(data){
                 choosedData += d.name + ", "
             }
         }
-        if(d.name.toLowerCase() == "abschlepp/ umdrehen gebühren"){
-            if(!choosedData.includes("Abschlepp/ Umdrehen Gebühren")){
+        if(d.name.toLowerCase().includes("gebühren")){
+            if(!choosedData.toLowerCase().includes("gebühren")){
                 choosedData += d.name + ", "
             }
         }
