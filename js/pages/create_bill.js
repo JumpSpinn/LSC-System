@@ -3,8 +3,6 @@ var _createdBillsLoaded = false
 var _currentBill = null
 var _currentBillPrice = 0
 
-let split = ""
-
 $(() => {
     toggleLoading(true)
     getData_createdBills(function(array){
