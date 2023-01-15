@@ -256,7 +256,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-top: 8px;
+}
+
+.bill_view_bankdetails span{
     font-size: .9rem;
     font-weight: 400;
-    opacity: .7;
 }
