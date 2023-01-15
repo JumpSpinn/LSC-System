@@ -185,5 +185,5 @@ function generateChoosedData(data){
             }
         }
     })
-    return choosedData.substring(0, 20) + '' + (choosedData.length > 20 ? '..' : '')
+    return choosedData.substring(0, 40) + '' + (choosedData.length > 40 ? '..' : '')
 }
