@@ -186,8 +186,5 @@ function generateChoosedData(data){
         }
     })
     let s = choosedData.substring(0, choosedData.length - 2)
-    if(choosedData == ""){
-        console.log(data)
-    }
     return s.substring(0, 40) + '' + (s.length > 40 ? '..' : '')
 }
