@@ -968,6 +968,12 @@ function updateEinparkdauerText(){
         if(newDauer <= 0){
             newDauer = 0
         }
-        $('#auftrag_pricelist_einparkdauer').html("noch " + newDauer + " Minuten")
+        if(newDauer > 1){
+            $('#auftrag_pricelist_einparkdauer').html("noch " + newDauer + " Minuten")
+        } else if(newDauer == 1){
+            $('#auftrag_pricelist_einparkdauer').html("noch " + newDauer + " Minute")
+        } else {
+            $('#auftrag_pricelist_einparkdauer').html("Keine")
+        }
     }
 }
