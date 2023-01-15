@@ -260,7 +260,7 @@ function createBill(){
     let createBill_startDate = $('#create_bill_startDate').val()
     let createBill_endDate = $('#create_bill_endDate').val()
     let createBill_weekNumber = $('#create_bill_weekNumber').val()
-    if(!createBill_start && !createBill_end && !createBill_payType && !createBill_startDate && !createBill_endDate && !createBill_weekNumber){
+    if(!createBill_start || !createBill_end || !createBill_payType || !createBill_startDate || !createBill_endDate || !createBill_weekNumber){
         new GNWX_NOTIFY({ text: "Bitte fülle alle benötigten Felder aus!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         return
     }
@@ -270,6 +270,10 @@ function createBill(){
     } else if(createBill_payType.toLowerCase() == "sammelrechnung"){
         _createdBillFor = (createBill_customerName == "" ? "Servicepartner" : createBill_customerName)
         _createBillData = getAllServicepartnerEntrys(createBill_start, createBill_end, createBill_customerName)
+    }
+    if(_createBillData.length == 0){
+        new GNWX_NOTIFY({ text: "Rechnung kann nicht erstellt werden, da keine Ergebnisse gefunden wurden!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
+        return
     }
     initCreateBill(createBill_startDate, createBill_endDate, createBill_weekNumber)
 }
