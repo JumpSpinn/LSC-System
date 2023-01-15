@@ -185,7 +185,7 @@ function showBuchhaltung(array = _buchhaltung){
 function getAllStateEntrys(startID, endID, stateName = ""){
     let array = []
     if(stateName == ""){
-        let filter = _buchhaltung.filter(f => f.id >= startID && f.id <= endID)
+        let filter = _buchhaltung.filter(f => f.id >= parseInt(startID) && f.id <= parseInt(endID))
         filter.forEach((entry) => {
             let mainData = JSON.parse(entry.mainData)[0]
             if(mainData.payType == "Staatlich"){
@@ -193,7 +193,7 @@ function getAllStateEntrys(startID, endID, stateName = ""){
             }
         })
     } else {
-        let filter = _buchhaltung.filter(f => f.id >= startID && f.id <= endID)
+        let filter = _buchhaltung.filter(f => f.id >= parseInt(startID) && f.id <= parseInt(endID))
         filter.forEach((entry) => {
             let mainData = JSON.parse(entry.mainData)[0]
             if(mainData.payType == "Staatlich" && mainData.customerName == stateName){
