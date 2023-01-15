@@ -761,9 +761,14 @@ function initAuftragsblatt(){
     let withMarkup = false
     _prices.forEach((price) => {
         let parkInTime = 0
+        let displayPrice = price.vk
         let parkIn = _parkHours.find(p => p.name == price.name)
         if(parkIn != null){
             parkInTime = parkIn.value
+            if(_currentVehicleTypeMarkup != 0){ // preisaufschlag
+                let markup = (price.vk * (_currentVehicleTypeMarkup / 100))
+                displayPrice = (parseFloat(price.vk) + markup)
+            }
         }
         appendCount++
         if(price.name == "Frontscheibe" && !withMarkup){ withMarkup = true }

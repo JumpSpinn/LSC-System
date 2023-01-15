@@ -763,14 +763,19 @@ function initAuftragsblatt(){
     let withMarkup = false
     _prices.forEach((price) => {
         let parkInTime = 0
+        let displayPrice = price.vk
         let parkIn = _parkHours.find(p => p.name == price.name)
         if(parkIn != null){
             parkInTime = parkIn.value
+            if(_currentVehicleTypeMarkup != 0){ // preisaufschlag
+                let markup = (price.vk * (_currentVehicleTypeMarkup / 100))
+                displayPrice = (parseFloat(price.vk) + markup)
+            }
         }
         appendCount++
         if(price.name == "Frontscheibe" && !withMarkup){ withMarkup = true }
         var container = '\
-            <div class="mainab_auftragsblatt_input '+(withMarkup ? "showParkIn" : "")+' '+(highlightAuftragsblatt(price.name) ? 'highlight' : '')+'" data-id="'+price.id+'" data-price="'+price.vk+'" data-markup="'+withMarkup+'" data-name="'+price.name+'" data-pricedisplay="$'+price.vk+'" '+(withMarkup ? "data-parkin='"+parkInTime+" Min.'" : "")+'>\
+            <div class="mainab_auftragsblatt_input '+(withMarkup ? "showParkIn" : "")+' '+(highlightAuftragsblatt(price.name) ? 'highlight' : '')+'" data-id="'+price.id+'" data-price="'+price.vk+'" data-markup="'+withMarkup+'" data-name="'+price.name+'" data-pricedisplay="$'+displayPrice+'" '+(withMarkup ? "data-parkin='"+parkInTime+" Min.'" : "")+'>\
                 <div class="mainab_auftragsblatt_input_name">'+price.name+'<p style="display: '+(price.percent == 0 ? "none" : "inline-block")+'" class="brutto">('+price.percent+'% Preisnachlass)</p></div>\
                 <input class="'+(price.name == "Reparaturset" ? 'auftragsblatt_checkbox_change' : 'auftragsblatt_input_change')+'" type="'+(price.name == "Reparaturset" ? 'checkbox' : 'input')+'" placeholder="0" autocomplete="off">\
             </div>\
