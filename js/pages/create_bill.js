@@ -104,6 +104,7 @@ $(() => {
 
 function showCreatedBills(array = _createdBills){
     $('.mitarbeiter_content_container').html('')
+    // 43 pro Seite
     array.forEach((bill) => {
         let billEntrys = JSON.parse(bill.data)
         let container = '\
