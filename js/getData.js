@@ -140,6 +140,9 @@ function getData_buchhaltung(array){
     $.ajax({
         url: "scripts/getData/buchhaltung.php",
         type: "POST",
+        data: {
+            filterTimestamp: (getCurrentTimestamp() - 907200)
+        },
         beforeSend: function(){ },
         success: array
     })
