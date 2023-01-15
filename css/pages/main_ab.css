@@ -247,13 +247,14 @@
   border-radius: 3px;
   padding: 2px 7px;
   z-index: 2;
+  opacity: 0;
 }
 
 .mainab_auftragsblatt_input::before{
   content: attr(data-parkin);
   position: absolute;
   top: 3px;
-  right: 195px;
+  right: 173px;
   background-color: rgba(255,255,255,.05);
   display: flex;
   justify-content: center;
@@ -263,6 +264,7 @@
   border-radius: 3px;
   padding: 2px 7px;
   z-index: 2;
+  opacity: 0;
 }
 
 .mainab_auftragsblatt_input.active{
@@ -282,6 +284,14 @@
 
 .mainab_auftragsblatt_input:hover{
   background-color: rgba(255,255,255,.05);
+}
+
+.mainab_auftragsblatt_input:hover::after{
+  opacity: 1;
+}
+
+.mainab_auftragsblatt_input.showParkIn:hover::before{
+  opacity: 1;
 }
 
 .mainab_auftragsblatt_input_name{
