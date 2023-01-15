@@ -264,37 +264,37 @@ function createBill(){
 }
 
 function initCreateBill(startDate, endDate, weekNumber){
-    toggleLoading(true)
-    $.ajax({
-        url: "scripts/add/bill.php",
-        type: "POST",
-        data: {
-            createdBy: _currentUsername,
-            createdTimestamp: getCurrentTimestamp(),
-            createdFor: _createdBillFor,
-            startDate: translateDate(startDate),
-            endDate: translateDate(endDate),
-            weekNumber: weekNumber,
-            data: JSON.stringify(_createBillData),
-            state: 0
-        },
-        beforeSend: function() {
-            console.log(_createBillData)
-            console.log(_createBillData.length)
-        },
-        success: function(response) {
-            getData_buchhaltung(function(array){
-                _buchhaltung = JSON.parse(array)
-                _buchhaltungLoaded = true
-                showBuchhaltung()
-                closePopup()
-                updateAccountActivity(_currentUsername + " hat eine neue Rechnung (#"+response+") erstellt! (" + _createdBillFor + ")", LOGTYPE.ADDED)
-                new GNWX_NOTIFY({ text: "Rechnung (#"+response+") wurde erfolgreich erstellt!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
-                _createdBillFor = ""
-            })
-        },
-        error: function(){
-            updateAccountActivity("[ERROR] " + _currentUsername + " | Buchhaltung/Rechnung | ADD", LOGTYPE.ERROR)
-        }
+    _createBillData.forEach((updateEntry) => {
+        console.log(updateEntry.id)
     })
+
+    // $.ajax({
+    //     url: "scripts/add/bill.php",
+    //     type: "POST",
+    //     data: {
+    //         createdBy: _currentUsername,
+    //         createdTimestamp: getCurrentTimestamp(),
+    //         createdFor: _createdBillFor,
+    //         startDate: translateDate(startDate),
+    //         endDate: translateDate(endDate),
+    //         weekNumber: weekNumber,
+    //         data: JSON.stringify(_createBillData),
+    //         state: 0
+    //     },
+    //     beforeSend: function() { toggleLoading(true) },
+    //     success: function(response) {
+    //         getData_buchhaltung(function(array){
+    //             _buchhaltung = JSON.parse(array)
+    //             _buchhaltungLoaded = true
+    //             showBuchhaltung()
+    //             closePopup()
+    //             updateAccountActivity(_currentUsername + " hat eine neue Rechnung (#"+response+") erstellt! (" + _createdBillFor + ")", LOGTYPE.ADDED)
+    //             new GNWX_NOTIFY({ text: "Rechnung (#"+response+") wurde erfolgreich erstellt!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
+    //             _createdBillFor = ""
+    //         })
+    //     },
+    //     error: function(){
+    //         updateAccountActivity("[ERROR] " + _currentUsername + " | Buchhaltung/Rechnung | ADD", LOGTYPE.ERROR)
+    //     }
+    // })
 }
