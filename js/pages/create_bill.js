@@ -169,16 +169,21 @@ function addBillPrice(value){
 function generateChoosedData(data){
     let choosedData = ""
     data.forEach((d) => {
-        if(d.name.toLowerCase() == "Reparaturset"){
-            choosedData += d.name + "_"
+        if(d.name.toLowerCase() == "reparaturset"){
+            if(!choosedData.includes("Reparaturset")){
+                choosedData += d.name + "_"
+            }
         }
-        if(d.name.toLowerCase() == "Abschlepp/ Umdrehen Gebühren"){
-            choosedData += d.name + "_"
+        if(d.name.toLowerCase() == "abschlepp/ umdrehen gebühren"){
+            if(!choosedData.includes("Abschlepp/ Umdrehen Gebühren")){
+                choosedData += d.name + "_"
+            }
         }
         if(d.name.toLowerCase().includes(("überprüft" || "durchgeführt"))){
-            choosedData += "Inspektion_"
+            if(!choosedData.includes("Inspektion_")){
+                choosedData += "Inspektion_"
+            }
         }
     })
-    split = choosedData
-    return choosedData
+    return choosedData.substring(0, 20) + '' + (choosedData.length > 20 ? '..' : '')
 }
