@@ -965,6 +965,6 @@ function updateEinparkdauerText(){
         if(newDauer <= 0){
             newDauer = 0
         }
-        $('#auftrag_pricelist_einparkdauer').html(newDauer + " Min. | " + _currentVehicleEinparkdauerTimer + " Min. vergangen!")
+        $('#auftrag_pricelist_einparkdauer').html("noch " + newDauer + " Minuten")
     }
 }
