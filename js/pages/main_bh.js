@@ -6,6 +6,11 @@ var _customers = []
 var _searchedCustomerName = ""
 var _createdBillFor = ""
 
+var PAYTYPES = [
+    { type: "Staatlich" },
+    { type: "Sammelrechnung" }
+]
+
 $(() => {
     if(hasPermission(PAGE_PERMISSION_TYPES.BUCHHALTUNG_CHECK)){
         $('#checkBuchhaltung').css('display', 'flex')
@@ -87,6 +92,12 @@ $(() => {
     })
 
     $('#create_bill_confirm').click(() => {
+        let checkPayType = $('#create_bill_payType').val()
+        let findPayType = PAYTYPES.find(p => p.name.toLowerCase() == checkPayType.toLowerCase())
+        if(findPayType == null){
+            new GNWX_NOTIFY({ text: "Bezahlart ist nicht gültig! - Bitte gebe Sammelrechnung oder Staatlich an!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
+            return
+        }
         createBill()
     })
 
