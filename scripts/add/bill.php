@@ -12,10 +12,11 @@
     $endDate = $_POST['endDate'];
     $weekNumber = $_POST['weekNumber'];
     $data = $_POST['data'];
+    $state = $_POST['state'];
 
     if($_SESSION['loggedIn']){
-        $stmt = $con->prepare("INSERT INTO createdBills (`createdBy`, `createdTimestamp`, `createdFor`, `startDate`, `endDate`, `weekNumber`, `data`) VALUES (?,?,?,?,?,?,?)");
-        $stmt->bind_param("sisssss", $createdBy, $createdTimestamp, $createdFor, $startDate, $endDate, $weekNumber, $data);
+        $stmt = $con->prepare("INSERT INTO createdBills (`createdBy`, `createdTimestamp`, `createdFor`, `startDate`, `endDate`, `weekNumber`, `data`, `state`) VALUES (?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("sisssssi", $createdBy, $createdTimestamp, $createdFor, $startDate, $endDate, $weekNumber, $data, $state);
 
         if(!$stmt->execute()){
             echo 0;

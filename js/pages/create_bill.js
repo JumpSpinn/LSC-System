@@ -108,6 +108,10 @@ function showCreatedBills(array = _createdBills){
                             <div class="mitarbeiter_entry_col_header">Rechnungspositionen:</div>\
                             <div class="mitarbeiter_entry_col_desc">'+billEntrys.length+'</div>\
                         </div>\
+                        <div class="mitarbeiter_entry_col">\
+                            <div class="mitarbeiter_entry_col_header">Bezahlstatus:</div>\
+                            <div class="mitarbeiter_entry_col_desc '+(bill.state == 0 ? "bill_danger" : "bill_success")+'">'+(bill.state == 0 ? "Kein Zahlungseingang" : "Bezahlt")+'</div>\
+                        </div>\
                     </div>\
                 </div>\
             </div>\

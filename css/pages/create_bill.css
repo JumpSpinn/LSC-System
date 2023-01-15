@@ -204,3 +204,21 @@
 .bill_view_entry.endingEntry{
     font-weight: 400;
 }
+
+.bill_danger,
+.bill_success{
+    border-radius: 5px;
+    padding: 1px 5px;
+    width: max-content;
+    text-shadow: 0 1px 1px black;
+}
+
+.bill_danger{
+    background-color: red;
+    color: white;
+}
+
+.bill_success{
+    background-color: green;
+    color: white;
+}

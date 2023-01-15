@@ -275,7 +275,8 @@ function initCreateBill(startDate, endDate, weekNumber){
             startDate: translateDate(startDate),
             endDate: translateDate(endDate),
             weekNumber: weekNumber,
-            data: JSON.stringify(_createBillData)
+            data: JSON.stringify(_createBillData),
+            state: 0
         },
         beforeSend: function() { },
         success: function(response) {
