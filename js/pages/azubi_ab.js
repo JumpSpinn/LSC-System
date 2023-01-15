@@ -767,7 +767,7 @@ function initAuftragsblatt(){
             parkInTime = parkIn.value
             if(_currentVehicleTypeMarkup != 0){ // preisaufschlag
                 let markup = (price.vk * (_currentVehicleTypeMarkup / 100))
-                displayPrice = (parseFloat(price.vk) + markup)
+                displayPrice = (parseFloat(price.vk) + markup).toFixed(2)
             }
         }
         appendCount++
