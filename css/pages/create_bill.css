@@ -253,14 +253,18 @@
     background-color: rgb(83, 41, 128);
 }
 
+.bill_view_bankdetails:first-child{
+    padding-top: 5px;
+}
+
 .bill_view_bankdetails{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 8px;
 }
 
 .bill_view_bankdetails span{
     font-size: .75rem;
-    font-weight: 200;
+    font-weight: 500;
+    letter-spacing: -0.5px;
 }
