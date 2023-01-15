@@ -780,7 +780,7 @@ function initAuftragsblatt(){
 
     _inspections.forEach((insp) => {
         var container = '\
-            <div class="mainab_auftragsblatt_input" data-id="'+insp.id+'" data-price="'+insp.value+'" data-name="'+insp.name+'" data-pricedisplay="$'+price.vk+'">\
+            <div class="mainab_auftragsblatt_input" data-id="'+insp.id+'" data-price="'+insp.value+'" data-name="'+insp.name+'" data-pricedisplay="$'+insp.value+'">\
                 <label>'+insp.name+'</label>\
                 <input class="auftragsblatt_checkbox_change" type="checkbox">\
             </div>\
