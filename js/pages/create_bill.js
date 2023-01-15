@@ -162,7 +162,5 @@ function getCurrentYear(){
 }
 
 function addBillPrice(value){
-    console.log(value)
-    console.log(parseFloat(value))
-    _currentBillPrice += value
+    _currentBillPrice += parseFloat(value)
 }
