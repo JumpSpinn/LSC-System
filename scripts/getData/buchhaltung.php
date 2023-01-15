@@ -10,7 +10,7 @@
     $filterTimestamp = 0;
 
     if($_SESSION['loggedIn']){
-        $sql_query = "SELECT * FROM bh WHERE createdBill = 0 AND `timestamp` >= $filterTimestamp";
+        $sql_query = "SELECT * FROM bh WHERE createdBill = 0 AND `timestamp` >= $filterTimestamp AND archived = 0";
         $result = mysqli_query($con, $sql_query);
         $json_array = array();
     

@@ -932,7 +932,8 @@ function sendAuftragSuccess(){
             mainData: JSON.stringify(_mainDatas),
             choosedData: JSON.stringify(_choosedDatas),
             syncedTo: 1,
-            createdBill: 0
+            createdBill: 0,
+            archived: 0
         },
         beforeSend: function() {
             switchState(STATES.LOADING)

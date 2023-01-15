@@ -11,11 +11,12 @@
     $choosedData = $_POST['choosedData'];
     $syncedTo = $_POST['syncedTo'];
     $createdBill = $_POST['createdBill'];
+    $archived = $_POST['archived'];
 
     if($_SESSION['loggedIn']){
 
-        $stmt = $con->prepare("INSERT INTO bh (`timestamp`, `controlled`, `mainData`, `choosedData`, `syncedTo`, `createdBill`) VALUES (?,?,?,?,?,?)");
-        $stmt->bind_param("iissii", $timestamp, $checked, $mainData, $choosedData, $syncedTo, $createdBill);
+        $stmt = $con->prepare("INSERT INTO bh (`timestamp`, `controlled`, `mainData`, `choosedData`, `syncedTo`, `createdBill`, `archived`) VALUES (?,?,?,?,?,?,?)");
+        $stmt->bind_param("iissiii", $timestamp, $checked, $mainData, $choosedData, $syncedTo, $createdBill, $archived);
     
         if(!$stmt->execute()){
             echo 0;

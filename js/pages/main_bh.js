@@ -12,11 +12,9 @@ var PAYTYPES = [
 ]
 
 $(() => {
-    if(hasPermission(PAGE_PERMISSION_TYPES.BUCHHALTUNG_CHECK)){
-        $('#checkBuchhaltung').css('display', 'flex')
-    }
     if(hasPermission(PAGE_PERMISSION_TYPES.BUCHHALTUNG_RECHNUNG)){
         $('#createRechnung').css('display', 'flex')
+        $('#archiveBuchhaltung').css('display', 'flex')
     }
 
     toggleLoading(true)
@@ -115,6 +113,52 @@ $(() => {
             $('#create_bill_customerName').val(_searchedCustomerName)
             $('.mainab_search_customer_results').html('')
         }
+    })
+
+    $('#archiveBuchhaltung').click(() => {
+        showPopup('popup_archive_buchhaltung')
+    })
+
+    $('#close_archive_buchhaltung').click(() => {
+        closePopup()
+    })
+
+    $('#archive_confirm').click(() => {
+        let start = $('#archive_start').val()
+        let end = $('#archive_end').val()
+        if(!start || !end){
+            new GNWX_NOTIFY({ text: "Bitte fülle alle Pflichtfelder aus!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
+            return
+        }
+        let archived = _buchhaltung.filter(b => b.id >= parseInt(start) && b.id <= parseInt(end))
+        if(archived.length == 0){
+            new GNWX_NOTIFY({ text: "Es wurden keine Einträge gefunden, die archiviert werden können!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
+            return
+        }
+        toggleLoading(true)
+        archived.forEach((entry) => {
+            $.ajax({
+                url: "scripts/archiveBuchhaltung.php",
+                type: "POST",
+                data: {
+                    id: entry.id
+                },
+                beforeSend: function() {  },
+                success: function(response) { },
+                error: function(){
+                    updateAccountActivity("[ERROR] " + _currentUsername + " | Buchhaltung | ARCHIVE", LOGTYPE.ERROR)
+                }
+            })
+        })
+        getData_buchhaltung(function(array){
+            _buchhaltung = JSON.parse(array)
+            _buchhaltungLoaded = true
+            showBuchhaltung()
+            closePopup()
+            updateAccountActivity(_currentUsername + " hat die Buchhaltung archiviert! (von Auftrag #"+start+" bis #"+end+")", LOGTYPE.EDITED)
+            new GNWX_NOTIFY({ text: "Buchhaltung wurde erfolgreich archiviert! (von Auftrag #"+start+" bis #"+end+")", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
+            toggleLoading(false)
+        })
     })
 })
 
