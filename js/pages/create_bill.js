@@ -2,6 +2,7 @@ var _createdBills = []
 var _createdBillsLoaded = false
 var _currentBill = null
 var _currentBillPrice = 0
+var _viewBillAppendCount = 43
 
 $(() => {
     toggleLoading(true)
@@ -100,12 +101,21 @@ $(() => {
             })
         }
     })
+
+    $('.bill_view_next_btn').click(() => {
+
+    })
+
+    $('.bill_view_prev_btn').click(() => {
+
+    })
 })
 
 function showCreatedBills(array = _createdBills){
     $('.mitarbeiter_content_container').html('')
-    // 43 pro Seite
+    let appended = 0
     array.forEach((bill) => {
+        appended++
         let billEntrys = JSON.parse(bill.data)
         let container = '\
             <div class="mitarbeiter_entry" data-billid="'+bill.id+'">\
@@ -145,7 +155,9 @@ function showCreatedBills(array = _createdBills){
                 </div>\
             </div>\
         '
-        $('.mitarbeiter_content_container').append(container)
+        if(appended <= _viewBillAppendCount){
+            $('.mitarbeiter_content_container').append(container)
+        }
     })
     toggleLoading(false)
 }
