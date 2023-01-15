@@ -114,11 +114,32 @@ function initViewBill(){
     $('#viewBill_startDate').html('<p>Start</p>: ' + _currentBill.startDate)
     $('#viewBill_endDate').html('<p>Ende</p>: ' + _currentBill.endDate)
     $('#viewBill_weekNumber').html('Kalenderwoche: ' + _currentBill.weekNumber)
-    let billData = JSON.parse(_currentBill.data)
-    console.log(billData)
 
-    let endingPrice = ''
-    let entry = ''
+    let billData = JSON.parse(_currentBill.data)
+    billData.forEach((entry) => {
+        let mainData = JSON.parse(entry.mainData)[0]
+        let choosedData = JSON.parse(entry.choosedData)[0]
+        console.log(choosedData)
+        let isState = (mainData.payType.toLowerCase() == "staatlich" ? true : false)
+        let entry = '\
+            <div class="bill_view_entry">\
+                <div class="bill_view_entrys_header_col entry_col">'+convertTimestamp(entry.timestamp)+'</div>\
+                <div class="bill_view_entrys_header_col entry_col">'+mainData.customerName+'</div>\
+                <div class="bill_view_entrys_header_col entry_col">coming soon..</div>\
+                <div class="bill_view_entrys_header_col entry_col">'+(isState ? mainData.netto : mainData.brutto)+'</div>\
+            </div>\
+        '
+        $('.bill_view_entrys_list').append(entry)
+    })
+    let endingPrice = '\
+        <div class="bill_view_entry endingEntry">\
+            <div class="bill_view_entrys_header_col entry_col">Gesamtsumme:</div>\
+            <div class="bill_view_entrys_header_col entry_col"></div>\
+            <div class="bill_view_entrys_header_col entry_col"></div>\
+            <div class="bill_view_entrys_header_col entry_col">$10000,95</div>\
+        </div>\
+    '
+    $('.bill_view_entrys_list').append(endingPrice)
     showPopup('popup_view_bill')
 }
 
