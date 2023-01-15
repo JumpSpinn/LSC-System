@@ -296,7 +296,7 @@ $(() => {
                         if(parkHour.name == "Totalschaden"){
                             let vehicle = _serverVehicles.find(i => i.model == _currentVehicleModel)
                             if(vehicle != null){
-                                priceElm.vk = ((vehicle.price / 100) * (_currentVehicleTypePercent / 100))
+                                vkPrice = ((vehicle.price / 100) * (_currentVehicleTypePercent / 100))
                             }
                         }
                         if(parkHour.name == "Motorschaden"){
@@ -304,7 +304,7 @@ $(() => {
                             if(vehicle != null){
                                 let data = _generalData.find(i => i.type == BH_DATA_GENERAL_TYPES.MOTORSCHADEN_PROZENT)
                                 if(data != null){
-                                    priceElm.vk = ((vehicle.price / 100) * (data.value / 100))
+                                    vkPrice = ((vehicle.price / 100) * (data.value / 100))
                                 }
                             }
                         }
