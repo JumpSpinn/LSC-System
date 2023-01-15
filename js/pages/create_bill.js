@@ -6,6 +6,17 @@ var _viewBillAppendCount = 42
 var _viewBillAppendStartCount = 0
 var _viewBillAppendStartMaxCount = 0
 
+var _MODULES = [
+    { name: "CarConnect-Kit" },
+    { name: "Wireless-Charger" },
+    { name: "Taxameter" },
+    { name: "GPS" },
+    { name: "Speedlimiter" },
+    { name: "Freisprechanlage" },
+    { name: "Alarmsystem" },
+    { name: "Kickstarter-Umbaukit" }
+]
+
 $(() => {
     toggleLoading(true)
     getData_createdBills(function(array){
@@ -235,6 +246,12 @@ function generateChoosedData(data){
         if(d.name.toLowerCase().includes(("überprüft" || "durchgeführt"))){
             if(!choosedData.includes("Inspektion")){
                 choosedData += "Inspektion, "
+            }
+        }
+        let isModule = _MODULES.find(m => m.name.toLowerCase() == d.name.toLowerCase())
+        if(isModule != null){
+            if(!choosedData.includes("Module")){
+                choosedData += "Module, "
             }
         }
     })
