@@ -164,6 +164,10 @@
     overflow-y: auto;
 }
 
+.bill_view_entrys_list::-webkit-scrollbar {
+    width: 0px;
+}
+
 .bill_view_entry{
     display: flex;
 }
