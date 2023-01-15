@@ -192,6 +192,7 @@ function initViewBill(){
         let mainData = JSON.parse(entry.mainData)[0]
         let choosedData = JSON.parse(entry.choosedData)
         let isState = (mainData.payType.toLowerCase() == "staatlich" ? true : false)
+        $('#viewBill_priceType').html((isState ? "Netto Betrag" : "Brutto Betrag"))
         let entryContainer = '\
             <div class="bill_view_entry">\
                 <div class="bill_view_entrys_header_col entry_col">'+convertTimestampDateOnly(entry.timestamp)+'</div>\
