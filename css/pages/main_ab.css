@@ -233,6 +233,21 @@
   font-size: .9rem;
 }
 
+.mainab_auftragsblatt_input::after{
+  content: attr(data-price);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0,0,0,.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: .8rem;
+  border-radius: 3px;
+  padding: 1px 2px;
+}
+
 .mainab_auftragsblatt_input.active{
   color: white;
   background-image: linear-gradient(to right, rgba(214, 170, 255, 0.2), transparent);
