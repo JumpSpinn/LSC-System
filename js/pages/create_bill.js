@@ -3,6 +3,7 @@ var _createdBillsLoaded = false
 var _currentBill = null
 var _currentBillPrice = 0
 var _viewBillAppendCount = 42
+var _viewBillAppendStartCount = 0
 
 $(() => {
     toggleLoading(true)
@@ -56,6 +57,7 @@ $(() => {
         if(bill != null){
             _currentBill = bill
             initViewBill()
+            showPopup('popup_view_bill')
         }
     })
 
@@ -103,11 +105,14 @@ $(() => {
     })
 
     $('.bill_view_next_btn').click(() => {
-
+        _viewBillAppendStartCount += _viewBillAppendCount
+        initViewBill()
     })
 
     $('.bill_view_prev_btn').click(() => {
-
+        _viewBillAppendStartCount -= _viewBillAppendCount
+        if(_viewBillAppendStartCount <= 0){ _viewBillAppendStartCount = 0 }
+        initViewBill()
     })
 })
 
@@ -170,7 +175,6 @@ function initViewBill(){
     let appended = 0
     let billData = JSON.parse(_currentBill.data)
     billData.forEach((entry) => {
-        appended++
         let mainData = JSON.parse(entry.mainData)[0]
         let choosedData = JSON.parse(entry.choosedData)
         let isState = (mainData.payType.toLowerCase() == "staatlich" ? true : false)
@@ -182,13 +186,13 @@ function initViewBill(){
                 <div class="bill_view_entrys_header_col entry_col">$'+(isState ? parseFloat(mainData.netto).toFixed(2) : parseFloat(mainData.brutto).toFixed(2))+'</div>\
             </div>\
         '
-        if(appended <= _viewBillAppendCount){
+        if(appended <= _viewBillAppendCount && appended >= _viewBillAppendStartCount){
+            appended++
             $('.bill_view_entrys_list').append(entryContainer)
         }
         addBillPrice((isState ? parseFloat(mainData.netto).toFixed(2) : parseFloat(mainData.brutto).toFixed(2)))
     })
     $('#viewBill_price').html('$'+_currentBillPrice.toFixed(2))
-    showPopup('popup_view_bill')
 }
 
 function getBillNumber(billId){
