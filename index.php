@@ -62,6 +62,7 @@
             session_set_cookie_params(86400);
             session_start();
 
+            $maintenanceMode = true;
             $loggedIn = false;
             $version = file_get_contents('version.txt');
 
@@ -75,8 +76,12 @@
         ?>
     </head>
     <body>
-        <div class="wrapper">
-            
+        <div class="maintenanceMode_wrapper">
+            <div class="maintenanceMode_container">
+                <em class="mdi mdi-cog"></em>
+            </div>
+        </div>
+        <div class="wrapper" style="display: <?php echo ($maintenanceMode ? "none" : "flex"); ?>;">
             <div class="login_container" id="requestLogin" style="display: <?php echo ($loggedIn ? "none" : "flex"); ?>;">
                 <div class="login_brand">
                     <img src="/assets/img/logo_transparent.png">
@@ -131,7 +136,6 @@
                 <!-- Sperrgrund -->
                 <div class="login_blocked_container"></div>
             </div>
-
             <!-- SYSTEM -->
             <div class="system_container" style="display: <?php echo ($loggedIn ? "flex" : "none"); ?>;">
                 <!-- GLOBAL LOADING -->
