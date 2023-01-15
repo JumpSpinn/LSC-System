@@ -264,8 +264,22 @@ function createBill(){
 }
 
 function initCreateBill(startDate, endDate, weekNumber){
+    toggleLoading(true)
     _createBillData.forEach((updateEntry) => {
-        console.log(updateEntry.id)
+        $.ajax({
+            url: "scripts/updateBuchhaltungBill.php",
+            type: "POST",
+            data: {
+                id: updateEntry.id
+            },
+            beforeSend: function() { },
+            success: function(response) {
+                toggleLoading(false)
+            },
+            error: function(){
+                updateAccountActivity("[ERROR] " + _currentUsername + " | Buchhaltung | UPDATE", LOGTYPE.ERROR)
+            }
+        })
     })
 
     // $.ajax({
