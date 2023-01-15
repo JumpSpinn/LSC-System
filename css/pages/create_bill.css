@@ -167,6 +167,13 @@
     display: flex;
 }
 
+.bill_view_entry:nth-child(even){
+    background-color: rgba(0,0,0,.15);
+}
+.bill_view_entry:nth-child(odd){
+    background-color: rgba(0,0,0,.1);
+}
+
 .bill_view_entrys_header_col:nth-child(1){
     display: flex;
     justify-content: flex-start;
