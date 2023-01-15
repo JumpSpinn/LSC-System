@@ -17,7 +17,7 @@
     if($_SESSION['loggedIn']){
 
         $stmt = $con->prepare("INSERT INTO bh (`timestamp`, `controlled`, `mainData`, `choosedData`, `syncedTo`, `createdBill`) VALUES (?,?,?,?,?,?)");
-        $stmt->bind_param("iissi", $timestamp, $checked, $mainData, $choosedData, $syncedTo, $createdBill);
+        $stmt->bind_param("iissii", $timestamp, $checked, $mainData, $choosedData, $syncedTo, $createdBill);
     
         if(!$stmt->execute()){
             echo 0;
