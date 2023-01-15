@@ -73,6 +73,33 @@ $(() => {
             showCreatedBills(_createdBills)
         }
     })
+
+    $('.mitarbeiter_content_container').on('click', '.checkBill', function(){
+        let billID = $(this).parent().parent().parent().data('billid')
+        let bill = _createdBills.find(b => b.id == billID)
+        if(bill != null){
+            $.ajax({
+                url: "scripts/edit/bill.php",
+                type: "POST",
+                data: {
+                    id: bill.id,
+                },
+                beforeSend: function() { toggleLoading(true) },
+                success: function(response) {
+                    getData_createdBills(function(array){
+                        _createdBills = JSON.parse(array)
+                        _createdBillsLoaded = true
+                        showCreatedBills()
+                        updateAccountActivity(_currentUsername + " hat die Rechnung #"+bill.id+" als bezahlt hinterlegt! (" + bill.createdFor + ")", LOGTYPE.EDITED)
+                        new GNWX_NOTIFY({ text: "Rechnung (#"+_currentBill.id+") wurde als bezahlt hinterlegt!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
+                    })
+                },
+                error: function(){
+                    updateAccountActivity("[ERROR] " + _currentUsername + " | Rechnung | EDIT", LOGTYPE.ERROR)
+                }
+            })
+        }
+    })
 })
 
 function showCreatedBills(array = _createdBills){
@@ -86,6 +113,7 @@ function showCreatedBills(array = _createdBills){
                         <span class="mitarbeiter_entry_user_title">R-'+getCurrentYear()+'-'+getBillNumber(bill.id)+'</span>\
                     </div>\
                     <div class="mitarbeiter_entry_btns">\
+                        <em class="mdi mdi-check checkBill"></em>\
                         <em class="mdi mdi-eye viewBill"></em>\
                         <em class="mdi mdi-delete deleteBill"></em>\
                     </div>\
