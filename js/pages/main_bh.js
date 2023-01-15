@@ -272,8 +272,8 @@ function initCreateBill(startDate, endDate, weekNumber){
             createdBy: _currentUsername,
             createdTimestamp: getCurrentTimestamp(),
             createdFor: _createdBillFor,
-            startDate: startDate,
-            endDate: endDate,
+            startDate: translateDate(startDate),
+            endDate: translateDate(endDate),
             weekNumber: weekNumber,
             data: JSON.stringify(_createBillData)
         },
