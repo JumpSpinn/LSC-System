@@ -138,7 +138,7 @@ function initViewBill(){
             <div class="bill_view_entrys_header_col entry_col">Gesamtsumme:</div>\
             <div class="bill_view_entrys_header_col entry_col"></div>\
             <div class="bill_view_entrys_header_col entry_col"></div>\
-            <div class="bill_view_entrys_header_col entry_col">$'+_currentBillPrice+'</div>\
+            <div class="bill_view_entrys_header_col entry_col">$'+_currentBillPrice.toFixed(2)+'</div>\
         </div>\
     '
     $('.bill_view_entrys_list').append(endingPrice)
