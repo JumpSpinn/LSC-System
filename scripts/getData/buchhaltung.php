@@ -6,7 +6,8 @@
     session_set_cookie_params(86400);
     session_start();
 
-    $filterTimestamp = $_POST['filterTimestamp'];
+    // $filterTimestamp = $_POST['filterTimestamp'];
+    $filterTimestamp = 0;
 
     if($_SESSION['loggedIn']){
         $sql_query = "SELECT * FROM bh WHERE createdBill = 0 AND `timestamp` >= $filterTimestamp";
