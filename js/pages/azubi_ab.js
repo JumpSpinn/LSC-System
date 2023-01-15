@@ -285,6 +285,11 @@ $(() => {
                 if(exist == null){
                     let parkHourMinutes = 0
                     let parkHour = _parkHours.find(i => i.name == priceElm.name)
+                    let vkPrice = priceElm.vk
+                    if(withMarkup && _currentVehicleTypeMarkup != 0){ // preisaufschlag
+                        let markup = (priceElm.vk * (_currentVehicleTypeMarkup / 100))
+                        vkPrice = (parseFloat(priceElm.vk) + markup)
+                    }
                     if(parkHour != null){
                         parkHourMinutes = parkHour.value
                         if(parkHour.name == "Totalschaden"){
@@ -302,11 +307,6 @@ $(() => {
                                 }
                             }
                         }
-                    }
-                    let vkPrice = priceElm.vk
-                    if(withMarkup && _currentVehicleTypeMarkup != 0){ // preisaufschlag
-                        let markup = (priceElm.vk * (_currentVehicleTypeMarkup / 100))
-                        vkPrice = (parseFloat(priceElm.vk) + markup)
                     }
                     _choosedDatas.push({
                         name: priceElm.name,
