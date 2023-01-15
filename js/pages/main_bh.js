@@ -278,7 +278,10 @@ function initCreateBill(startDate, endDate, weekNumber){
             data: JSON.stringify(_createBillData),
             state: 0
         },
-        beforeSend: function() { },
+        beforeSend: function() {
+            console.log(_createBillData)
+            console.log(_createBillData.length)
+        },
         success: function(response) {
             getData_buchhaltung(function(array){
                 _buchhaltung = JSON.parse(array)

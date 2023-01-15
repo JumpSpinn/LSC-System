@@ -107,7 +107,6 @@ $(() => {
 
     $('.bill_view_next_btn').click(() => {
         _viewBillAppendStartCount += _viewBillAppendCount
-        if(_viewBillAppendStartCount >= _viewBillAppendStartMaxCount){ _viewBillAppendStartMaxCount }
         initViewBill()
     })
 
