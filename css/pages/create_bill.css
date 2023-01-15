@@ -150,6 +150,7 @@
 .bill_view_entrys_header_col.entry_col{
     font-size: .7rem;
     padding-left: 3px;
+    font-weight: 300;
 }
 
 .bill_view_entrys_header_col.entry_col:nth-child(1){
@@ -165,7 +166,6 @@
 
 .bill_view_entry{
     display: flex;
-    font-weight: 200;
 }
 
 .bill_view_entry:nth-child(even){
