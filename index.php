@@ -78,7 +78,14 @@
     <body>
         <div class="maintenanceMode_wrapper">
             <div class="maintenanceMode_container">
-                <em class="mdi mdi-cog"></em>
+                <div class="maintenanceMode_header">
+                    <em class="mdi mdi-cog"></em>
+                    <span>System Maintenance</span>
+                </div>
+                <div class="maintenanceMode_content">
+                    <h1>Wir führen aktuell Wartungsarbeiten durch.</h1>
+                    <h2>Bitte schau später erneut vorbei, vielleicht sind wir bis dahin fertig.</h2>
+                </div>
             </div>
         </div>
         <div class="wrapper" style="display: <?php echo ($maintenanceMode ? "none" : "flex"); ?>;">
