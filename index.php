@@ -4,10 +4,6 @@
     header('Cache-Control: no-cache');
     header('Pragma: no-cache');
     header("X-XSS-Protection: 1; mode=block");
-
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
 ?>
 <html>
     <head>
@@ -62,13 +58,11 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" /> 
     
         <?php
-
-            session_set_cookie_params([
-                'lifetime' => 60*60*60*60,
-                'path' => '/',
-            ]);
+            ini_set('session.gc_maxlifetime', 86400);
+            session_set_cookie_params(86400);
             session_start();
 
+            $maintenanceMode = true;
             $loggedIn = false;
             $version = file_get_contents('version.txt');
 
@@ -82,12 +76,23 @@
         ?>
     </head>
     <body>
-        <div class="wrapper">
-            
+        <div class="maintenanceMode_wrapper">
+            <div class="maintenanceMode_container">
+                <div class="maintenanceMode_header">
+                    <em class="mdi mdi-cog"></em>
+                    <span>System Maintenance</span>
+                </div>
+                <div class="maintenanceMode_content">
+                    <h1>Wir führen aktuell Wartungsarbeiten durch.</h1>
+                    <h2>Bitte schau später erneut vorbei, vielleicht sind wir bis dahin fertig.</h2>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper" style="display: <?php echo ($maintenanceMode ? "none" : "flex"); ?>;">
             <div class="login_container" id="requestLogin" style="display: <?php echo ($loggedIn ? "none" : "flex"); ?>;">
                 <div class="login_brand">
                     <img src="/assets/img/logo_transparent.png">
-                    <span class="brand_title">Buchhaltungssystem</span>
+                    <span class="brand_title">Buchhaltungssystem2</span>
                 </div>
                 <div class="login_form">
                     <div class="login_input">
@@ -138,7 +143,6 @@
                 <!-- Sperrgrund -->
                 <div class="login_blocked_container"></div>
             </div>
-
             <!-- SYSTEM -->
             <div class="system_container" style="display: <?php echo ($loggedIn ? "flex" : "none"); ?>;">
                 <!-- GLOBAL LOADING -->

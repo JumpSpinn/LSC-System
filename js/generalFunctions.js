@@ -3,23 +3,23 @@ function ADD_NEW_CUSTOMER(name, enterState, phonenumber, rabatt, notice, disable
     if(name && enterState){
         if(phonenumber != ""){
             if(isNaN(phonenumber)){
-                new GNWX_NOTIFY({ text: "Telefonnummer darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Telefonnummer darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
         }
         if(rabatt != ""){
             if(isNaN(rabatt)){
-                new GNWX_NOTIFY({ text: "Rabatt darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Rabatt darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             if(rabatt > 100){
-                new GNWX_NOTIFY({ text: "Rabatt darf nicht höher als 100% sein!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Rabatt darf nicht höher als 100% sein!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
         }
         if(disabled != ""){
             if(isNaN(disabled)){
-                new GNWX_NOTIFY({ text: "Sperrstatus für den Kunden darf nur 0 oder 1 bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Sperrstatus für den Kunden darf nur 0 oder 1 bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
         }
@@ -33,11 +33,11 @@ function ADD_NEW_CUSTOMER(name, enterState, phonenumber, rabatt, notice, disable
             beforeSend: function() { },
             success: function(response) {
                 if(response == 2){
-                    new GNWX_NOTIFY({ text: "Unbekannter Fehler! #305", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                    new GNWX_NOTIFY({ text: "Unbekannter Fehler! #305", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                     return
                 }
                 if(response == 0){ // Kunde existiert bereits
-                    new GNWX_NOTIFY({ text: "Kunde existiert bereits in der Kundenkartei!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                    new GNWX_NOTIFY({ text: "Kunde existiert bereits in der Kundenkartei!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 } else { // Kunde wird in die Kundenkartei aufgenommen
                     var customerNumber = 0
                     GET_LATEST_CUSTOMER(function(array){
@@ -75,7 +75,7 @@ function ADD_NEW_CUSTOMER(name, enterState, phonenumber, rabatt, notice, disable
                                     })
                                     // success message
                                     updateAccountActivity(_currentUsername + " hat einen neuen Kunden ("+name+") angelegt (Kundenkartei)!", LOGTYPE.ADDED)
-                                    new GNWX_NOTIFY({ text: name + " wurde erfolgreich in die Kundenkartei eingetragen!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                                    new GNWX_NOTIFY({ text: name + " wurde erfolgreich in die Kundenkartei eingetragen!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                                 }
                                 if(_currentPageFile == "main_ab"){
                                     $.ajax({
@@ -101,7 +101,7 @@ function ADD_NEW_CUSTOMER(name, enterState, phonenumber, rabatt, notice, disable
                                                     switchState(STATES.AUFTRAGSBLATT)
                                                     // success message
                                                     updateAccountActivity(_currentUsername + " hat einen neuen Kunden ("+name+") angelegt (Kundenkartei)!", LOGTYPE.ADDED)
-                                                    new GNWX_NOTIFY({ text: name + " wurde erfolgreich in die Kundenkartei eingetragen!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                                                    new GNWX_NOTIFY({ text: name + " wurde erfolgreich in die Kundenkartei eingetragen!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                                                 }
                                             }
                                         },
@@ -133,7 +133,7 @@ function ADD_NEW_CUSTOMER(name, enterState, phonenumber, rabatt, notice, disable
                                                     switchState(STATES.AUFTRAGSBLATT)
                                                     // success message
                                                     updateAccountActivity(_currentUsername + " hat einen neuen Kunden ("+name+") angelegt (Kundenkartei-Ausbildung)!", LOGTYPE.ADDED)
-                                                    new GNWX_NOTIFY({ text: name + " wurde erfolgreich in die Kundenkartei-Ausbildung eingetragen!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                                                    new GNWX_NOTIFY({ text: name + " wurde erfolgreich in die Kundenkartei-Ausbildung eingetragen!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                                                 }
                                             }
                                         },
@@ -152,7 +152,7 @@ function ADD_NEW_CUSTOMER(name, enterState, phonenumber, rabatt, notice, disable
             }
         })
     } else {
-        new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+        new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
     }
 }
 

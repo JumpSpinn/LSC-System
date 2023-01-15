@@ -102,7 +102,7 @@ $(() => {
                     closePopup()
                     showBuchhaltung()
                     updateAccountActivity(_currentUsername + " hat den Auftrag #"+_currentEditedEntry.id+" in die Buchhaltung umgetragen!", LOGTYPE.EDITED)
-                    new GNWX_NOTIFY({ text: "Der Auftrag #" + _currentEditedEntry.id + " wurde erfolgreich in die Buchhaltung umgetragen!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                    new GNWX_NOTIFY({ text: "Der Auftrag #" + _currentEditedEntry.id + " wurde erfolgreich in die Buchhaltung umgetragen!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                 })
             },
             error: function(){
@@ -126,7 +126,7 @@ $(() => {
                     closePopup()
                     showBuchhaltung()
                     updateAccountActivity(_currentUsername + " hat den Auftrag #"+_currentEditedEntry.id+" gelöscht!", LOGTYPE.REMOVED)
-                    new GNWX_NOTIFY({ text: "Der Auftrag #" + _currentEditedEntry.id + " wurde erfolgreich gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                    new GNWX_NOTIFY({ text: "Der Auftrag #" + _currentEditedEntry.id + " wurde erfolgreich gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                 })
             },
             error: function(){

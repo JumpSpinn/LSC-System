@@ -63,7 +63,7 @@ $(() => {
             if(state != ""){
                 let checkState = MESSAGE_STATES.find(i => i.name.toLowerCase() == state.toLowerCase())
                 if(checkState == null){
-                    new GNWX_NOTIFY({ text: "Gebe bitte eine gültige Wichtigkeit an (Allgemein, Besprechung, Wichtig)", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                    new GNWX_NOTIFY({ text: "Gebe bitte eine gültige Wichtigkeit an (Allgemein, Besprechung, Wichtig)", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                     return
                 }
             }
@@ -85,7 +85,7 @@ $(() => {
                         closePopup()
                         showMessages()
                         updateAccountActivity(_currentUsername + " hat eine neue Mitteilung erstellt!", LOGTYPE.ADDED)
-                        new GNWX_NOTIFY({ text: "Mitteilung wurde erfolgreich erstellt!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: "Mitteilung wurde erfolgreich erstellt!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -93,7 +93,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
@@ -127,7 +127,7 @@ $(() => {
             if(state != ""){
                 let checkState = MESSAGE_STATES.find(i => i.name.toLowerCase() == state.toLowerCase())
                 if(checkState == null){
-                    new GNWX_NOTIFY({ text: "Gebe bitte eine gültige Wichtigkeit an (Allgemein, Besprechung, Wichtig)", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                    new GNWX_NOTIFY({ text: "Gebe bitte eine gültige Wichtigkeit an (Allgemein, Besprechung, Wichtig)", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                     return
                 } else {
                     _messageStateID = checkState.id
@@ -151,7 +151,7 @@ $(() => {
                         closePopup()
                         showMessages()
                         updateAccountActivity(_currentUsername + " hat eine Mitteilung bearbeitet (ID: " + _currentEditMessage.id + ")!", LOGTYPE.EDITED)
-                        new GNWX_NOTIFY({ text: "Mitteilung wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: "Mitteilung wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -159,7 +159,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
@@ -187,7 +187,7 @@ $(() => {
                     closePopup()
                     showMessages()
                     updateAccountActivity(_currentUsername + " hat eine Mitteilung gelöscht (ID: " + _currentEditMessage.id + ")!", LOGTYPE.REMOVED)
-                    new GNWX_NOTIFY({ text: "Mitteilung wurde gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                    new GNWX_NOTIFY({ text: "Mitteilung wurde gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                 })
             },
             error: function(){

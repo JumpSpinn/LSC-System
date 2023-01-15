@@ -94,7 +94,7 @@ $(() => {
                         closePopup()
                         showMitarbeiter()
                         updateAccountActivity(_currentUsername + " hat ein neuen Mitarbeiter angelegt! (" + firstname + " " + lastname + ")", LOGTYPE.ADDED)
-                        new GNWX_NOTIFY({ text: firstname + " " + lastname + " wurde als neuer Mitarbeiter hinterlegt!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: firstname + " " + lastname + " wurde als neuer Mitarbeiter hinterlegt!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -102,7 +102,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
@@ -147,7 +147,7 @@ $(() => {
         let warnings = $('#edit_mitarbeiter_warnings').val()
         if(firstname && lastname && _newMitarbeiter_posID){
             if(isNaN(warnings)){
-                new GNWX_NOTIFY({ text: "Abmahnung darf nur Zahlen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Abmahnung darf nur Zahlen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             $.ajax({
@@ -172,7 +172,7 @@ $(() => {
                         closePopup()
                         showMitarbeiter()
                         updateAccountActivity(_currentUsername + " hat ein Mitarbeiter bearbeitet! (" + firstname + " " + lastname + ")", LOGTYPE.EDITED)
-                        new GNWX_NOTIFY({ text: firstname + " " + lastname + " wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: firstname + " " + lastname + " wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -180,7 +180,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
@@ -213,7 +213,7 @@ $(() => {
                     closePopup()
                     showMitarbeiter()
                     updateAccountActivity(_currentUsername + " hat ein Mitarbeiter entfernt! (" + _currentEditAccount.firstname + " " + _currentEditAccount.lastname + ")", LOGTYPE.REMOVED)
-                    new GNWX_NOTIFY({ text: _currentEditAccount.firstname + " " + _currentEditAccount.lastname + " wurde aus der Mitarbeiterliste entfernt!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                    new GNWX_NOTIFY({ text: _currentEditAccount.firstname + " " + _currentEditAccount.lastname + " wurde aus der Mitarbeiterliste entfernt!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                 })
             },
             error: function(){
@@ -253,7 +253,7 @@ $(() => {
                     closePopup()
                     showMitarbeiter()
                     updateAccountActivity(_currentUsername + " hat das Passwort von " + _currentEditAccount.firstname + " " + _currentEditAccount.lastname + " zurückgesetzt!", LOGTYPE.REMOVED)
-                    new GNWX_NOTIFY({ text: "Das Passwort von " + _currentEditAccount.firstname + " " + _currentEditAccount.lastname + " wurde erfolgreich zurückgesetzt!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                    new GNWX_NOTIFY({ text: "Das Passwort von " + _currentEditAccount.firstname + " " + _currentEditAccount.lastname + " wurde erfolgreich zurückgesetzt!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                 })
             },
             error: function(){

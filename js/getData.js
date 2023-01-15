@@ -74,6 +74,9 @@ function getData_activityLogs(array){
     $.ajax({
         url: "scripts/getData/activityLogs.php",
         type: "POST",
+        data: {
+            filterTimestamp: (getCurrentTimestamp() - 1209600)
+        },
         beforeSend: function(){ },
         success: array
     })
@@ -136,6 +139,15 @@ function getData_prices(array){
 function getData_buchhaltung(array){
     $.ajax({
         url: "scripts/getData/buchhaltung.php",
+        type: "POST",
+        beforeSend: function(){ },
+        success: array
+    })
+}
+
+function getData_createdBills(array){
+    $.ajax({
+        url: "scripts/getData/createdBills.php",
         type: "POST",
         beforeSend: function(){ },
         success: array

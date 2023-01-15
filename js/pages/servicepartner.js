@@ -48,22 +48,22 @@ $(() => {
         let notice = $('#new_partner_notice').val()
         if(customerName && contactName && plz && rabatt){
             if(isNaN(plz)){
-                new GNWX_NOTIFY({ text: "PLZ darf keine Zeichen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "PLZ darf keine Zeichen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             if(isNaN(rabatt)){
-                new GNWX_NOTIFY({ text: "Rabatt darf keine Zeichen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Rabatt darf keine Zeichen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             if(rabatt > 100){
-                new GNWX_NOTIFY({ text: "Rabatt darf nicht höher als 100% sein!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Rabatt darf nicht höher als 100% sein!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             if(rabatt == ""){ rabatt = 0 }
 
             let checkCustomer = _customers.find(i => i.name.toLowerCase() == customerName.toLowerCase())
             if(checkCustomer == null){
-                new GNWX_NOTIFY({ text: "Kunde existiert nicht in der Kundenkartei!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Kunde existiert nicht in der Kundenkartei!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
 
@@ -87,7 +87,7 @@ $(() => {
                         closePopup()
                         showServicePartners()
                         updateAccountActivity(_currentUsername + " hat ein neuen Servicepartner angelegt! ("+ customerName +" | "+ contactName +")", LOGTYPE.ADDED)
-                        new GNWX_NOTIFY({ text: customerName + " wurde als neuer Servicepartner hinterlegt!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: customerName + " wurde als neuer Servicepartner hinterlegt!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -95,7 +95,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
@@ -126,22 +126,22 @@ $(() => {
         let notice = $('#edit_partner_notice').val()
         if(customerName && contactName && plz){
             if(isNaN(plz)){
-                new GNWX_NOTIFY({ text: "PLZ darf keine Zeichen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "PLZ darf keine Zeichen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             if(isNaN(rabatt)){
-                new GNWX_NOTIFY({ text: "Rabatt darf keine Zeichen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Rabatt darf keine Zeichen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             if(rabatt > 100){
-                new GNWX_NOTIFY({ text: "Rabatt darf nicht höher als 100% sein!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Rabatt darf nicht höher als 100% sein!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             if(rabatt == ""){ rabatt = 0 }
 
             let checkCustomer = _customers.find(i => i.name.toLowerCase() == customerName.toLowerCase())
             if(checkCustomer == null){
-                new GNWX_NOTIFY({ text: "Kunde existiert nicht in der Kundenkartei!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Kunde existiert nicht in der Kundenkartei!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
 
@@ -165,7 +165,7 @@ $(() => {
                         closePopup()
                         showServicePartners()
                         updateAccountActivity(_currentUsername + " hat ein Servicepartner bearbeitet! ("+ customerName +" | "+ contactName +")", LOGTYPE.EDITED)
-                        new GNWX_NOTIFY({ text: customerName + " wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: customerName + " wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -173,7 +173,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
@@ -205,7 +205,7 @@ $(() => {
                     closePopup()
                     showServicePartners()
                     updateAccountActivity(_currentUsername + " hat ein Servicepartner entfernt! ("+ _currentEditServicePartner.customerName +" | "+ _currentEditServicePartner.contactName +")", LOGTYPE.REMOVED)
-                    new GNWX_NOTIFY({ text: _currentEditServicePartner.customerName + " wurde als Servicepartner entfernt!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                    new GNWX_NOTIFY({ text: _currentEditServicePartner.customerName + " wurde als Servicepartner entfernt!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                 })
             },
             error: function(){

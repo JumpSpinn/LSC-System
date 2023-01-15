@@ -6,12 +6,92 @@
     <div class="page_header_btns"></div>
 </div>
 
+<div class="mitarbeiter_content_container"></div>
+
 <!-- Search -->
 <div class="page_search_container">
     <div class="page_search_icon">
         <em class="mdi mdi-magnify"></em>
     </div>
     <div class="page_search_input">
-        <input type="text" placeholder="Suchbegriff eingeben..">
+        <input type="text" placeholder="Suchbegriff eingeben.." id="search">
+    </div>
+</div>
+
+<!-- Popups -->
+<div class="page_popup_wrapper" id="popup_delete_bill">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Rechnung löschen</span>
+            <span class="page_popup_header_subtitle">Bist du dir sicher, dass du diese Rechnung löschen möchtest?</span>
+            <em class="mdi mdi-close" id="close_delete_bill"></em>
+        </div>
+        <div class="page_popup_content"></div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="delete_bill_confirm"><em class="mdi mdi-delete"></em>Ja, löschen!</div>
+        </div>
+    </div>
+</div>
+
+<div class="page_popup_wrapper" id="popup_view_bill">
+    <div class="bill_view_next_btn">
+        <em class="mdi mdi-arrow-right-thick"></em>
+    </div>
+    <div class="bill_view_prev_btn">
+        <em class="mdi mdi-arrow-left-thick"></em>
+    </div>
+    <div class="bill_view_container">
+        <div class="bill_view_header">
+            <div class="bill_view_header_col">
+                <span>Rechnung</span>
+                <p>Los Santos Customs</p>
+            </div>
+            <div class="bill_view_header_col">
+                <div class="bill_view_header_img">
+                    <img src="https://un-rp-buchhaltung.lossantoscustoms.de/assets/img/logo_transparent.png">
+                </div>
+            </div>
+        </div>
+        <div class="bill_view_details first_bill_details">
+            <div class="bill_view_detail">
+                <span class="bKursiv bill_companyName">Los Santos Customs</span>
+                <span></span>
+            </div>
+            <div class="bill_view_detail">
+                <span>Vertreten durch <p>Kane Black</p> und <p>Jax Parker</p></span>
+                <span class="bold">Rechnungsnummer: <p id="viewBill_billNumber">-</p></span>
+            </div>
+            <div class="bill_view_detail">
+                <span>Telefonnummer: 11111</span>
+                <span class="bold">Rechnungsdatum: <p id="viewBill_timestamp">-</p></span>
+            </div>
+        </div>
+        <div class="bill_view_details">
+            <div class="bill_view_detail">
+                <span class="bold">Zusammenfassung</span>
+                <span id="viewBill_startDate">-</span>
+            </div>
+            <div class="bill_view_detail">
+                <span id="viewBill_weekNumber">-</span>
+                <span id="viewBill_endDate">-</span>
+            </div>
+        </div>
+        <div class="bill_view_entrys">
+            <div class="bill_view_entrys_header">
+                <div class="bill_view_entrys_header_col">Datum</div>
+                <div class="bill_view_entrys_header_col">Kunde</div>
+                <div class="bill_view_entrys_header_col">Beschreibung</div>
+                <div class="bill_view_entrys_header_col">Netto Betrag</div>
+            </div>
+            <div class="bill_view_entrys_list"></div>
+        </div>
+        <div class="bill_view_bankdetails bankdetails_first">
+            <span>Die Gesamtsumme beträgt:</span>
+            <span id="viewBill_price">0</span>
+        </div>
+        <div class="bill_view_bankdetails">
+            <span>Unsere Bankverbindung:</span>
+            <span>SA200584480003</span>
+        </div>
     </div>
 </div>

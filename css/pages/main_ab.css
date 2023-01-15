@@ -233,6 +233,40 @@
   font-size: .9rem;
 }
 
+.mainab_auftragsblatt_input::after{
+  content: attr(data-pricedisplay);
+  position: absolute;
+  top: 3px;
+  right: 95px;
+  background-color: rgba(255,255,255,.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: .8rem;
+  border-radius: 3px;
+  padding: 2px 3px;
+  z-index: 2;
+  opacity: 0;
+}
+
+.mainab_auftragsblatt_input::before{
+  content: attr(data-parkin);
+  position: absolute;
+  top: 3px;
+  right: 196px;
+  background-color: rgba(255,255,255,.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: .8rem;
+  border-radius: 3px;
+  padding: 2px 3px;
+  z-index: 2;
+  opacity: 0;
+}
+
 .mainab_auftragsblatt_input.active{
   color: white;
   background-image: linear-gradient(to right, rgba(214, 170, 255, 0.2), transparent);
@@ -252,6 +286,14 @@
   background-color: rgba(255,255,255,.05);
 }
 
+.mainab_auftragsblatt_input:hover::after{
+  opacity: 1;
+}
+
+.mainab_auftragsblatt_input.showParkIn:hover::before{
+  opacity: 1;
+}
+
 .mainab_auftragsblatt_input_name{
   display: flex;
   flex-grow: 1;
@@ -262,7 +304,7 @@
   outline: none;
   font-size: .9rem;
   text-align: center;
-  width: 100px;
+  width: 85px;
   background-color: transparent;
   background-color: rgba(255,255,255,.05);
   border-radius: 3px;

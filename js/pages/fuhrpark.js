@@ -65,13 +65,13 @@ $(() => {
         if(model && numberplate){
             let checkVehicle = _serverVehicles.find(i => i.model.toLowerCase() == model.toLowerCase())
             if(checkVehicle == null){
-                new GNWX_NOTIFY({ text: model + " ist kein zulässiges Fahrzeug!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: model + " ist kein zulässiges Fahrzeug!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             let splitCurrentMember = currentMember.split(' ')
             let checkMember = _members.find(i => i.firstname.toLowerCase() == splitCurrentMember[0].toLowerCase() && i.lastname.toLowerCase() == splitCurrentMember[1].toLowerCase())
             if(checkMember == null){
-                new GNWX_NOTIFY({ text: "Es existiert kein Mitarbeiter mit diesen Namen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Es existiert kein Mitarbeiter mit diesen Namen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             $.ajax({
@@ -95,7 +95,7 @@ $(() => {
                         closePopup()
                         showFleets()
                         updateAccountActivity(_currentUsername + " hat ein neues Fahrzeug im Fuhrpark angelegt! (" + model + ", Kennzeichen: " + numberplate + ")", LOGTYPE.ADDED)
-                        new GNWX_NOTIFY({ text: "Fahrzeug ("+model+") wurde im Fuhrpark angelegt!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: "Fahrzeug ("+model+") wurde im Fuhrpark angelegt!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -103,7 +103,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
@@ -140,13 +140,13 @@ $(() => {
         if(model && numberplate){
             let checkVehicle = _serverVehicles.find(i => i.model.toLowerCase() == model.toLowerCase())
             if(checkVehicle == null){
-                new GNWX_NOTIFY({ text: model + " ist kein zulässiges Fahrzeug!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: model + " ist kein zulässiges Fahrzeug!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             let splitCurrentMember = currentMember.split(' ')
             let checkMember = _members.find(i => i.firstname.toLowerCase() == splitCurrentMember[0].toLowerCase() && i.lastname.toLowerCase() == splitCurrentMember[1].toLowerCase())
             if(checkMember == null){
-                new GNWX_NOTIFY({ text: "Es existiert kein Mitarbeiter mit diesen Namen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Es existiert kein Mitarbeiter mit diesen Namen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             $.ajax({
@@ -171,7 +171,7 @@ $(() => {
                         closePopup()
                         showFleets()
                         updateAccountActivity(_currentUsername + " hat ein Fahrzeug im Fuhrpark bearbeitet! (" + model + ", Kennzeichen: " + numberplate + ")", LOGTYPE.EDITED)
-                        new GNWX_NOTIFY({ text: "Fahrzeug ("+model+") wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: "Fahrzeug ("+model+") wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -179,7 +179,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
@@ -211,7 +211,7 @@ $(() => {
                     closePopup()
                     showFleets()
                     updateAccountActivity(_currentUsername + " hat ein Fahrzeug im Fuhrpark entfernt! (" + _currentEditFleet.model + ", Kennzeichen: " + _currentEditFleet.numberplate + ")", LOGTYPE.REMOVED)
-                    new GNWX_NOTIFY({ text: "Fahrzeug ("+_currentEditFleet.model+") wurde erfolgreich gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                    new GNWX_NOTIFY({ text: "Fahrzeug ("+_currentEditFleet.model+") wurde erfolgreich gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                 })
             },
             error: function(){

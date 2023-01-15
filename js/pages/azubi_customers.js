@@ -53,7 +53,7 @@ $(() => {
                     closePopup()
                     showKunden()
                     updateAccountActivity(_currentUsername + " hat den Kunden " + _currentEditKunde.name + " in die Kundenkartei verschoben!", LOGTYPE.EDITED)
-                    new GNWX_NOTIFY({ text: _currentEditKunde.name + " wurde erfolgreich in die Kundenkartei aufgenommen!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                    new GNWX_NOTIFY({ text: _currentEditKunde.name + " wurde erfolgreich in die Kundenkartei aufgenommen!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                 })
             },
             error: function(){
@@ -77,7 +77,7 @@ $(() => {
                     closePopup()
                     showKunden()
                     updateAccountActivity(_currentUsername + " hat einen Kunden gelöscht! (" + _currentEditKunde.name + ")", LOGTYPE.REMOVED)
-                    new GNWX_NOTIFY({ text: _currentEditKunde.name + " wurde erfolgreich gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                    new GNWX_NOTIFY({ text: _currentEditKunde.name + " wurde erfolgreich gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                 })
             },
             error: function(){

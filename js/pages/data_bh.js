@@ -106,15 +106,15 @@ $(() => {
         let percent = $('#new_carType_percent').val()
         if(name && purchasingPrice && markup && percent){
             if(isNaN(purchasingPrice)){
-                new GNWX_NOTIFY({ text: "Einkaufspreis darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Einkaufspreis darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             if(isNaN(markup)){
-                new GNWX_NOTIFY({ text: "Preisaufschlag darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Preisaufschlag darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             if(isNaN(percent)){
-                new GNWX_NOTIFY({ text: "Kosten Totalschaden in Prozent darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Kosten Totalschaden in Prozent darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             $.ajax({
@@ -133,7 +133,7 @@ $(() => {
                         closePopup()
                         showCarTypes()
                         updateAccountActivity(_currentUsername + " hat ein neuen Fahrzeugtyp angelegt! (" + name + ")", LOGTYPE.ADDED)
-                        new GNWX_NOTIFY({ text: name + " wurde als neuen Fahrzeugtyp angelegt!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: name + " wurde als neuen Fahrzeugtyp angelegt!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -141,7 +141,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
@@ -169,15 +169,15 @@ $(() => {
         let percent = $('#edit_carType_percent').val()
         if(name && purchasingPrice && markup && percent){
             if(isNaN(purchasingPrice)){
-                new GNWX_NOTIFY({ text: "Einkaufspreis darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Einkaufspreis darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             if(isNaN(markup)){
-                new GNWX_NOTIFY({ text: "Preisaufschlag darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Preisaufschlag darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             if(isNaN(percent)){
-                new GNWX_NOTIFY({ text: "Kosten Totalschaden in Prozent darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Kosten Totalschaden in Prozent darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             $.ajax({
@@ -197,7 +197,7 @@ $(() => {
                         closePopup()
                         showCarTypes()
                         updateAccountActivity(_currentUsername + " hat ein Fahrzeugtyp bearbeitet! (" + name + ")", LOGTYPE.EDITED)
-                        new GNWX_NOTIFY({ text: name + " wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: name + " wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -205,7 +205,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
@@ -223,7 +223,7 @@ $(() => {
                     closePopup()
                     showCarTypes()
                     updateAccountActivity(_currentUsername + " hat den Fahrzeugtyp ("+ _currentEditCarType.name +") gelöscht!", LOGTYPE.REMOVED)
-                    new GNWX_NOTIFY({ text: _currentEditCarType.name + " wurde erfolgreich gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                    new GNWX_NOTIFY({ text: _currentEditCarType.name + " wurde erfolgreich gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                 })
             },
             error: function(){
@@ -254,7 +254,7 @@ $(() => {
         let value = $('#new_inspection_value').val()
         if(name && value){
             if(isNaN(value)){
-                new GNWX_NOTIFY({ text: "Preis darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Preis darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             $.ajax({
@@ -271,7 +271,7 @@ $(() => {
                         closePopup()
                         showInspections()
                         updateAccountActivity(_currentUsername + " hat eine neue Inspektion angelegt! (" + name + ")", LOGTYPE.ADDED)
-                        new GNWX_NOTIFY({ text: name + " wurde als neue Inspektion angelegt!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: name + " wurde als neue Inspektion angelegt!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -279,7 +279,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
@@ -303,7 +303,7 @@ $(() => {
         let value = $('#edit_inspection_value').val()
         if(name && value){
             if(isNaN(value)){
-                new GNWX_NOTIFY({ text: "Preis darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Preis darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             $.ajax({
@@ -321,7 +321,7 @@ $(() => {
                         closePopup()
                         showInspections()
                         updateAccountActivity(_currentUsername + " hat eine Inspektion bearbeitet! (" + name + ")", LOGTYPE.EDITED)
-                        new GNWX_NOTIFY({ text: name + " wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: name + " wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -329,7 +329,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
@@ -347,7 +347,7 @@ $(() => {
                     closePopup()
                     showInspections()
                     updateAccountActivity(_currentUsername + " hat die Inspektion ("+ _currentEditInspection.name +") gelöscht!", LOGTYPE.REMOVED)
-                    new GNWX_NOTIFY({ text: _currentEditInspection.name + " wurde erfolgreich gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                    new GNWX_NOTIFY({ text: _currentEditInspection.name + " wurde erfolgreich gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                 })
             },
             error: function(){
@@ -378,7 +378,7 @@ $(() => {
         let value = $('#new_parkHour_value').val()
         if(name && value){
             if(isNaN(value)){
-                new GNWX_NOTIFY({ text: "Minuten darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Minuten darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             $.ajax({
@@ -395,7 +395,7 @@ $(() => {
                         closePopup()
                         showParkHours()
                         updateAccountActivity(_currentUsername + " hat eine neue Einparkdauer angelegt! (" + name + ")", LOGTYPE.ADDED)
-                        new GNWX_NOTIFY({ text: name + " wurde als neue Einparkdauer angelegt!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: name + " wurde als neue Einparkdauer angelegt!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -403,7 +403,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
@@ -431,7 +431,7 @@ $(() => {
         let value = $('#edit_parkHour_value').val()
         if(name && value){
             if(isNaN(value)){
-                new GNWX_NOTIFY({ text: "Minuten darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Minuten darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             $.ajax({
@@ -449,7 +449,7 @@ $(() => {
                         closePopup()
                         showParkHours()
                         updateAccountActivity(_currentUsername + " hat ein Einparkdauer-Eintrag bearbeitet! (" + name + ")", LOGTYPE.EDITED)
-                        new GNWX_NOTIFY({ text: name + " wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: name + " wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -457,7 +457,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
@@ -475,7 +475,7 @@ $(() => {
                     closePopup()
                     showParkHours()
                     updateAccountActivity(_currentUsername + " hat die Einparkdauer ("+ _currentEditParkHours.name +") gelöscht!", LOGTYPE.REMOVED)
-                    new GNWX_NOTIFY({ text: _currentEditParkHours.name + " wurde erfolgreich gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                    new GNWX_NOTIFY({ text: _currentEditParkHours.name + " wurde erfolgreich gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                 })
             },
             error: function(){
@@ -509,11 +509,11 @@ $(() => {
         let vk = ek - (ek * (percent / 100).toFixed(2))
         if(name && ek && percent){
             if(isNaN(ek)){
-                new GNWX_NOTIFY({ text: "Einkaufspreis darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Einkaufspreis darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             if(isNaN(percent)){
-                new GNWX_NOTIFY({ text: "Preisnachlass darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Preisnachlass darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             $.ajax({
@@ -532,7 +532,7 @@ $(() => {
                         closePopup()
                         showPrices()
                         updateAccountActivity(_currentUsername + " hat ein neuen Preis-Eintrag angelegt! (" + name + ")", LOGTYPE.ADDED)
-                        new GNWX_NOTIFY({ text: name + " wurde als neuer Preis-Eintrag angelegt!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: name + " wurde als neuer Preis-Eintrag angelegt!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -540,7 +540,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
@@ -567,11 +567,11 @@ $(() => {
         let vk = ek - (ek * (percent / 100).toFixed(2))
         if(name && ek && percent){
             if(isNaN(ek)){
-                new GNWX_NOTIFY({ text: "Einkaufspreis darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Einkaufspreis darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             if(isNaN(percent)){
-                new GNWX_NOTIFY({ text: "Preisnachlass darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Preisnachlass darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             $.ajax({
@@ -591,7 +591,7 @@ $(() => {
                         closePopup()
                         showPrices()
                         updateAccountActivity(_currentUsername + " hat ein Preis-Eintrag bearbeitet! (" + name + ")", LOGTYPE.EDITED)
-                        new GNWX_NOTIFY({ text: name + " wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: name + " wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -599,7 +599,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
@@ -617,7 +617,7 @@ $(() => {
                     closePopup()
                     showPrices()
                     updateAccountActivity(_currentUsername + " hat ein Preis-Eintrag ("+ _currentEditPrice.name +") gelöscht!", LOGTYPE.REMOVED)
-                    new GNWX_NOTIFY({ text: _currentEditPrice.name + " wurde erfolgreich gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                    new GNWX_NOTIFY({ text: _currentEditPrice.name + " wurde erfolgreich gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                 })
             },
             error: function(){
@@ -641,7 +641,7 @@ function showGeneralData(){
 
 function updateGeneralData(type, value){
     if(value == ""){
-        new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+        new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         return
     }
 
@@ -680,7 +680,7 @@ function updateGeneralData(type, value){
                 closePopup()
                 showGeneralData()
                 updateAccountActivity(_currentUsername + " " + typeName + " auf " + value + desc + " geändert!", LOGTYPE.EDITED)
-                new GNWX_NOTIFY({ text: typeName + " wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: typeName + " wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
             })
         },
         error: function(){

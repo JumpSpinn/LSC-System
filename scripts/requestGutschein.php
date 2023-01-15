@@ -1,11 +1,9 @@
 <?php
     require "../config/database.inc.php";
     
-    session_set_cookie_params([
-        'lifetime' => 60*60*60*60,
-        'path' => '/' . $dir,
-        'domain' => $_SERVER['HTTP_HOST'],
-    ]);
+    
+    ini_set('session.gc_maxlifetime', 86400);
+    session_set_cookie_params(86400);
     session_start();
     
 

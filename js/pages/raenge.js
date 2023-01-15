@@ -51,7 +51,7 @@ $(() => {
         let rankName = $('#new_rank_name').val()
         if(rankName){
             if(_currentEditRankPermissions.length == 0 || _currentEditRankPermissions == null || _currentEditRankPermissions == ""){
-                new GNWX_NOTIFY({ text: "Es wurden noch keine Allgemeine Berechtigungen gesetzt!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Es wurden noch keine Allgemeine Berechtigungen gesetzt!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             if(_currentEditRankPagePermissions.length == 0){
@@ -82,7 +82,7 @@ $(() => {
                             closePopup()
                             showPositions()
                             updateAccountActivity(_currentUsername + " hat ein neuen Rang angelegt! (" + rankName + ")", LOGTYPE.ADDED)
-                            new GNWX_NOTIFY({ text: rankName + " wurde zu den Rängen hinzugefügt!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                            new GNWX_NOTIFY({ text: rankName + " wurde zu den Rängen hinzugefügt!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                         })
                     },
                     error: function(){
@@ -91,7 +91,7 @@ $(() => {
                 })
             }
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
@@ -122,7 +122,7 @@ $(() => {
                     closePopup()
                     showPositions()
                     updateAccountActivity(_currentUsername + " hat ein Rang entfernt! (" + _currentEditRank.name + ")", LOGTYPE.REMOVED)
-                    new GNWX_NOTIFY({ text: _currentEditRank.name + " wurde aus den Rängen entfernt!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                    new GNWX_NOTIFY({ text: _currentEditRank.name + " wurde aus den Rängen entfernt!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                 })
             },
             error: function(){
@@ -153,7 +153,7 @@ $(() => {
         let rankName = $('#edit_rank_name').val()
         if(rankName){
             if(_currentEditRank.sidebarPermissions.length == 0){
-                new GNWX_NOTIFY({ text: "Es wurden noch keine Berechtigungen gesetzt!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Es wurden noch keine Berechtigungen gesetzt!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             if(_currentEditRank.pagePermissions.length == 0){
@@ -178,7 +178,7 @@ $(() => {
                         closePopup()
                         showPositions()
                         updateAccountActivity(_currentUsername + " hat ein Rang bearbeitet! (von: " + _currentEditRank.name + " zu: "+ rankName +")", LOGTYPE.EDITED)
-                        new GNWX_NOTIFY({ text: _currentEditRank.name + " wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: _currentEditRank.name + " wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -186,7 +186,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 

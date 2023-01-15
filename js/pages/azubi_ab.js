@@ -133,16 +133,16 @@ $(() => {
     $('#create_new_customer').click(() => {
         let customerName = $('#add_new_customer_name').val()
         if(customerName == ""){
-            new GNWX_NOTIFY({ text: "Kundenname muss angegeben sein!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Kundenname muss angegeben sein!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
             return
         }
         if(!isNaN(customerName)){
-            new GNWX_NOTIFY({ text: "Kundenname darf keine Zahl enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Kundenname darf keine Zahl enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
             return
         }
         let enterState = $('#add_new_customer_number').val()
         if(enterState == ""){
-            new GNWX_NOTIFY({ text: "Eintrittsdatum muss angegeben sein!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Eintrittsdatum muss angegeben sein!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
             return
         }
         let customerEnterState = translateDate(enterState)
@@ -165,7 +165,7 @@ $(() => {
 
     $('#requestGutschein').click(() => {
         if(_redeemedGutschein){
-            new GNWX_NOTIFY({ text: "Es wurde bereits ein Gutscheincode eingelöst!", position: "bottom-left", class: "gnwx-warning", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Es wurde bereits ein Gutscheincode eingelöst!", position: "bottom-left", class: "gnwx-warning", autoClose: 5000 });
             return
         }
         showPopup('popup_search_gutschein')
@@ -178,11 +178,11 @@ $(() => {
     $('#search_gutschein_confirm').click(() => {
         let enteredCode = $('#search_gutschein_code').val()
         if(enteredCode == ""){
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
             return
         }
         if(!enteredCode.includes('-')){
-            new GNWX_NOTIFY({ text: "Das ist kein gültiger Gutscheincode!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Das ist kein gültiger Gutscheincode!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
             return
         }
         $.ajax({
@@ -285,12 +285,17 @@ $(() => {
                 if(exist == null){
                     let parkHourMinutes = 0
                     let parkHour = _parkHours.find(i => i.name == priceElm.name)
+                    let vkPrice = priceElm.vk
+                    if(withMarkup && _currentVehicleTypeMarkup != 0){ // preisaufschlag
+                        let markup = (priceElm.vk * (_currentVehicleTypeMarkup / 100))
+                        vkPrice = (parseFloat(priceElm.vk) + markup)
+                    }
                     if(parkHour != null){
                         parkHourMinutes = parkHour.value
                         if(parkHour.name == "Totalschaden"){
                             let vehicle = _serverVehicles.find(i => i.model == _currentVehicleModel)
                             if(vehicle != null){
-                                priceElm.vk = ((vehicle.price / 100) * (_currentVehicleTypePercent / 100))
+                                vkPrice = ((vehicle.price / 100) * (_currentVehicleTypePercent / 100))
                             }
                         }
                         if(parkHour.name == "Motorschaden"){
@@ -298,15 +303,10 @@ $(() => {
                             if(vehicle != null){
                                 let data = _generalData.find(i => i.type == BH_DATA_GENERAL_TYPES.MOTORSCHADEN_PROZENT)
                                 if(data != null){
-                                    priceElm.vk = ((vehicle.price / 100) * (data.value / 100))
+                                    vkPrice = ((vehicle.price / 100) * (data.value / 100))
                                 }
                             }
                         }
-                    }
-                    let vkPrice = priceElm.vk
-                    if(withMarkup && _currentVehicleTypeMarkup != 0){ // preisaufschlag
-                        let markup = (priceElm.vk * (_currentVehicleTypeMarkup / 100))
-                        vkPrice = (parseFloat(priceElm.vk) + markup)
                     }
                     _choosedDatas.push({
                         name: priceElm.name,
@@ -547,19 +547,19 @@ function searchCustomer(){
     let customerName = $('#search_customer_name').val()
     let customerNumber = $('#search_customer_number').val()
     if(!customerName && !customerNumber){
-        new GNWX_NOTIFY({ text: "Bitte fülle eins der beiden Felder aus!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+        new GNWX_NOTIFY({ text: "Bitte fülle eins der beiden Felder aus!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         return
     }
     if(customerName && customerNumber){
-        new GNWX_NOTIFY({ text: "Du kannst entweder nach den Kundennamen oder nach der Kundennummer suchen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+        new GNWX_NOTIFY({ text: "Du kannst entweder nach den Kundennamen oder nach der Kundennummer suchen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         return
     }
     if(customerNumber != "" && isNaN(customerNumber)){
-        new GNWX_NOTIFY({ text: "Kundennummer darf nur aus Zahlen bestehen sowie keine Leerzeichen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+        new GNWX_NOTIFY({ text: "Kundennummer darf nur aus Zahlen bestehen sowie keine Leerzeichen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         return
     }
     if(customerName != "" && !isNaN(customerName)){
-        new GNWX_NOTIFY({ text: "Kundenname darf nur aus Buchstaben bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+        new GNWX_NOTIFY({ text: "Kundenname darf nur aus Buchstaben bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         return
     }
 
@@ -760,10 +760,35 @@ function initAuftragsblatt(){
     let appendCount = 0
     let withMarkup = false
     _prices.forEach((price) => {
+        let parkInTime = 0
+        let displayPrice = price.vk
+        let parkIn = _parkHours.find(p => p.name == price.name)
+        if(parkIn != null){
+            parkInTime = parkIn.value
+            if(_currentVehicleTypeMarkup != 0){ // preisaufschlag
+                let markup = (price.vk * (_currentVehicleTypeMarkup / 100))
+                displayPrice = (parseFloat(price.vk) + markup).toFixed(2)
+            }
+            if(parkIn.name == "Totalschaden"){
+                let vehicle = _serverVehicles.find(i => i.model == _currentVehicleModel)
+                if(vehicle != null){
+                    displayPrice = ((vehicle.price / 100) * (_currentVehicleTypePercent / 100)).toFixed(2)
+                }
+            }
+            if(parkIn.name == "Motorschaden"){
+                let vehicle = _serverVehicles.find(i => i.model == _currentVehicleModel)
+                if(vehicle != null){
+                    let data = _generalData.find(i => i.type == BH_DATA_GENERAL_TYPES.MOTORSCHADEN_PROZENT)
+                    if(data != null){
+                        displayPrice = ((vehicle.price / 100) * (data.value / 100)).toFixed(2)
+                    }
+                }
+            }
+        }
         appendCount++
         if(price.name == "Frontscheibe" && !withMarkup){ withMarkup = true }
         var container = '\
-            <div class="mainab_auftragsblatt_input '+(highlightAuftragsblatt(price.name) ? 'highlight' : '')+'" data-id="'+price.id+'" data-price="'+price.vk+'" data-markup="'+withMarkup+'" data-name="'+price.name+'">\
+            <div class="mainab_auftragsblatt_input '+(withMarkup ? "showParkIn" : "")+' '+(highlightAuftragsblatt(price.name) ? 'highlight' : '')+'" data-id="'+price.id+'" data-price="'+price.vk+'" data-markup="'+withMarkup+'" data-name="'+price.name+'" data-pricedisplay="$'+price.vk+'" '+(withMarkup ? "data-parkin='"+parkInTime+" Min.'" : "")+'>\
                 <div class="mainab_auftragsblatt_input_name">'+price.name+'<p style="display: '+(price.percent == 0 ? "none" : "inline-block")+'" class="brutto">('+price.percent+'% Preisnachlass)</p></div>\
                 <input class="'+(price.name == "Reparaturset" ? 'auftragsblatt_checkbox_change' : 'auftragsblatt_input_change')+'" type="'+(price.name == "Reparaturset" ? 'checkbox' : 'input')+'" placeholder="0" autocomplete="off">\
             </div>\
@@ -778,7 +803,7 @@ function initAuftragsblatt(){
 
     _inspections.forEach((insp) => {
         var container = '\
-            <div class="mainab_auftragsblatt_input" data-id="'+insp.id+'" data-price="'+insp.value+'" data-name="'+insp.name+'">\
+            <div class="mainab_auftragsblatt_input" data-id="'+insp.id+'" data-price="'+insp.value+'" data-name="'+insp.name+'" data-pricedisplay="$'+insp.value+'">\
                 <label>'+insp.name+'</label>\
                 <input class="auftragsblatt_checkbox_change" type="checkbox">\
             </div>\
@@ -804,6 +829,7 @@ function reset(){
     _choosedDatas = []
     _mainDatas = []
     _servicePartner = []
+    _allCustomers = []
     _serverVehiclesLoaded = false
     _pricesLoaded = false
     _parkHoursLoaded = false
@@ -812,10 +838,10 @@ function reset(){
     _generalDataLoaded = false
     _servicePartnerLoaded = false
     _currentCustomerIsServicePartner = false
+    _currentCustomerIsState = false
     _searchedCustomerName = ""
     _searchedCustomerNumber = ""
     _redeemedGutschein = false
-    _currentCustomerIsState = false
     _currentEnteredVehicle = ""
     _currentCustomerName = ""
     _currentCustomerNumber = 0
@@ -832,6 +858,11 @@ function reset(){
     _currentPrice_steuern = 0
     _currentPrice_brutto = 0
     _currentCustomerPayType = ""
+    _currentVehicleEinparkdauerTimer = 0
+    if(_einparkdauerTimerInterval != null){
+        clearInterval(_einparkdauerTimerInterval)
+        _einparkdauerTimerInterval = null
+    }
 
     $('.mainab_auftragsblatt_row').html('')
     $('.mainab_auftragsblatt_row.auftragsblatt_inspektion').append('<div class="ab_notice">Bitte zuerst das Fahrzeugmodel auswählen!</div>')
@@ -959,6 +990,12 @@ function updateEinparkdauerText(){
         if(newDauer <= 0){
             newDauer = 0
         }
-        $('#auftrag_pricelist_einparkdauer').html(newDauer + " Min. | " + _currentVehicleEinparkdauerTimer + " Min. vergangen!")
+        if(newDauer > 1){
+            $('#auftrag_pricelist_einparkdauer').html("noch " + newDauer + " Minuten")
+        } else if(newDauer == 1){
+            $('#auftrag_pricelist_einparkdauer').html("noch " + newDauer + " Minute")
+        } else {
+            $('#auftrag_pricelist_einparkdauer').html("Keine")
+        }
     }
 }

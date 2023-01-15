@@ -36,7 +36,7 @@ $(() => {
         let value = $('#new_coupon_value').val()
         if(code && type && value){
             if(isNaN(value)){
-                new GNWX_NOTIFY({ text: "Rabatthöhe darf nur Zahlen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Rabatthöhe darf nur Zahlen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             $.ajax({
@@ -56,7 +56,7 @@ $(() => {
                         closePopup()
                         showGutscheine()
                         updateAccountActivity(_currentUsername + " hat einen neuen Gutschein erstellt", LOGTYPE.ADDED)
-                        new GNWX_NOTIFY({ text: "Gutschein wurde erfolgreich erstellt!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: "Gutschein wurde erfolgreich erstellt!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -64,7 +64,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
@@ -86,7 +86,7 @@ $(() => {
         let value = $('#edit_coupon_value').val()
         if(code && type && value){
             if(isNaN(value)){
-                new GNWX_NOTIFY({ text: "Rabatthöhe darf nur Zahlen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+                new GNWX_NOTIFY({ text: "Rabatthöhe darf nur Zahlen enthalten!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
                 return
             }
             $.ajax({
@@ -106,7 +106,7 @@ $(() => {
                         closePopup()
                         showGutscheine()
                         updateAccountActivity(_currentUsername + " hat einen Gutschein bearbeitet! (" + code + ")", LOGTYPE.EDITED)
-                        new GNWX_NOTIFY({ text: "Gutschein wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                        new GNWX_NOTIFY({ text: "Gutschein wurde erfolgreich bearbeitet!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                     })
                 },
                 error: function(){
@@ -114,7 +114,7 @@ $(() => {
                 }
             })
         } else {
-            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 3500 });
+            new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         }
     })
 
@@ -146,7 +146,7 @@ $(() => {
                     closePopup()
                     showGutscheine()
                     updateAccountActivity(_currentUsername + " hat einen Gutschein gelöscht! (" + _currentEditGutschein.id + ")", LOGTYPE.REMOVED)
-                    new GNWX_NOTIFY({ text: "Gutschein wurde erfolgreich gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 3500 });
+                    new GNWX_NOTIFY({ text: "Gutschein wurde erfolgreich gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
                 })
             },
             error: function(){

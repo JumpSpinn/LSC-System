@@ -66,12 +66,47 @@
     </div>
 </div>
 
-<!-- Search -->
-<!-- <div class="page_search_container">
-    <div class="page_search_icon">
-        <em class="mdi mdi-magnify"></em>
+<!-- Create Bill: Popup -->
+<div class="page_popup_wrapper" id="popup_create_bill">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Neue Rechnung erstellen</span>
+            <span class="page_popup_header_subtitle">Bitte fülle alle benötigten Felder aus!</span>
+            <em class="mdi mdi-close" id="close_create_bill"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Auftragsnummer (START):<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Auftragsnummer angeben.." id="create_bill_startValue" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Auftragsnummer (ENDE):<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Auftragsnummer angeben.." id="create_bill_endValue" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Bezahlart wählen:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Auftragsnummer angeben.." id="create_bill_payType" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Soll die Rechnung für ein bestimmten Kunden sein?</span>
+                <input type="text" placeholder="Kundennamen angeben.." id="create_bill_customerName" autocomplete="off">
+                <div class="mainab_search_customer_results"></div>
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Startdatum eintragen:<p>(Pflichtfeld)</p></span>
+                <input type="date" placeholder="Startdatum angeben.." id="create_bill_startDate" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Enddatum eintragen:<p>(Pflichtfeld)</p></span>
+                <input type="date" placeholder="Enddatum angeben.." id="create_bill_endDate" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Kalenderwoche eintragen:<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Kalenderwoche angeben.." id="create_bill_weekNumber" autocomplete="off">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="create_bill_confirm"><em class="mdi mdi-check"></em>Rechnung erstellen</div>
+        </div>
     </div>
-    <div class="page_search_input">
-        <input type="text" placeholder="Suchbegriff eingeben..">
-    </div>
-</div> -->
+</div>
