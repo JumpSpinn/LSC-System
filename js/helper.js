@@ -53,27 +53,27 @@ function convertTimestampDateOnly(timestamp) {
 }
 
 function updateAccountActivity(message, logType = 0){
-    $.ajax({
-        url: "scripts/updateAccountActivity.php",
-        type: "POST",
-        data: {
-            lastAction: getCurrentTimestamp()
-        },
-        beforeSend: function() { },
-        success: function(response) { }
-    })
+    // $.ajax({
+    //     url: "scripts/updateAccountActivity.php",
+    //     type: "POST",
+    //     data: {
+    //         lastAction: getCurrentTimestamp()
+    //     },
+    //     beforeSend: function() { },
+    //     success: function(response) { }
+    // })
 
-    $.ajax({
-        url: "scripts/add/activityLog.php",
-        type: "POST",
-        data: {
-            timestamp: getCurrentTimestamp(),
-            message: message,
-            logType: logType
-        },
-        beforeSend: function() { },
-        success: function(response) { }
-    })
+    // $.ajax({
+    //     url: "scripts/add/activityLog.php",
+    //     type: "POST",
+    //     data: {
+    //         timestamp: getCurrentTimestamp(),
+    //         message: message,
+    //         logType: logType
+    //     },
+    //     beforeSend: function() { },
+    //     success: function(response) { }
+    // })
 }
 
 function translateDate(date){
