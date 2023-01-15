@@ -1,7 +1,7 @@
 var _createdBills = []
 var _createdBillsLoaded = false
-
 var _currentBill = null
+var _currentBillPrice = 0
 
 $(() => {
     toggleLoading(true)
@@ -108,6 +108,7 @@ function showCreatedBills(){
 }
 
 function initViewBill(){
+    _currentBillPrice = 0
     $('.bill_view_entrys_list').html('')
     $('#viewBill_billNumber').html('R-'+getCurrentYear()+'-'+getBillNumber(_currentBill.id))
     $('#viewBill_timestamp').html(convertTimestampDateOnly(_currentBill.createdTimestamp))
@@ -118,7 +119,7 @@ function initViewBill(){
     let billData = JSON.parse(_currentBill.data)
     billData.forEach((entry) => {
         let mainData = JSON.parse(entry.mainData)[0]
-        let choosedData = JSON.parse(entry.choosedData)[0]
+        let choosedData = JSON.parse(entry.choosedData)
         console.log(choosedData)
         let isState = (mainData.payType.toLowerCase() == "staatlich" ? true : false)
         let entryContainer = '\
@@ -126,7 +127,7 @@ function initViewBill(){
                 <div class="bill_view_entrys_header_col entry_col">'+convertTimestampDateOnly(entry.timestamp)+'</div>\
                 <div class="bill_view_entrys_header_col entry_col">'+mainData.customerName+'</div>\
                 <div class="bill_view_entrys_header_col entry_col">coming soon..</div>\
-                <div class="bill_view_entrys_header_col entry_col">'+(isState ? mainData.netto : mainData.brutto)+'</div>\
+                <div class="bill_view_entrys_header_col entry_col">$'+(isState ? parseFloat(mainData.netto).toFixed(2) : parseFloat(mainData.brutto).toFixed(2))+'</div>\
             </div>\
         '
         $('.bill_view_entrys_list').append(entryContainer)
@@ -136,7 +137,7 @@ function initViewBill(){
             <div class="bill_view_entrys_header_col entry_col">Gesamtsumme:</div>\
             <div class="bill_view_entrys_header_col entry_col"></div>\
             <div class="bill_view_entrys_header_col entry_col"></div>\
-            <div class="bill_view_entrys_header_col entry_col">$10000,95</div>\
+            <div class="bill_view_entrys_header_col entry_col">$'+_currentBillPrice+'</div>\
         </div>\
     '
     $('.bill_view_entrys_list').append(endingPrice)
@@ -157,4 +158,8 @@ function getBillNumber(billId){
 
 function getCurrentYear(){
     return new Date().getFullYear()
+}
+
+function addBillPrice(value){
+
 }
