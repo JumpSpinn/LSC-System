@@ -186,8 +186,8 @@ function initViewBill(){
                 <div class="bill_view_entrys_header_col entry_col">$'+(isState ? parseFloat(mainData.netto).toFixed(2) : parseFloat(mainData.brutto).toFixed(2))+'</div>\
             </div>\
         '
+        appended++
         if(appended <= _viewBillAppendCount && appended >= _viewBillAppendStartCount){
-            appended++
             $('.bill_view_entrys_list').append(entryContainer)
         }
         addBillPrice((isState ? parseFloat(mainData.netto).toFixed(2) : parseFloat(mainData.brutto).toFixed(2)))
