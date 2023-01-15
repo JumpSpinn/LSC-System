@@ -62,7 +62,7 @@
             session_set_cookie_params(86400);
             session_start();
 
-            $maintenanceMode = true;
+            $maintenanceMode = false;
             $loggedIn = false;
             $version = file_get_contents('version.txt');
 
@@ -76,7 +76,7 @@
         ?>
     </head>
     <body>
-        <div class="maintenanceMode_wrapper">
+        <div class="maintenanceMode_wrapper" style="display: <?php echo ($maintenanceMode ? "flex" : "none"); ?>;">
             <div class="maintenanceMode_container">
                 <div class="maintenanceMode_header">
                     <em class="mdi mdi-cog"></em>

@@ -410,6 +410,13 @@ $(() => {
             _currentCustomerPayType= "Sammelrechnung"
             sendAuftragSuccess()
         } else {
+            if(_currentVehicleEinparkdauer > 0){
+                let repKit = _choosedDatas.find(c => c.name.toLowerCase() == "reparaturset")
+                if(repKit == null){
+                    new GNWX_NOTIFY({ text: "Auftrag kann noch nicht abgeschickt werden, da kein Reparaturset angegeben wurde obwohl Anbauteile repariert wurden!", position: "bottom-left", class: "gnwx-warning", autoClose: 7500 });   
+                    return
+                }
+            }
             $('#popup_confirm_abholung .page_popup_header_title').html(_currentCustomerName)
             showPopup('popup_confirm_abholung')
         }
@@ -926,7 +933,9 @@ function sendAuftragSuccess(){
             checked: 0,
             mainData: JSON.stringify(_mainDatas),
             choosedData: JSON.stringify(_choosedDatas),
-            syncedTo: 0
+            syncedTo: 0,
+            createdBill: 0,
+            archived: 0
         },
         beforeSend: function() {
             switchState(STATES.LOADING)

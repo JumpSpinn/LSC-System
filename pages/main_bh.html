@@ -4,7 +4,7 @@
         <div class="page_header_subtitle">Dies ist die gesamte Buchhaltung von Los Santos Customs. Alle abgeschickten Aufträge sind hier aufgelistet.</div>
     </div>
     <div class="page_header_btns">
-        <div class="page_header_btn" id="checkBuchhaltung">Buchführung überprüft</div>
+        <div class="page_header_btn" id="archiveBuchhaltung">Buchhaltung archivieren</div>
         <div class="page_header_btn" id="createRechnung" >Rechnung erstellen</div>
     </div>
 </div>
@@ -107,6 +107,30 @@
         </div>
         <div class="page_popup_btns">
             <div class="page_popup_btn" id="create_bill_confirm"><em class="mdi mdi-check"></em>Rechnung erstellen</div>
+        </div>
+    </div>
+</div>
+
+<!-- Archive: Popup -->
+<div class="page_popup_wrapper" id="popup_archive_buchhaltung">
+    <div class="page_popup_container">
+        <div class="page_popup_header">
+            <span class="page_popup_header_title">Buchhaltung aufräumen</span>
+            <span class="page_popup_header_subtitle">Bitte fülle alle benötigten Felder aus!</span>
+            <em class="mdi mdi-close" id="close_archive_buchhaltung"></em>
+        </div>
+        <div class="page_popup_content">
+            <div class="page_popup_content_elm">
+                <span>Auftragsnummer (START):<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Auftragsnummer angeben.." id="archive_start" autocomplete="off">
+            </div>
+            <div class="page_popup_content_elm">
+                <span>Auftragsnummer (ENDE):<p>(Pflichtfeld)</p></span>
+                <input type="text" placeholder="Auftragsnummer angeben.." id="archive_end" autocomplete="off">
+            </div>
+        </div>
+        <div class="page_popup_btns">
+            <div class="page_popup_btn" id="archive_confirm"><em class="mdi mdi-check"></em>Aufräumen</div>
         </div>
     </div>
 </div>

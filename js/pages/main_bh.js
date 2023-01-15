@@ -6,12 +6,15 @@ var _customers = []
 var _searchedCustomerName = ""
 var _createdBillFor = ""
 
+var PAYTYPES = [
+    { type: "Staatlich" },
+    { type: "Sammelrechnung" }
+]
+
 $(() => {
-    if(hasPermission(PAGE_PERMISSION_TYPES.BUCHHALTUNG_CHECK)){
-        $('#checkBuchhaltung').css('display', 'flex')
-    }
     if(hasPermission(PAGE_PERMISSION_TYPES.BUCHHALTUNG_RECHNUNG)){
         $('#createRechnung').css('display', 'flex')
+        $('#archiveBuchhaltung').css('display', 'flex')
     }
 
     toggleLoading(true)
@@ -87,6 +90,12 @@ $(() => {
     })
 
     $('#create_bill_confirm').click(() => {
+        let checkPayType = $('#create_bill_payType').val()
+        let findPayType = PAYTYPES.find(p => p.type.toLowerCase() == checkPayType.toLowerCase())
+        if(findPayType == null){
+            new GNWX_NOTIFY({ text: "Bezahlart ist nicht gültig! - Bitte gebe Sammelrechnung oder Staatlich an!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
+            return
+        }
         createBill()
     })
 
@@ -104,6 +113,52 @@ $(() => {
             $('#create_bill_customerName').val(_searchedCustomerName)
             $('.mainab_search_customer_results').html('')
         }
+    })
+
+    $('#archiveBuchhaltung').click(() => {
+        showPopup('popup_archive_buchhaltung')
+    })
+
+    $('#close_archive_buchhaltung').click(() => {
+        closePopup()
+    })
+
+    $('#archive_confirm').click(() => {
+        let start = $('#archive_start').val()
+        let end = $('#archive_end').val()
+        if(!start || !end){
+            new GNWX_NOTIFY({ text: "Bitte fülle alle Pflichtfelder aus!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
+            return
+        }
+        let archived = _buchhaltung.filter(b => b.id >= parseInt(start) && b.id <= parseInt(end))
+        if(archived.length == 0){
+            new GNWX_NOTIFY({ text: "Es wurden keine Einträge gefunden, die archiviert werden können!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
+            return
+        }
+        toggleLoading(true)
+        archived.forEach((entry) => {
+            $.ajax({
+                url: "scripts/archiveBuchhaltung.php",
+                type: "POST",
+                data: {
+                    id: entry.id
+                },
+                beforeSend: function() {  },
+                success: function(response) { },
+                error: function(){
+                    updateAccountActivity("[ERROR] " + _currentUsername + " | Buchhaltung | ARCHIVE", LOGTYPE.ERROR)
+                }
+            })
+        })
+        getData_buchhaltung(function(array){
+            _buchhaltung = JSON.parse(array)
+            _buchhaltungLoaded = true
+            showBuchhaltung()
+            closePopup()
+            updateAccountActivity(_currentUsername + " hat die Buchhaltung archiviert! (von Auftrag #"+start+" bis #"+end+")", LOGTYPE.EDITED)
+            new GNWX_NOTIFY({ text: "Buchhaltung wurde erfolgreich archiviert! (von Auftrag #"+start+" bis #"+end+")", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
+            toggleLoading(false)
+        })
     })
 })
 
@@ -249,7 +304,7 @@ function createBill(){
     let createBill_startDate = $('#create_bill_startDate').val()
     let createBill_endDate = $('#create_bill_endDate').val()
     let createBill_weekNumber = $('#create_bill_weekNumber').val()
-    if(!createBill_start && !createBill_end && !createBill_payType && !createBill_startDate && !createBill_endDate && !createBill_weekNumber){
+    if(!createBill_start || !createBill_end || !createBill_payType || !createBill_startDate || !createBill_endDate || !createBill_weekNumber){
         new GNWX_NOTIFY({ text: "Bitte fülle alle benötigten Felder aus!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
         return
     }
@@ -260,11 +315,29 @@ function createBill(){
         _createdBillFor = (createBill_customerName == "" ? "Servicepartner" : createBill_customerName)
         _createBillData = getAllServicepartnerEntrys(createBill_start, createBill_end, createBill_customerName)
     }
+    if(_createBillData.length == 0){
+        new GNWX_NOTIFY({ text: "Rechnung kann nicht erstellt werden, da keine Ergebnisse gefunden wurden!", position: "bottom-left", class: "gnwx-warning", autoClose: 5000 });
+        return
+    }
     initCreateBill(createBill_startDate, createBill_endDate, createBill_weekNumber)
 }
 
 function initCreateBill(startDate, endDate, weekNumber){
     toggleLoading(true)
+    _createBillData.forEach((updateEntry) => {
+        $.ajax({
+            url: "scripts/updateBuchhaltungBill.php",
+            type: "POST",
+            data: {
+                id: updateEntry.id
+            },
+            beforeSend: function() { },
+            success: function(response) { },
+            error: function(){
+                updateAccountActivity("[ERROR] " + _currentUsername + " | Buchhaltung | UPDATE", LOGTYPE.ERROR)
+            }
+        })
+    })
     $.ajax({
         url: "scripts/add/bill.php",
         type: "POST",
@@ -278,10 +351,7 @@ function initCreateBill(startDate, endDate, weekNumber){
             data: JSON.stringify(_createBillData),
             state: 0
         },
-        beforeSend: function() {
-            console.log(_createBillData)
-            console.log(_createBillData.length)
-        },
+        beforeSend: function() { toggleLoading(true) },
         success: function(response) {
             getData_buchhaltung(function(array){
                 _buchhaltung = JSON.parse(array)
