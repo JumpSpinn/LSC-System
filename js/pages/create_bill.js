@@ -131,6 +131,7 @@ function initViewBill(){
             </div>\
         '
         $('.bill_view_entrys_list').append(entryContainer)
+        addBillPrice((isState ? parseFloat(mainData.netto).toFixed(2) : parseFloat(mainData.brutto).toFixed(2)))
     })
     let endingPrice = '\
         <div class="bill_view_entry endingEntry">\
@@ -161,5 +162,5 @@ function getCurrentYear(){
 }
 
 function addBillPrice(value){
-
+    _currentBillPrice += value
 }
