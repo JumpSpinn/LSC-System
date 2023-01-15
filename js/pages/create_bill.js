@@ -107,6 +107,20 @@ function showCreatedBills(){
     toggleLoading(false)
 }
 
+function initViewBill(){
+    $('.bill_view_entrys_list').html('')
+    $('#viewBill_billNumber').html('R-'+getCurrentYear()+'-'+getBillNumber(_currentBill.id))
+    $('#viewBill_timestamp').html(convertTimestamp(_currentBill.createdTimestamp))
+    $('#viewBill_startDate').html('<p>Start</p>: ' + _currentBill.startDate)
+    $('#viewBill_endDate').html('<p>Ende</p>: ' + _currentBill.endDate)
+    $('#viewBill_weekNumber').html('Kalenderwoche: ' + _currentBill.weekNumber)
+    let billData = JSON.parse(_currentBill.data)
+    console.log(billData)
+
+    let endingPrice = ''
+    let entry = ''
+}
+
 function getBillNumber(billId){
     let billNumber = ""
     if(billId > 9 && billId < 100){
