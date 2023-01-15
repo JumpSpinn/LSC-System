@@ -272,7 +272,7 @@ function createBill(){
         _createBillData = getAllServicepartnerEntrys(createBill_start, createBill_end, createBill_customerName)
     }
     if(_createBillData.length == 0){
-        new GNWX_NOTIFY({ text: "Rechnung kann nicht erstellt werden, da keine Ergebnisse gefunden wurden!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
+        new GNWX_NOTIFY({ text: "Rechnung kann nicht erstellt werden, da keine Ergebnisse gefunden wurden!", position: "bottom-left", class: "gnwx-warning", autoClose: 5000 });
         return
     }
     initCreateBill(createBill_startDate, createBill_endDate, createBill_weekNumber)
