@@ -70,7 +70,7 @@
 }
 
 .bill_view_header_col span{
-    font-weight: 600;
+    font-weight: 400;
     font-size: .8rem;
 }
 
@@ -111,7 +111,7 @@
 
 .bill_view_detail p{
     display: inline-block;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .bKursiv{
@@ -124,5 +124,5 @@
 }
 
 .bill_view_detail span.bold{
-    font-weight: 600;
+    font-weight: 400;
 }
