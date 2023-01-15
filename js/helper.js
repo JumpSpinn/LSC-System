@@ -41,6 +41,17 @@ function convertTimestamp(timestamp, bool) {
     }
 }
 
+function convertTimestampDateOnly(timestamp) {
+    var date = new Date(timestamp * 1000);
+    var dd = String(date.getDate()).padStart(2, '0');
+    var mm = String(date.getMonth() + 1).padStart(2, '0');
+    var yy = date.getFullYear().toString().substring(0);
+    var hh = String(date.getHours()).padStart(2, '0');
+    var m = String(date.getMinutes()).padStart(2, '0');
+    var ss = String(date.getSeconds()).padStart(2, '0');
+    return (dd + '.' + mm + '.' + yy);
+}
+
 function updateAccountActivity(message, logType = 0){
     $.ajax({
         url: "scripts/updateAccountActivity.php",

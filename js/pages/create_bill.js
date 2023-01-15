@@ -110,7 +110,7 @@ function showCreatedBills(){
 function initViewBill(){
     $('.bill_view_entrys_list').html('')
     $('#viewBill_billNumber').html('R-'+getCurrentYear()+'-'+getBillNumber(_currentBill.id))
-    $('#viewBill_timestamp').html(convertTimestamp(_currentBill.createdTimestamp))
+    $('#viewBill_timestamp').html(convertTimestampDateOnly(_currentBill.createdTimestamp))
     $('#viewBill_startDate').html('<p>Start</p>: ' + _currentBill.startDate)
     $('#viewBill_endDate').html('<p>Ende</p>: ' + _currentBill.endDate)
     $('#viewBill_weekNumber').html('Kalenderwoche: ' + _currentBill.weekNumber)
@@ -123,7 +123,7 @@ function initViewBill(){
         let isState = (mainData.payType.toLowerCase() == "staatlich" ? true : false)
         let entryContainer = '\
             <div class="bill_view_entry">\
-                <div class="bill_view_entrys_header_col entry_col">'+convertTimestamp(entry.timestamp)+'</div>\
+                <div class="bill_view_entrys_header_col entry_col">'+convertTimestampDateOnly(entry.timestamp)+'</div>\
                 <div class="bill_view_entrys_header_col entry_col">'+mainData.customerName+'</div>\
                 <div class="bill_view_entrys_header_col entry_col">coming soon..</div>\
                 <div class="bill_view_entrys_header_col entry_col">'+(isState ? mainData.netto : mainData.brutto)+'</div>\
