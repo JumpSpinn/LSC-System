@@ -771,13 +771,13 @@ function initAuftragsblatt(){
                 let markup = (price.vk * (_currentVehicleTypeMarkup / 100))
                 displayPrice = (parseFloat(price.vk) + markup).toFixed(2)
             }
-            if(parkHour.name == "Totalschaden"){
+            if(parkIn.name == "Totalschaden"){
                 let vehicle = _serverVehicles.find(i => i.model == _currentVehicleModel)
                 if(vehicle != null){
                     displayPrice = ((vehicle.price / 100) * (_currentVehicleTypePercent / 100)).toFixed(2)
                 }
             }
-            if(parkHour.name == "Motorschaden"){
+            if(parkIn.name == "Motorschaden"){
                 let vehicle = _serverVehicles.find(i => i.model == _currentVehicleModel)
                 if(vehicle != null){
                     let data = _generalData.find(i => i.type == BH_DATA_GENERAL_TYPES.MOTORSCHADEN_PROZENT)
