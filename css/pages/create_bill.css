@@ -165,6 +165,7 @@
 
 .bill_view_entry{
     display: flex;
+    font-weight: 200;
 }
 
 .bill_view_entry:nth-child(even){
