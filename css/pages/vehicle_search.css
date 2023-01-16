@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     padding: 5px;
+    overflow-y: auto;
 }
 
 .search_vehicle_container{
@@ -94,5 +95,4 @@
     height: 100%;
     flex-direction: column;
     color: white;
-    overflow-y: auto;
 }
