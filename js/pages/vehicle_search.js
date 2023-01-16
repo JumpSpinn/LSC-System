@@ -95,6 +95,7 @@ function initResults(){
                     <div class="mitarbeiter_entry_user">\
                         <span class="mitarbeiter_entry_user_title">'+mainData.customerName+'</span>\
                         <span class="mitarbeiter_entry_user_subtitle">Kundennummer: '+mainData.customerNumber+'</span>\
+                        <span class="mitarbeiter_entry_user_lastAction">Fahrzeug: '+mainData.vehicleModel+'</span>\
                     </div>\
                     <div class="mitarbeiter_entry_btns"></div>\
                 </div>\
