@@ -37,7 +37,7 @@ function searchVehicleByNumberplate(numberplate){
         beforeSend: function() { },
         success: function(response) {
             toggleLoading(false)
-            console.log(response)
+            console.log(JSON.parse(response))
             //new GNWX_NOTIFY({ text: _currentCustomerName + " ist bei uns im System gesperrt & wird nicht mehr bearbeitet!", position: "bottom-left", class: "gnwx-danger", autoClose: 7500 });
         },
         error: function(){
