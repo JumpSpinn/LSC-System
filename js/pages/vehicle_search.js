@@ -70,9 +70,46 @@ function searchVehicleByNumberplate(numberplate){
 function initResults(){
     _requestSearch = false
     $('#search_vehicle_numberplate').val('')
+    $('.search_vehicle_result_container').html('')
     $('#modal_search_vehicle').css('display', 'none')
     $('.search_vehicle_result_container').css('display', 'flex')
     $('#new_searchVehicle').css('display', 'block')
 
     console.log(_searchedVehicles)
+
+    _searchedVehicles.forEach((entry) => {
+        let mainData = JSON.parse(entry.mainData)[0]
+        let container = '\
+            <div class="mitarbeiter_entry" data-id="'+entry.id+'">\
+                <div class="mitarbeiter_entry_header">\
+                    <div class="mitarbeiter_entry_user">\
+                        <span class="mitarbeiter_entry_user_title">'+mainData.customerName+'</span>\
+                        <span class="mitarbeiter_entry_user_subtitle">Kundennummer: '+mainData.customerNumber+'</span>\
+                    </div>\
+                    <div class="mitarbeiter_entry_btns"></div>\
+                </div>\
+                <div class="mitarbeiter_entry_details">\
+                    <div class="mitarbeiter_entry_row">\
+                        <div class="mitarbeiter_entry_col">\
+                            <div class="mitarbeiter_entry_col_header">Bearbeitet von:</div>\
+                            <div class="mitarbeiter_entry_col_desc">'+mainData.workerName+'</div>\
+                        </div>\
+                        <div class="mitarbeiter_entry_col">\
+                            <div class="mitarbeiter_entry_col_header">Bezahlart:</div>\
+                            <div class="mitarbeiter_entry_col_desc">'+mainData.payType+'</div>\
+                        </div>\
+                        <div class="mitarbeiter_entry_col">\
+                            <div class="mitarbeiter_entry_col_header">Staatlich:</div>\
+                            <div class="mitarbeiter_entry_col_desc">'+(mainData.isState ? "Ja" : "Nein")+'</div>\
+                        </div>\
+                        <div class="mitarbeiter_entry_col">\
+                            <div class="mitarbeiter_entry_col_header">Servicepartner:</div>\
+                            <div class="mitarbeiter_entry_col_desc">'+(mainData.isServicePartner ? "Ja": "Nein")+'</div>\
+                        </div>\
+                    </div>\
+                </div>\
+            </div>\
+        '
+        $('.search_vehicle_result_container').append(container)
+    })
 }
