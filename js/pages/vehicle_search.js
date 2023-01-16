@@ -13,9 +13,18 @@ $(() => {
             checkSearchByNumerplate()
         }
     })
+
+    $('#new_searchVehicle').click(() => {
+        $('.search_vehicle_result_container').css('display', 'none')
+        $('#modal_search_vehicle').css('display', 'block')
+        setTimeout(() => {
+            $('#search_vehicle_numberplate').focus()
+        }, 150);
+    })
 })
 
 function initSearchVehicle(){
+    $('#new_searchVehicle').css('display', 'none')
     $('#search_vehicle_numberplate').val('')
     $('#modal_search_vehicle').css('display', 'block')
     setTimeout(() => {
@@ -46,12 +55,21 @@ function searchVehicleByNumberplate(numberplate){
         },
         beforeSend: function() { },
         success: function(response) {
-            let result = JSON.parse(response)
+            _searchedVehicles = JSON.parse(response)
+            new GNWX_NOTIFY({ text: "Es wurden insgesamt "+_searchedVehicles.length+" Ergebnisse gefunden!", position: "bottom-left", class: "gnwx-success", autoClose: 7500 })
             toggleLoading(false)
-            new GNWX_NOTIFY({ text: "Es wurden insgesamt "+result.length+" Ergebnisse gefunden!", position: "bottom-left", class: "gnwx-success", autoClose: 7500 });
+            initResults()
         },
         error: function(){
             //updateAccountActivity("[ERROR] " + _currentUsername + " | Fahrzeugsuche | SEARCH", LOGTYPE.ERROR)
         }
     })
+}
+
+function initResults(){
+    _requestSearch = false
+    $('#search_vehicle_numberplate').val('')
+    $('#modal_search_vehicle').css('display', 'none')
+    $('.search_vehicle_result_container').css('display', 'flex')
+    $('#new_searchVehicle').css('display', 'block')
 }

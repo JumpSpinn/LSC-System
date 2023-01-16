@@ -86,3 +86,11 @@
 .search_vehicle_btn:hover{
     background-color: rgb(83, 41, 128);
 }
+
+/* Results */
+.search_vehicle_result_container{
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    color: white;
+}
