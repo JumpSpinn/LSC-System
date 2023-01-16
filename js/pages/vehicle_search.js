@@ -73,7 +73,7 @@ function searchVehicleByNumberplate(numberplate){
             }
         },
         error: function(){
-            //updateAccountActivity("[ERROR] " + _currentUsername + " | Fahrzeugsuche | SEARCH", LOGTYPE.ERROR)
+            updateAccountActivity("[ERROR] " + _currentUsername + " | Fahrzeugsuche | SEARCH", LOGTYPE.ERROR)
         }
     })
 }
