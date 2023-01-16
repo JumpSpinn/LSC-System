@@ -85,9 +85,7 @@ function initResults(){
     $('#modal_search_vehicle').css('display', 'none')
     $('.search_vehicle_result_container').css('display', 'flex')
     $('#new_searchVehicle').css('display', 'block')
-
-    console.log(_searchedVehicles)
-
+    
     _searchedVehicles.forEach((entry) => {
         let mainData = JSON.parse(entry.mainData)[0]
         let container = '\
