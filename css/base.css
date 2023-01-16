@@ -10,6 +10,7 @@
 @import './pages/main_ab.css';
 @import './pages/main_bh.css';
 @import './pages/create_bill.css';
+@import './pages/vehicle_search.css';
 
 :root{
     /* COLOR CODES */

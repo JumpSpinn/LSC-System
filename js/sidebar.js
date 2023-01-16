@@ -91,6 +91,11 @@ var _sidebar = [
                 sidebarMenuID: 43,
                 name: "Buchhaltung",
                 file: "main_bh",
+            },
+            {
+                sidebarMenuID: 44,
+                name: "Fahrzeugsuche",
+                file: "vehicle_search",
             }
         ]
     },

@@ -1,0 +1,29 @@
+<div class="page_header">
+    <div class="page_header_name">
+        <div class="page_header_title">Kennzeichen suche</div>
+        <div class="page_header_subtitle">Sollte ein Fahrzeug ohne Kunden anzutreffen sein, kann man hier nach dem Kennzeichen suchen</div>
+    </div>
+    <div class="page_header_btns">
+        <div class="page_header_btn" id="new_searchVehicle" style="display: none">Neue Suche starten</div>
+    </div>
+</div>
+<div class="search_vehicle_content_container">
+    <!-- Fahrzeugsuche starten -->
+    <div class="search_vehicle_container" id="modal_search_vehicle">
+        <div class="search_vehicle_header">
+            <div class="search_vehicle_title">Fahrzeugsuche</div>
+            <div class="search_vehicle_subtitle">Gebe das gewünschte Kennzeichen ein, um den eventuellen Kunden zuordnen zu können</div>
+        </div>
+        <div class="search_vehicle_content">
+            <div class="search_vehicle_row">
+                <span>Kennzeichen angeben:</span>
+                <input type="text" placeholder="Kennzeichen angeben.." id="search_vehicle_numberplate" autocomplete="off">
+            </div>
+        </div>
+        <div class="search_vehicle_btns">
+            <div class="search_vehicle_btn" id="search_vehicle_confirm">Suche starten</div>
+        </div>
+    </div>
+    <!-- Results -->
+    <div class="search_vehicle_result_container"></div>
+</div>
