@@ -1,3 +1,11 @@
+.search_vehicle_content_container{
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
 .search_vehicle_container{
     display: none;
     width: 550px;
