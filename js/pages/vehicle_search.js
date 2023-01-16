@@ -16,6 +16,7 @@ $(() => {
 
     $('#new_searchVehicle').click(() => {
         $('.search_vehicle_result_container').css('display', 'none')
+        $('#new_searchVehicle').css('display', 'none')
         $('#modal_search_vehicle').css('display', 'block')
         setTimeout(() => {
             $('#search_vehicle_numberplate').focus()
