@@ -13,6 +13,13 @@ $(() => {
         searchVehicleByNumberplate(numberplate)
         toggleLoading(true)
     })
+
+    $("#search_vehicle_numberplate").on("keypress", $(document), function(e) {
+        if (e.which == 13) {
+            searchVehicleByNumberplate(numberplate)
+            toggleLoading(true)
+        }
+    })
 })
 
 function initSearchVehicle(){
@@ -36,9 +43,9 @@ function searchVehicleByNumberplate(numberplate){
         },
         beforeSend: function() { },
         success: function(response) {
+            let result = JSON.parse(response)
             toggleLoading(false)
-            console.log(JSON.parse(response))
-            //new GNWX_NOTIFY({ text: _currentCustomerName + " ist bei uns im System gesperrt & wird nicht mehr bearbeitet!", position: "bottom-left", class: "gnwx-danger", autoClose: 7500 });
+            new GNWX_NOTIFY({ text: "Es wurden insgesamt "+result.length+" Ergebnisse gefunden!", position: "bottom-left", class: "gnwx-success", autoClose: 7500 });
         },
         error: function(){
             //updateAccountActivity("[ERROR] " + _currentUsername + " | Fahrzeugsuche | SEARCH", LOGTYPE.ERROR)
