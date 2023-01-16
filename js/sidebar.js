@@ -94,8 +94,8 @@ var _sidebar = [
             },
             {
                 sidebarMenuID: 44,
-                name: "Kennzeichen suche",
-                file: "numberplate_search",
+                name: "Fahrzeugsuche",
+                file: "vehicle_search",
             }
         ]
     },
