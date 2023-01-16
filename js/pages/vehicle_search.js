@@ -17,7 +17,7 @@ $(() => {
 
 function initSearchVehicle(){
     $('#search_vehicle_numberplate').val('')
-    $('#modal_search_vehicle').css('display', 'flex')
+    $('#modal_search_vehicle').css('display', 'block')
     setTimeout(() => {
         $('#search_vehicle_numberplate').focus()
     }, 150);
