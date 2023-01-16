@@ -27,4 +27,21 @@ function searchVehicleByNumberplate(numberplate){
     if(_requestSearch) return
     _requestSearch = true
     _searchedVehicles = []
+
+    $.ajax({
+        url: "scripts/searchVehicleByNumberplate.php",
+        type: "POST",
+        data: {
+            numberplate: numberplate
+        },
+        beforeSend: function() { },
+        success: function(response) {
+            toggleLoading(false)
+            console.log(response)
+            //new GNWX_NOTIFY({ text: _currentCustomerName + " ist bei uns im System gesperrt & wird nicht mehr bearbeitet!", position: "bottom-left", class: "gnwx-danger", autoClose: 7500 });
+        },
+        error: function(){
+            //updateAccountActivity("[ERROR] " + _currentUsername + " | Fahrzeugsuche | SEARCH", LOGTYPE.ERROR)
+        }
+    })
 }
