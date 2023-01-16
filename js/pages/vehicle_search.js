@@ -5,19 +5,12 @@ $(() => {
     initSearchVehicle()
 
     $('#search_vehicle_confirm').click(() => {
-        let numberplate = $('#search_vehicle_numberplate').val()
-        if(numberplate == ""){
-            new GNWX_NOTIFY({ text: "Bitte gebe ein gültiges Kennzeichen an!", position: "bottom-left", class: "gnwx-warning", autoClose: 5000 });   
-            return
-        }
-        searchVehicleByNumberplate(numberplate)
-        toggleLoading(true)
+        checkSearchByNumerplate()
     })
 
     $("#search_vehicle_numberplate").on("keypress", $(document), function(e) {
         if (e.which == 13) {
-            searchVehicleByNumberplate(numberplate)
-            toggleLoading(true)
+            checkSearchByNumerplate()
         }
     })
 })
@@ -28,6 +21,16 @@ function initSearchVehicle(){
     setTimeout(() => {
         $('#search_vehicle_numberplate').focus()
     }, 150);
+}
+
+function checkSearchByNumerplate(){
+    let numberplate = $('#search_vehicle_numberplate').val()
+    if(numberplate == ""){
+        new GNWX_NOTIFY({ text: "Bitte gebe ein gültiges Kennzeichen an!", position: "bottom-left", class: "gnwx-warning", autoClose: 5000 });   
+        return
+    }
+    searchVehicleByNumberplate(numberplate)
+    toggleLoading(true)
 }
 
 function searchVehicleByNumberplate(numberplate){
