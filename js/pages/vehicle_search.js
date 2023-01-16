@@ -59,7 +59,8 @@ function searchVehicleByNumberplate(numberplate){
             toggleLoading(false)
             _searchedVehicles = JSON.parse(response)
             if(_searchedVehicles.length == 0){
-                new GNWX_NOTIFY({ text: "Es wurden zu diesen Kennzeichen keine Einträge gefunden!", position: "bottom-left", class: "gnwx-warning", autoClose: 5000 })
+                new GNWX_NOTIFY({ text: "Es wurden zu diesen Kennzeichen keine Einträge gefunden!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 })
+                $('#search_vehicle_numberplate').val('')
                 $('.search_vehicle_result_container').css('display', 'none')
                 $('#new_searchVehicle').css('display', 'none')
                 $('#modal_search_vehicle').css('display', 'block')
