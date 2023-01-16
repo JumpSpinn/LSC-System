@@ -56,10 +56,20 @@ function searchVehicleByNumberplate(numberplate){
         },
         beforeSend: function() { },
         success: function(response) {
-            _searchedVehicles = JSON.parse(response)
-            new GNWX_NOTIFY({ text: "Es wurden insgesamt "+_searchedVehicles.length+" Ergebnisse gefunden!", position: "bottom-left", class: "gnwx-success", autoClose: 7500 })
             toggleLoading(false)
-            initResults()
+            _searchedVehicles = JSON.parse(response)
+            if(_searchedVehicles.length == 0){
+                new GNWX_NOTIFY({ text: "Es wurden zu diesen Kennzeichen keine Einträge gefunden!", position: "bottom-left", class: "gnwx-warning", autoClose: 5000 })
+                $('.search_vehicle_result_container').css('display', 'none')
+                $('#new_searchVehicle').css('display', 'none')
+                $('#modal_search_vehicle').css('display', 'block')
+                setTimeout(() => {
+                    $('#search_vehicle_numberplate').focus()
+                }, 150);
+            } else {
+                new GNWX_NOTIFY({ text: "Es wurden insgesamt "+_searchedVehicles.length+" Ergebnisse gefunden!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 })
+                initResults()
+            }
         },
         error: function(){
             //updateAccountActivity("[ERROR] " + _currentUsername + " | Fahrzeugsuche | SEARCH", LOGTYPE.ERROR)
