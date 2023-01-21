@@ -970,6 +970,9 @@ function sendAuftragSuccess(){
         success: function(response) {
             updateAccountActivity(_currentUsername + " hat den Auftrag #"+response+" mit dem Kunden "+_currentCustomerName+" in die Buchhaltung eingetragen!", LOGTYPE.ADDED)
             new GNWX_NOTIFY({ text: "Auftrag #"+response+" wurde erfolgreich in die Buchhaltung eingetragen", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
+            if(_currentCustomerIsState){
+                new GNWX_NOTIFY({ text: "Denk daran, dass dieses Fahrzeug nicht für Geld eingeparkt wird!", position: "bottom-left", class: "gnwx-warning", autoClose: 10000 });
+            }
             switchState(STATES.SERACH_CUSTOMER)
             reset()
         },
