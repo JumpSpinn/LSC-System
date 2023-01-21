@@ -19,6 +19,17 @@ var HIGHLIGHT_NAMES = [
     { name: "Abschlepp/ Umdrehen Gebühren" },
 ]
 
+var CUSTOMER_FREE_REPAIR = [
+    { name: "CarConnect-Kit" },
+    { name: "Wireless-Charger" },
+    { name: "GPS" },
+    { name: "Speedlimiter" },
+    { name: "Freisprechanlage" },
+    { name: "Alarmsystem" },
+    { name: "Kickstarter-Umbaukit" },
+    { name: "Abschlepp/ Umdrehen Gebühren" }
+]
+
 var _searchedCustomerName = ""
 var _searchedCustomerNumber = ""
 var _redeemedGutschein = false
@@ -32,6 +43,7 @@ var _currentCustomerEnterState = ""
 var _currentCustomerIsState = false
 var _currentCustomerIsServicePartner = false
 var _currentCustomerPayType = ""
+var _currentCustomerFreeRepair = false
 
 // Vehicle Data
 var _currentVehicleModel = ""
@@ -264,8 +276,8 @@ $(() => {
     })
 
     $('#customer_free_repair_confirm').click(() => {
-        reset()
-        switchState(STATES.SERACH_CUSTOMER)
+        //reset()
+        //switchState(STATES.SERACH_CUSTOMER)
         closePopup()
     })
 
@@ -529,6 +541,7 @@ function switchState(state){
             let enterStateTimestamp = getTimestampFromDateString(_currentCustomerEnterState)
             if((enterStateTimestamp + 604800) >= getCurrentTimestamp()){
                 showPopup('popup_customer_free_repair')
+                _currentCustomerFreeRepair = true
             }
             $('#auftragsblatt_customer_rabatt').removeClass('redeemedCode')
             if(_redeemedGutschein || _currentCustomerIsServicePartner){
@@ -803,10 +816,21 @@ function initAuftragsblatt(){
             </div>\
         '
 
-        if(appendCount > 15){
-            $('.mainab_auftragsblatt_row.auftragsblatt_prices_2').append(container)
+        if(!_currentCustomerFreeRepair){
+            if(appendCount > 15){
+                $('.mainab_auftragsblatt_row.auftragsblatt_prices_2').append(container)
+            } else {
+                $('.mainab_auftragsblatt_row.auftragsblatt_prices_1').append(container)
+            }
         } else {
-            $('.mainab_auftragsblatt_row.auftragsblatt_prices_1').append(container)
+            let check = CUSTOMER_FREE_REPAIR.find(f => f.name == price.name)
+            if(check != null){
+                if(appendCount > 15){
+                    $('.mainab_auftragsblatt_row.auftragsblatt_prices_2').append(container)
+                } else {
+                    $('.mainab_auftragsblatt_row.auftragsblatt_prices_1').append(container)
+                }
+            }
         }
     })
 
@@ -817,7 +841,9 @@ function initAuftragsblatt(){
                 <input class="auftragsblatt_checkbox_change" type="checkbox">\
             </div>\
         '
-        $('.mainab_auftragsblatt_row.auftragsblatt_inspektion').append(container)
+        if(!_currentCustomerFreeRepair){
+            $('.mainab_auftragsblatt_row.auftragsblatt_inspektion').append(container)
+        }
     })
 }
 
@@ -872,6 +898,7 @@ function reset(){
         clearInterval(_einparkdauerTimerInterval)
         _einparkdauerTimerInterval = null
     }
+    _currentCustomerFreeRepair = false
 
     $('.mainab_auftragsblatt_row').html('')
     $('.mainab_auftragsblatt_row.auftragsblatt_inspektion').append('<div class="ab_notice">Bitte zuerst das Fahrzeugmodel auswählen!</div>')
