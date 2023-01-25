@@ -44,6 +44,7 @@ var _currentCustomerIsState = false
 var _currentCustomerIsServicePartner = false
 var _currentCustomerPayType = ""
 var _currentCustomerFreeRepair = false
+var _currentCustomerNotice = ""
 
 // Vehicle Data
 var _currentVehicleModel = ""
@@ -543,6 +544,10 @@ function switchState(state){
                 showPopup('popup_customer_free_repair')
                 _currentCustomerFreeRepair = true
             }
+            if(_currentCustomerNotice != ""){
+                $('#popup_customer_notice .page_popup_header_subtitle').html(_currentCustomerNotice)
+                showPopup('popup_customer_notice')
+            }
             $('#auftragsblatt_customer_rabatt').removeClass('redeemedCode')
             if(_redeemedGutschein || _currentCustomerIsServicePartner){
                 $('#auftragsblatt_customer_rabatt').addClass('redeemedCode')
@@ -610,6 +615,7 @@ function getSearchedCustomer(){
                     _currentCustomerRabatt = parseInt(split[2])
                     _currentCustomerEnterState = split[3]
                     _currentCustomerIsState = (split[5] == '0' ? false : true)
+                    _currentCustomerNotice = split[6]
                     if(split[4] == 1){
                         switchState(STATES.SERACH_CUSTOMER)
                         new GNWX_NOTIFY({ text: _currentCustomerName + " ist bei uns im System gesperrt & wird nicht mehr bearbeitet!", position: "bottom-left", class: "gnwx-danger", autoClose: 7500 });
@@ -647,6 +653,7 @@ function getSearchedCustomer(){
                     _currentCustomerRabatt = split[2]
                     _currentCustomerEnterState = split[3]
                     _currentCustomerIsState = (split[5] == '0' ? false : true)
+                    _currentCustomerNotice = split[6]
                     if(split[4] == 1){
                         switchState(STATES.SERACH_CUSTOMER)
                         new GNWX_NOTIFY({ text: _currentCustomerName + " ist bei uns im System gesperrt & wird nicht mehr bearbeitet!", position: "bottom-left", class: "gnwx-danger", autoClose: 7500 });
@@ -877,6 +884,7 @@ function reset(){
     _searchedCustomerName = ""
     _searchedCustomerNumber = ""
     _redeemedGutschein = false
+    _currentCustomerNotice = ""
     _currentEnteredVehicle = ""
     _currentCustomerName = ""
     _currentCustomerNumber = 0
