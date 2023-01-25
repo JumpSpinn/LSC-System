@@ -549,7 +549,7 @@ function switchState(state){
                 _currentCustomerFreeRepair = true
             }
             if(_currentCustomerNotice != ""){
-                $('#popup_customer_notice .page_popup_content').html(_currentCustomerNotice)
+                $('#popup_customer_notice .page_popup_content_customer_notice').html(_currentCustomerNotice)
                 showPopup('popup_customer_notice')
             }
             $('#auftragsblatt_customer_rabatt').removeClass('redeemedCode')
