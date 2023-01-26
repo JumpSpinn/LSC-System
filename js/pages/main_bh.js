@@ -6,6 +6,9 @@ var _customers = []
 var _searchedCustomerName = ""
 var _createdBillFor = ""
 
+var _canDeleteBH = false
+var _wantDeleteEntry = null
+
 var PAYTYPES = [
     { type: "Staatlich" },
     { type: "Sammelrechnung" }
@@ -15,6 +18,10 @@ $(() => {
     if(hasPermission(PAGE_PERMISSION_TYPES.BUCHHALTUNG_RECHNUNG)){
         $('#createRechnung').css('display', 'flex')
         $('#archiveBuchhaltung').css('display', 'flex')
+    }
+
+    if(hasPermission(PAGE_PERMISSION_TYPES.BUCHHALTUNG_DELETE)){
+        _canDeleteBH = true
     }
 
     toggleLoading(true)
@@ -160,6 +167,44 @@ $(() => {
             toggleLoading(false)
         })
     })
+
+    $('.buchhaltung_list').on('click', '.deleteEntry', function(){
+        let entryID = $(this).parent().parent().data('id')
+        let foundEntry = _buchhaltung.find(i => i.id == entryID)
+        if(foundEntry != null){
+            _wantDeleteEntry = foundEntry
+            showPopup('popup_delete_entry')
+        }
+    })
+
+    $('#popup_delete_entry_abort').click(() => {
+        closePopup()
+        _wantDeleteEntry = null
+    })
+
+    $('#popup_delete_entry_confirm').click(() => {
+        closePopup()
+        $.ajax({
+            url: "scripts/delete/bh.php",
+            type: "POST",
+            data: {
+                id: _wantDeleteEntry.id
+            },
+            beforeSend: function() { toggleLoading(true) },
+            success: function(response) {
+                getData_buchhaltung(function(array){
+                    _buchhaltung = JSON.parse(array)
+                    _buchhaltungLoaded = true
+                    showBuchhaltung()
+                    updateAccountActivity(_currentUsername + " hat ein Auftrag aus der Buchhaltung gelöscht! (" + _wantDeleteEntry.id + ")", LOGTYPE.REMOVED)
+                    new GNWX_NOTIFY({ text: "Auftrag #" + _wantDeleteEntry.id + " wurde aus der Buchhaltung gelöscht!", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
+                })
+            },
+            error: function(){
+                updateAccountActivity("[ERROR] " + _currentUsername + " | Buchhaltung | DELETE", LOGTYPE.ERROR)
+            }
+        })
+    })
 })
 
 function showBuchhaltung(array = _buchhaltung){
@@ -229,6 +274,7 @@ function showBuchhaltung(array = _buchhaltung){
                 </div>\
                 <div class="bh_entry_content_btns">\
                     <div class="bh_entry_content_btn viewEntry"><em class="mdi mdi-eye"></em></div>\
+                    <div class="bh_entry_content_btn deleteEntry" style="display: '+(_canDeleteBH ? 'flex' : 'none')+'"><em class="mdi mdi-delete"></em></div>\
                 </div>\
             </div>\
         '

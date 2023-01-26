@@ -1,3 +1,7 @@
 TODO: Verwaltung > Mitarbeiter > Notiz/Beschreibung hinterlegen können für herausgegebene Gegenstände/Kleidungen
 
 TODO: Suchfunktion in der Buchhaltung | Suchoptionen: Kunde, Mitarbeiter, Fahrzeug, Kennzeichen
+
+NEW ADDED:
+- Kundenhinweis im Auftragsblatt als Popup Meldung
+- Buchhaltungseinträge können gelöscht werden sobald man die Rechte dafür hat
