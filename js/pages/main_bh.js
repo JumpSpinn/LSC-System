@@ -142,6 +142,8 @@ $(() => {
             new GNWX_NOTIFY({ text: "Es wurden keine Einträge gefunden, die archiviert werden können!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
             return
         }
+        let count = 0
+        let failed = false
         toggleLoading(true)
         archived.forEach((entry) => {
             $.ajax({
@@ -151,20 +153,28 @@ $(() => {
                     id: entry.id
                 },
                 beforeSend: function() {  },
-                success: function(response) { },
+                success: function(response) {
+                    count++
+                },
                 error: function(){
-                    updateAccountActivity("[ERROR] " + _currentUsername + " | Buchhaltung | ARCHIVE", LOGTYPE.ERROR)
+                    if(!failed){
+                        failed = true
+                        updateAccountActivity("[ERROR] " + _currentUsername + " | Buchhaltung | ARCHIVE", LOGTYPE.ERROR)
+                    }
                 }
             })
-        })
-        getData_buchhaltung(function(array){
-            _buchhaltung = JSON.parse(array)
-            _buchhaltungLoaded = true
-            showBuchhaltung()
-            closePopup()
-            updateAccountActivity(_currentUsername + " hat die Buchhaltung archiviert! (von Auftrag #"+start+" bis #"+end+")", LOGTYPE.EDITED)
-            new GNWX_NOTIFY({ text: "Buchhaltung wurde erfolgreich archiviert! (von Auftrag #"+start+" bis #"+end+")", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
-            toggleLoading(false)
+
+            if(count >= archived.length){
+                getData_buchhaltung(function(array){
+                    _buchhaltung = JSON.parse(array)
+                    _buchhaltungLoaded = true
+                    showBuchhaltung()
+                    closePopup()
+                    updateAccountActivity(_currentUsername + " hat die Buchhaltung archiviert! (von Auftrag #"+start+" bis #"+end+")", LOGTYPE.EDITED)
+                    new GNWX_NOTIFY({ text: "Buchhaltung wurde erfolgreich archiviert! (von Auftrag #"+start+" bis #"+end+")", position: "bottom-left", class: "gnwx-success", autoClose: 5000 });
+                    toggleLoading(false)
+                })
+            }
         })
     })
 
