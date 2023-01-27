@@ -110,6 +110,7 @@ var PAGE_PERMISSION_TYPES = {
     // Buchhaltung | Main
     BUCHHALTUNG_CHECK: 13,
     BUCHHALTUNG_RECHNUNG: 17,
+    BUCHHALTUNG_DELETE: 18,
     // Ränge
     RANG_CREATE: 14,
     RANG_EDIT: 15,
@@ -184,6 +185,10 @@ var PAGE_PERMISSIONS = [
     {
         permissionTypeID: PAGE_PERMISSION_TYPES.BUCHHALTUNG_RECHNUNG,
         name: "Rechnungen erstellen"
+    },
+    {
+        permissionTypeID: PAGE_PERMISSION_TYPES.BUCHHALTUNG_DELETE,
+        name: "Buchhaltung löschen"
     }
 ]
 

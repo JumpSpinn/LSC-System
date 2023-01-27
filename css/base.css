@@ -171,6 +171,12 @@ html {
     margin-top: 0px;
 }
 
+.page_popup_content_customer_notice{
+    width: 100%;
+    text-align: justify;
+    font-size: .85rem;
+}
+
 .page_popup_selections{
     display: flex;
     flex-grow: 1;

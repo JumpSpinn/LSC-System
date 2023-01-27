@@ -19,7 +19,7 @@
             if ($result->num_rows > 0) {
                 // Eintrag ist vorhanden
                 while ($row = $result->fetch_assoc()) {
-                    echo $row["name"] . "_" . $row["number"] . "_" . $row["rabatt"] . "_" . $row["enterState"] . "_" . $row["disabled"] . "_" . $row["isState"];
+                    echo $row["name"] . "_" . $row["number"] . "_" . $row["rabatt"] . "_" . $row["enterState"] . "_" . $row["disabled"] . "_" . $row["isState"] . "_" . $row["notice"];
                 }
             } else {
                 // Eintrag ist nicht vorhanden

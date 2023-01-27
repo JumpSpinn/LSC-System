@@ -44,6 +44,7 @@ var _currentCustomerIsState = false
 var _currentCustomerIsServicePartner = false
 var _currentCustomerPayType = ""
 var _currentCustomerFreeRepair = false
+var _currentCustomerNotice = ""
 
 // Vehicle Data
 var _currentVehicleModel = ""
@@ -478,6 +479,10 @@ $(() => {
         }
     })
 
+    $('#popup_customer_notice_confirm').click(() => {
+        closePopup()
+    })
+
     $(document).keydown(function(e){
         if(e.ctrlKey){
             if(e.keyCode == 65){
@@ -541,6 +546,10 @@ function switchState(state){
             if((enterStateTimestamp + 604800) >= getCurrentTimestamp()){
                 showPopup('popup_customer_free_repair')
                 _currentCustomerFreeRepair = true
+            }
+            if(_currentCustomerNotice != ""){
+                $('#popup_customer_notice .page_popup_content_customer_notice').html(_currentCustomerNotice)
+                showPopup('popup_customer_notice')
             }
             $('#auftragsblatt_customer_rabatt').removeClass('redeemedCode')
             if(_redeemedGutschein || _currentCustomerIsServicePartner){
@@ -609,6 +618,7 @@ function getSearchedCustomer(){
                     _currentCustomerRabatt = parseInt(split[2])
                     _currentCustomerEnterState = split[3]
                     _currentCustomerIsState = (split[5] == '0' ? false : true)
+                    _currentCustomerNotice = split[6]
                     if(split[4] == 1){
                         switchState(STATES.SERACH_CUSTOMER)
                         new GNWX_NOTIFY({ text: _currentCustomerName + " ist bei uns im System gesperrt & wird nicht mehr bearbeitet!", position: "bottom-left", class: "gnwx-danger", autoClose: 7500 });
@@ -646,6 +656,7 @@ function getSearchedCustomer(){
                     _currentCustomerRabatt = split[2]
                     _currentCustomerEnterState = split[3]
                     _currentCustomerIsState = (split[5] == '0' ? false : true)
+                    _currentCustomerNotice = split[6]
                     if(split[4] == 1){
                         switchState(STATES.SERACH_CUSTOMER)
                         new GNWX_NOTIFY({ text: _currentCustomerName + " ist bei uns im System gesperrt & wird nicht mehr bearbeitet!", position: "bottom-left", class: "gnwx-danger", autoClose: 7500 });
@@ -872,6 +883,7 @@ function reset(){
     _servicePartnerLoaded = false
     _currentCustomerIsServicePartner = false
     _currentCustomerIsState = false
+    _currentCustomerNotice = ""
     _searchedCustomerName = ""
     _searchedCustomerNumber = ""
     _redeemedGutschein = false
