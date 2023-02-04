@@ -166,7 +166,7 @@
                     <div class="sidebar_elements">
                         <ul class="sidebar_links"></ul>
                     </div>
-                    <div class="sidebar_discord_server_container"><a href="https://discord.gg/yDBvWPMW" target="_blank">Internes System (Discord) beitreten</a></div>
+                    <div class="sidebar_discord_server_container"><a href="https://discord.gg/cSJdVeWdsr" target="_blank">Internes System (Discord) beitreten</a></div>
                     <div class="sidebar_system_version">Version <?php echo $version; ?></div>
                 </div>
                 <!-- PAGES -->
