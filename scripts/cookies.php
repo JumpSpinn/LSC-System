@@ -15,6 +15,7 @@ class Cookie
      * @param bool $httpOnly is HTTP or HTTPS
      * @return bool
      */
+
     public function set(string $name, string $value = "", int $expired = 0, string $path = "", string $domain = "", bool $secure = false, bool $httpOnly = false) :bool
     {
         $this->isCookie = setcookie($name, $value, $expired, $path, $domain, $secure, $httpOnly);
@@ -49,3 +50,5 @@ class Cookie
         return $this->set($name, "", $expiredTime);
     }
 }
+
+$COOKIE = new Cookie();
