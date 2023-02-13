@@ -2,8 +2,8 @@
     require "../config/database.inc.php";
     
     
-    ini_set('session.gc_maxlifetime', time() + (86400 * 14));
-    session_set_cookie_params(time() + (86400 * 14));
+    ini_set('session.gc_maxlifetime', time() + (86400 * 7));
+    session_set_cookie_params(time() + (86400 * 7));
     session_start();
 
     $stmt = $con->prepare("SELECT * FROM employees WHERE id=?");
