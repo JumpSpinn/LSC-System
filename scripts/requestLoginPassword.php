@@ -29,6 +29,8 @@
                     $_SESSION['positionID'] = $row["positionID"];
 
                     echo $_SESSION['firstname'] . "_" . $_SESSION['lastname'] . "_" . $_SESSION['positionID'] . "_" . $_SESSION['currentSidebarID'] . "_" . $_SESSION['currentSubSidebarID'];
+
+                    setcookie('LOGGEDIN', $_SESSION['accountID'], time() + (86400 * 7), "/");
                 }
             } else {
                 echo "failed_Benutzerdaten sind nicht korrekt!";
