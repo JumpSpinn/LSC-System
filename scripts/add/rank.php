@@ -11,7 +11,7 @@
     $sidebarPermissions = json_encode($_POST['sidebarPermissions'], true);
     $pagePermissions = json_encode($_POST['pagePermissions'], true);
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("INSERT INTO memberPositions (`name`,`sidebarPermissions`,`pagePermissions`) VALUES (?,?,?)");
         $stmt->bind_param("sss", $rankName, $sidebarPermissions, $pagePermissions);
     

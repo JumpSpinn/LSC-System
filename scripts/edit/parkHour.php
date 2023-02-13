@@ -11,7 +11,7 @@
     $name = htmlspecialchars(stripslashes(trim($_POST['name'])));
     $value = $_POST['value'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE parkHours SET `name`=?,`value`=? WHERE id=?");
         $stmt->bind_param("sii", $name, $value, $id);
     

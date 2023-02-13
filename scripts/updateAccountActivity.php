@@ -9,7 +9,7 @@
 
     $lastAction = mysqli_real_escape_string($con, $_POST['lastAction']);
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE employees SET `lastAction`=? WHERE id=?");
         $stmt->bind_param("si", $lastAction, $_SESSION['accountID']);
     

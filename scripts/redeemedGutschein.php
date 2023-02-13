@@ -12,7 +12,7 @@
     $redeemedMember = htmlspecialchars(stripslashes(trim($_POST['redeemedMember'])));
     $redeemedTimestamp = $_POST['redeemedTimestamp'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
 
         $stmt = $con->prepare("UPDATE coupons SET `redeemedCustomer`=?,`redeemedMember`=?,`redeemedTimestamp`=? WHERE code=?");
         $stmt->bind_param("ssis", $redeemedCustomer, $redeemedMember, $redeemedTimestamp, $code);

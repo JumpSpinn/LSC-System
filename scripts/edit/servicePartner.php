@@ -16,7 +16,7 @@
     $rabatt = $_POST['rabatt'];
     $notice = htmlspecialchars(stripslashes(trim($_POST['notice'])));
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE servicePartners SET `lastEditMember`=?,`lastEditTimestamp`=?,`customerName`=?,`contactName`=?,`plz`=?,`rabatt`=?,`notice`=? WHERE id=?");
         $stmt->bind_param("sissiisi", $lastEditMember,$lastEditTimestamp,$customerName,$contactName,$plz,$rabatt,$notice, $id);
     

@@ -12,7 +12,7 @@
     $sidebarPermissions = json_encode($_POST['sidebarPermissions'], true);
     $pagePermissions = json_encode($_POST['pagePermissions'], true);
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE memberPositions SET `name`=?,`sidebarPermissions`=?,`pagePermissions`=? WHERE id=?");
         $stmt->bind_param("sssi", $name, $sidebarPermissions, $pagePermissions, $id);
     

@@ -9,7 +9,7 @@
     $logType = $_POST['logType'];
     $message = htmlspecialchars(stripslashes(trim($_POST['message'])));
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("INSERT INTO activityLog (`timestamp`, `message`, `logType`) VALUES (?,?,?)");
         $stmt->bind_param("isi", $timestamp, $message, $logType);
     

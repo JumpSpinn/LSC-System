@@ -17,7 +17,7 @@
     $plz = $_POST['plz'];
     $rabatt = $_POST['rabatt'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
 
         $stmt = $con->prepare("INSERT INTO servicePartners (`createdMember`, `createdTimestamp`, `lastEditMember`, `lastEditTimestamp`, `customerName`, `contactName`, `plz`, `rabatt`, `notice`) VALUES (?,?,?,?,?,?,?,?,?)");
         $stmt->bind_param("sisissiis", $createdMember, $createdTimestamp, $lastEditMember, $lastEditTimestamp, $customerName, $contactName, $plz, $rabatt, $notice);

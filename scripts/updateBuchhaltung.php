@@ -9,7 +9,7 @@
     $id = $_POST['id'];
     $syncedTo = $_POST['syncedTo'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         
         $stmt = $con->prepare("UPDATE bh SET `syncedTo`=? WHERE id=?");
         $stmt->bind_param("ii", $syncedTo, $id);

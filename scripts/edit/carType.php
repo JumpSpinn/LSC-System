@@ -13,7 +13,7 @@
     $markup = $_POST['markup'];
     $percent = $_POST['percent'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE carTypes SET `name`=?,`purchasingPrice`=?,`markup`=?,`percent`=? WHERE id=?");
         $stmt->bind_param("siiii", $name, $purchasingPrice, $markup, $percent, $id);
     

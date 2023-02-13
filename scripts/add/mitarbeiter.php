@@ -20,7 +20,7 @@
     $currentSubSidebarID = 0;
     $password = "";
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("INSERT INTO employees (`firstname`, `lastname`, `pass`, `positionID`, `memberSince`, `phonenumber`, `iban`, `warnings`, `state`, `stateReason`, `currentSidebarID`, `currentSubSidebarID`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
         $stmt->bind_param("sssiissiisii", $firstname, $lastname, $password, $positionID, $memberSince, $phonenumber, $iban, $warnings, $state, $stateReason, $currentSidebarID, $currentSubSidebarID);
     

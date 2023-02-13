@@ -11,7 +11,7 @@
     $value = $_POST['value'];
     $name = htmlspecialchars(stripslashes(trim($_POST['name'])));
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE inspectionPrice SET `name`=?,`value`=? WHERE id=?");
         $stmt->bind_param("sii", $name, $value, $id);
     

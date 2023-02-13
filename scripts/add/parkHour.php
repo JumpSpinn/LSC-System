@@ -10,7 +10,7 @@
     $name = htmlspecialchars(stripslashes(trim($_POST['name'])));
     $value = $_POST['value'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("INSERT INTO parkHours (`name`, `value`) VALUES (?,?)");
         $stmt->bind_param("si", $name, $value);
     

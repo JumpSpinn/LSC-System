@@ -8,7 +8,7 @@
     $id = $_POST['id'];
     $archived = 1;
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         
         $stmt = $con->prepare("UPDATE bh SET `archived`=? WHERE id=?");
         $stmt->bind_param("ii", $archived, $id);

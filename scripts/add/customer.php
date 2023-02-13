@@ -7,7 +7,7 @@
     //session_start();
     
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $number = $_POST['number'];
         $createdTimestamp = $_POST['createdTimestamp'];
         $phonenumber = $_POST['phonenumber'];

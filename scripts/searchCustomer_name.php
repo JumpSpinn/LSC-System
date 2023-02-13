@@ -9,7 +9,7 @@
 
     $name = htmlspecialchars(stripslashes(trim($_POST['name'])));
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         
         $stmt = $con->prepare("SELECT * FROM customers WHERE name=?");
         $stmt->bind_param("s", $name);

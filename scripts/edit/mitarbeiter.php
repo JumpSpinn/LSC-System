@@ -17,7 +17,7 @@
     $stateReason = htmlspecialchars(stripslashes(trim($_POST['stateReason'])));
     $state = htmlspecialchars(stripslashes(trim($_POST['state'])));
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE employees SET `firstname`=?,`lastname`=?,`positionID`=?,`phonenumber`=?,`iban`=?,`state`=?,`stateReason`=?,`warnings`=? WHERE id=?");
         $stmt->bind_param("ssiisisii", $firstname, $lastname, $positionID, $phonenumber, $iban, $state, $stateReason, $warnings, $id);
     

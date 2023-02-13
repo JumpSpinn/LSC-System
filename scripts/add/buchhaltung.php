@@ -13,7 +13,7 @@
     $createdBill = $_POST['createdBill'];
     $archived = $_POST['archived'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
 
         $stmt = $con->prepare("INSERT INTO bh (`timestamp`, `controlled`, `mainData`, `choosedData`, `syncedTo`, `createdBill`, `archived`) VALUES (?,?,?,?,?,?,?)");
         $stmt->bind_param("iissiii", $timestamp, $checked, $mainData, $choosedData, $syncedTo, $createdBill, $archived);

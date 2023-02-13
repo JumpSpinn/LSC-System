@@ -10,7 +10,7 @@
     $type = $_POST['type'];
     $value = $_POST['value'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE bd_data_general SET `value`=? WHERE `type`=?");
         $stmt->bind_param("ii", $value, $type);
     

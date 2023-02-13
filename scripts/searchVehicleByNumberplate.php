@@ -5,7 +5,7 @@
     //session_set_cookie_params(time() + (86400 * 7));
     //session_start();
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $numberplate = $_POST['numberplate'];
 
         $sql_query = "SELECT * FROM bh WHERE `mainData` LIKE '%$numberplate%'";

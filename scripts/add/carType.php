@@ -12,7 +12,7 @@
     $markup = $_POST['markup'];
     $percent = $_POST['percent'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("INSERT INTO carTypes (`name`, `purchasingPrice`, `markup`, `percent`) VALUES (?,?,?,?)");
         $stmt->bind_param("siii", $name, $purchasingPrice, $markup, $percent);
     

@@ -14,7 +14,7 @@
     $message = htmlspecialchars(stripslashes(trim($_POST['message'])));
     $state = htmlspecialchars(stripslashes(trim($_POST['state'])));
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE importantmessages SET `title`=?,`lastEditMember`=?,`lastEditTimestamp`=?,`message`=?,`state`=? WHERE id=?");
         $stmt->bind_param("ssisii", $title, $lastEditMember, $lastEditTimestamp, $message, $state, $id);
     

@@ -14,7 +14,7 @@
     $data = $_POST['data'];
     $state = $_POST['state'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("INSERT INTO createdBills (`createdBy`, `createdTimestamp`, `createdFor`, `startDate`, `endDate`, `weekNumber`, `data`, `state`) VALUES (?,?,?,?,?,?,?,?)");
         $stmt->bind_param("sisssssi", $createdBy, $createdTimestamp, $createdFor, $startDate, $endDate, $weekNumber, $data, $state);
 

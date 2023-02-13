@@ -9,7 +9,7 @@
 
     $number = $_POST['number'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
 
         $stmt = $con->prepare("SELECT * FROM customers WHERE number=?");
         $stmt->bind_param("i", $number);

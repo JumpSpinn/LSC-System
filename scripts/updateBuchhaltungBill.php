@@ -8,7 +8,7 @@
     $id = $_POST['id'];
     $createdBill = 1;
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         
         $stmt = $con->prepare("UPDATE bh SET `createdBill`=? WHERE id=?");
         $stmt->bind_param("ii", $createdBill, $id);

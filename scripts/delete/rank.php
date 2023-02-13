@@ -8,7 +8,7 @@
     
 
     $id = $_POST['positionID'];
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("DELETE FROM memberPositions WHERE id=?");
         $stmt->bind_param("i", $id);
         if(!$stmt->execute()){

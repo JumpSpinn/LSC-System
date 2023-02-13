@@ -9,7 +9,7 @@
     // $filterTimestamp = $_POST['filterTimestamp'];
     $filterTimestamp = 0;
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $sql_query = "SELECT * FROM bh WHERE createdBill = 0 AND `timestamp` >= $filterTimestamp AND archived = 0";
         $result = mysqli_query($con, $sql_query);
         $json_array = array();

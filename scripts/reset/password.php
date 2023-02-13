@@ -10,7 +10,7 @@
     $id = $_POST['id'];
     $resetPassword = "";
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE employees SET `pass`=? WHERE id=?");
         $stmt->bind_param("si", $resetPassword, $id);
     

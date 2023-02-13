@@ -11,7 +11,7 @@
     $currentSubSidebarID = mysqli_real_escape_string($con, $_POST['currentSubSidebarID']);
     $id = $_SESSION['accountID'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE employees SET `currentSidebarID`=?,`currentSubSidebarID`=? WHERE id=?");
         $stmt->bind_param("iii", $currentSidebarID, $currentSubSidebarID, $id);
     

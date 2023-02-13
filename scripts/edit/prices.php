@@ -13,7 +13,7 @@
     $percent = $_POST['percent'];
     $vk = $_POST['vk'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE prices SET `name`=?,`ek`=?,`percent`=?,`vk`=? WHERE id=?");
         $stmt->bind_param("sdidi", $name, $ek, $percent, $vk, $id);
     

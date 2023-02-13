@@ -8,7 +8,7 @@
     
 
     $id = $_POST['id'];
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("DELETE FROM carTypes WHERE id=?");
         $stmt->bind_param("i", $id);
         if(!$stmt->execute()){

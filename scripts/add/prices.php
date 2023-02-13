@@ -12,7 +12,7 @@
     $percent = $_POST['percent'];
     $vk = $_POST['vk'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("INSERT INTO prices (`name`, `ek`, `percent`, `vk`) VALUES (?,?,?,?)");
         $stmt->bind_param("sdid", $name, $ek, $percent, $vk);
     

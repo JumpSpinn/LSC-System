@@ -17,7 +17,7 @@
     $nextService = htmlspecialchars(stripslashes(trim($_POST['nextService'])));
     $currentMember = htmlspecialchars(stripslashes(trim($_POST['currentMember'])));
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("INSERT INTO fleet (`model`, `numberplate`, `km`, `oil`, `battery`, `lastService`, `lastServiceMember`, `nextService`, `currentMember`) VALUES (?,?,?,?,?,?,?,?,?)");
         $stmt->bind_param("ssiiiisss", $model, $numberplate, $km, $oil, $battery, $lastService, $lastServiceMember, $nextService, $currentMember);
     

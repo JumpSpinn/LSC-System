@@ -8,7 +8,7 @@
     
     $filterTimestamp = $_POST['filterTimestamp'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $sql_query = "SELECT * FROM activityLog WHERE `timestamp` >= $filterTimestamp";
         $result = mysqli_query($con, $sql_query);
         $json_array = array();

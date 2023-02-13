@@ -12,7 +12,7 @@
     $createdTimestamp = $_POST['createdTimestamp'];
     $value = $_POST['value'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("INSERT INTO coupons (`code`, `type`, `createdMember`, `createdTimestamp`, `value`) VALUES (?,?,?,?,?)");
         $stmt->bind_param("sssii", $code, $type, $createdMember, $createdTimestamp, $value);
     

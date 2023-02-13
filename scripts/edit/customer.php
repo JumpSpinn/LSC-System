@@ -16,7 +16,7 @@
     $enterState = htmlspecialchars(stripslashes(trim($_POST['enterState'])));
     $notice = htmlspecialchars(stripslashes(trim($_POST['notice'])));
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE customers SET `name`=?,`enterState`=?,`phonenumber`=?,`rabatt`=?,`notice`=?,`disabled`=?,`isState`=? WHERE id=?");
         $stmt->bind_param("ssiisiii", $name, $enterState, $phonenumber, $rabatt, $notice, $disabled, $isState, $id);
     

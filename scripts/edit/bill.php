@@ -8,7 +8,7 @@
     $id = $_POST['id'];
     $newState = 1;
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE createdBills SET `state`=? WHERE id=?");
         $stmt->bind_param("ii", $newState, $id);
     

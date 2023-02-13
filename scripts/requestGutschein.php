@@ -9,7 +9,7 @@
 
     $code = htmlspecialchars(stripslashes(trim($_POST['code'])));
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
 
         $stmt = $con->prepare("SELECT * FROM coupons WHERE code=?");
         $stmt->bind_param("s", $code);

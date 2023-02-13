@@ -12,7 +12,7 @@
     $code = htmlspecialchars(stripslashes(trim($_POST['code'])));
     $type = htmlspecialchars(stripslashes(trim($_POST['type'])));
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE coupons SET `code`=?,`type`=?,`value`=? WHERE id=?");
         $stmt->bind_param("ssii", $code, $type, $value, $id);
     

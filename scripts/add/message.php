@@ -13,7 +13,7 @@
     $message = $_POST['message'];
     $state = htmlspecialchars(stripslashes(trim($_POST['state'])));
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("INSERT INTO importantmessages (`title`, `createdMember`, `createdTimestamp`, `lastEditMember`, `lastEditTimestamp`, `message`, `state`) VALUES (?,?,?,?,?,?,?)");
         $stmt->bind_param("ssisisi", $title, $createdMember, $createdTimestamp, $lastEditMember, $lastEditTimestamp, $message, $state);
     
