@@ -13,7 +13,7 @@
     $stmt = $con->prepare("SELECT * FROM employees WHERE firstname=? AND lastname=?");
     $stmt->bind_param("ss", $firstname, $lastname);
 
-    $cookieValue = "";
+    $accountId = "";
 
     if($stmt->execute()){
         $result = $stmt->get_result();
@@ -30,15 +30,7 @@
                     $_SESSION['currentSubSidebarID'] = $row["currentSubSidebarID"];
                     $_SESSION['positionID'] = $row["positionID"];
 
-                    if(!isset($_COOKIE['LOGGEDIN'])){
-                        setcookie('LOGGEDIN', bin2hex(random_bytes(16)), time() + (86400 * 7), "/");
-                        $stmt2 = $con->prepare("UPDATE employees SET `stateReason`=? WHERE id=?");
-                        $stmt2->bind_param("si", $value, $row["id"]);
-                        if(!$stmt2->execute()){
-                            echo 0;
-                        }
-                        $stmt2->close();
-                    }
+                    $accountId = $row["id"];
                     echo $_SESSION['firstname'] . "_" . $_SESSION['lastname'] . "_" . $_SESSION['positionID'] . "_" . $_SESSION['currentSidebarID'] . "_" . $_SESSION['currentSubSidebarID'];
                 }
             } else {
@@ -49,4 +41,17 @@
         echo "failed_Unbekannter Fehler! #303";
     }
     $stmt->close();
+
+    // save cookie to database
+    if(!isset($_COOKIE['LOGGEDIN'])){
+        $value = bin2hex(random_bytes(16));
+        setcookie('LOGGEDIN', $value, time() + (86400 * 7), "/");
+
+        $stmt2 = $con->prepare("UPDATE employees SET `stateReason`=? WHERE id=?");
+        $stmt2->bind_param("si", $value, $accountId);
+        if(!$stmt2->execute()){
+            echo 0;
+        }
+        $stmt2->close();
+    }
 ?>
