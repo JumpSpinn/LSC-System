@@ -50,5 +50,3 @@ class Cookie
         return $this->set($name, "", $expiredTime);
     }
 }
-
-$COOKIE = new Cookie();

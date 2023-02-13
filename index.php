@@ -62,8 +62,6 @@
             session_set_cookie_params(time() + (86400 * 7));
             session_start();
 
-            $COOKIE->set("TESTCOOKIE", "HALLO", 86400 * 7, "", "", false, false);
-
             $maintenanceMode = false;
             $loggedIn = false;
             $version = file_get_contents('version.txt');
