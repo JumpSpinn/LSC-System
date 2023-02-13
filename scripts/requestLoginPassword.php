@@ -30,12 +30,11 @@
                     $_SESSION['currentSubSidebarID'] = $row["currentSubSidebarID"];
                     $_SESSION['positionID'] = $row["positionID"];
 
-                    $cookieValue = $_SESSION['firstname'] . "_" . $_SESSION['lastname'] . "_" . $_SESSION['positionID'] . "_" . $_SESSION['currentSidebarID'] . "_" . $_SESSION['currentSubSidebarID'];
+                    $cookieValue = bin2hex(random_bytes(16));
                     if(!isset($_COOKIE['LOGGEDIN'])){
                         setcookie('LOGGEDIN', $cookieValue, time() + (86400 * 7), "/");
                     }
-                    echo $_COOKIE['LOGGEDIN'];
-                    //echo $_SESSION['firstname'] . "_" . $_SESSION['lastname'] . "_" . $_SESSION['positionID'] . "_" . $_SESSION['currentSidebarID'] . "_" . $_SESSION['currentSubSidebarID'];
+                    echo $_SESSION['firstname'] . "_" . $_SESSION['lastname'] . "_" . $_SESSION['positionID'] . "_" . $_SESSION['currentSidebarID'] . "_" . $_SESSION['currentSubSidebarID'];
                 }
             } else {
                 echo "failed_Benutzerdaten sind nicht korrekt!";
