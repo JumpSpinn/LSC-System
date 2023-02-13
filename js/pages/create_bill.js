@@ -130,7 +130,7 @@ $(() => {
 
 function showCreatedBills(array = _createdBills){
     $('.mitarbeiter_content_container').html('')
-    array.sort((a,b) => { return b.timestamp - a.timestamp })
+    array.sort((a,b) => { return b.createdTimestamp - a.createdTimestamp })
     array.forEach((bill) => {
         let billEntrys = JSON.parse(bill.data)
         let container = '\
