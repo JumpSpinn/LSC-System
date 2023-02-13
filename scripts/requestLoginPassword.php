@@ -22,7 +22,7 @@
                 if($row["state"] == 4){
                     echo "failed_Du wurdest suspendiert & hast daher keinen Zugriff auf das System! Bitte melde dich bei der Führungsebene!_Begründung: " . $row["stateReason"] ;
                 } else {
-                    $_COOKIE['LOGGEDIN'] = true;
+                    $_SESSION['loggedIn'] = true;
                     $_SESSION['accountID'] = $row["id"];
                     $_SESSION['firstname'] = $row["firstname"];
                     $_SESSION['lastname'] = $row["lastname"];
