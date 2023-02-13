@@ -2,9 +2,9 @@
     require "../../config/database.inc.php";
     
     
-    //ini_set('session.gc_maxlifetime', time() + (86400 * 7));
-    //session_set_cookie_params(time() + (86400 * 7));
-    //session_start();
+    ini_set('session.gc_maxlifetime', time() + (86400 * 7));
+    session_set_cookie_params(time() + (86400 * 7));
+    session_start();
 
     if($_COOKIE['LOGGEDIN']){
         $sql_query = "SELECT * FROM carTypes";

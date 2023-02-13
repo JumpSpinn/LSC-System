@@ -1,9 +1,9 @@
 <?php
     require "../../config/database.inc.php";
     
-    //ini_set('session.gc_maxlifetime', time() + (86400 * 7));
-    //session_set_cookie_params(time() + (86400 * 7));
-    //session_start();
+    ini_set('session.gc_maxlifetime', time() + (86400 * 7));
+    session_set_cookie_params(time() + (86400 * 7));
+    session_start();
 
     $lastEditMember = $_SESSION["firstname"] . " " . $_SESSION["lastname"];
     $createdMember = $_SESSION["firstname"] . " " . $_SESSION["lastname"];
