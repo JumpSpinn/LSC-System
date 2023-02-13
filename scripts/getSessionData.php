@@ -14,7 +14,16 @@
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     if($row["state"] == 4){
-                        echo 0;
+                        setcookie("LOGGEDIN", "", time() - 3600);
+
+                        $value = "";
+                        $stmt2 = $con->prepare("UPDATE employees SET `token`=? WHERE id=?");
+                        $stmt2->bind_param("si", $value, $_SESSION['accountID']);
+                        if(!$stmt2->execute()){
+                            echo 0;
+                        }
+                        $stmt2->close();
+                        
                     } else {
                         $_SESSION['accountID'] = $row["id"];
                         $_SESSION['firstname'] = $row["firstname"];
