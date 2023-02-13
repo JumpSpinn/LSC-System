@@ -202,7 +202,7 @@ function getSessionData(){
                     url: "scripts/logout.php",
                     type: "POST"
                 })
-                reloadPage()
+                //reloadPage()
             } else {
                 let resSplit = response.split('_')
                 _currentSidebarID = parseInt(resSplit[3])
