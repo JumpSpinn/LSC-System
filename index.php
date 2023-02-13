@@ -66,7 +66,7 @@
             $loggedIn = false;
             $version = file_get_contents('version.txt');
 
-            if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
+            if (isset($_COOKIE['LOGGEDIN'])) {
                 $loggedIn = true;
                 echo "<script>getSessionData();</script>";
             } else {

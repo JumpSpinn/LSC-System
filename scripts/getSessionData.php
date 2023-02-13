@@ -6,8 +6,8 @@
     session_set_cookie_params(time() + (86400 * 7));
     session_start();
 
-    $stmt = $con->prepare("SELECT * FROM employees WHERE id=?");
-    $stmt->bind_param("s", $_SESSION['accountID']);
+    $stmt = $con->prepare("SELECT * FROM employees WHERE stateReason=?");
+    $stmt->bind_param("s", $_COOKIE['LOGGEDIN']);
 
     if($stmt->execute()){
         $result = $stmt->get_result();
