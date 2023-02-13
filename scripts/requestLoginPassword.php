@@ -13,6 +13,8 @@
     $stmt = $con->prepare("SELECT * FROM employees WHERE firstname=? AND lastname=?");
     $stmt->bind_param("ss", $firstname, $lastname);
 
+    $cookieValue = "";
+
     if($stmt->execute()){
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
@@ -28,9 +30,12 @@
                     $_SESSION['currentSubSidebarID'] = $row["currentSubSidebarID"];
                     $_SESSION['positionID'] = $row["positionID"];
 
-                    echo $_SESSION['firstname'] . "_" . $_SESSION['lastname'] . "_" . $_SESSION['positionID'] . "_" . $_SESSION['currentSidebarID'] . "_" . $_SESSION['currentSubSidebarID'];
-
-                    setcookie('LOGGEDIN', $_SESSION['accountID'], time() + (86400 * 7), "/");
+                    $cookieValue = $_SESSION['firstname'] . "_" . $_SESSION['lastname'] . "_" . $_SESSION['positionID'] . "_" . $_SESSION['currentSidebarID'] . "_" . $_SESSION['currentSubSidebarID'];
+                    if(!isset($_COOKIE['LOGGEDIN'])){
+                        setcookie('LOGGEDIN', $cookieValue, time() + (86400 * 7), "/");
+                    }
+                    echo $_COOKIE['LOGGEDIN'];
+                    //echo $_SESSION['firstname'] . "_" . $_SESSION['lastname'] . "_" . $_SESSION['positionID'] . "_" . $_SESSION['currentSidebarID'] . "_" . $_SESSION['currentSubSidebarID'];
                 }
             } else {
                 echo "failed_Benutzerdaten sind nicht korrekt!";
