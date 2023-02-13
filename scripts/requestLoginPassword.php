@@ -47,7 +47,7 @@
         $value = bin2hex(random_bytes(16));
         setcookie('LOGGEDIN', $value, time() + (86400 * 7), "/");
 
-        $stmt2 = $con->prepare("UPDATE employees SET `stateReason`=? WHERE id=?");
+        $stmt2 = $con->prepare("UPDATE employees SET `token`=? WHERE id=?");
         $stmt2->bind_param("si", $value, $accountId);
         if(!$stmt2->execute()){
             echo 0;

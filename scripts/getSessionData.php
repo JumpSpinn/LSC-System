@@ -6,7 +6,7 @@
     session_start();
 
     if(isset($_COOKIE['LOGGEDIN'])){
-        $stmt = $con->prepare("SELECT * FROM employees WHERE stateReason=?");
+        $stmt = $con->prepare("SELECT * FROM employees WHERE token=?");
         $stmt->bind_param("s", $_COOKIE['LOGGEDIN']);
     
         if($stmt->execute()){
