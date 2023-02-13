@@ -31,7 +31,13 @@
                     $_SESSION['positionID'] = $row["positionID"];
 
                     if(!isset($_COOKIE['LOGGEDIN'])){
-                        setNewCookie('LOGGEDIN', bin2hex(random_bytes(16)), time() + (86400 * 7));
+                        setcookie('LOGGEDIN', bin2hex(random_bytes(16)), time() + (86400 * 7), "/");
+                        $stmt2 = $con->prepare("UPDATE employees SET `stateReason`=? WHERE id=?");
+                        $stmt2->bind_param("si", $value, $row["id"]);
+                        if(!$stmt2->execute()){
+                            echo 0;
+                        }
+                        $stmt2->close();
                     }
                     echo $_SESSION['firstname'] . "_" . $_SESSION['lastname'] . "_" . $_SESSION['positionID'] . "_" . $_SESSION['currentSidebarID'] . "_" . $_SESSION['currentSubSidebarID'];
                 }
@@ -43,15 +49,4 @@
         echo "failed_Unbekannter Fehler! #303";
     }
     $stmt->close();
-
-    function setNewCookie($name, $value, $time){
-        setcookie($name, $value, $time, "/");
-
-        $stmt2 = $con->prepare("UPDATE employees SET `stateReason`=? WHERE id=?");
-        $stmt2->bind_param("si", $value, $_SESSION['accountID']);
-        if(!$stmt2->execute()){
-            echo 0;
-        }
-        $stmt2->close();
-    }
 ?>
