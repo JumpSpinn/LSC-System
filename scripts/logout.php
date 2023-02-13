@@ -8,11 +8,11 @@
         $stmt2 = $con->prepare("UPDATE employees SET `token`=? WHERE id=?");
         $stmt2->bind_param("si", $value, $_SESSION['accountID']);
         if(!$stmt2->execute()){
-            header("Refresh:0");
+            echo 0;
         }
         $stmt2->close();
     }
     
     session_destroy();
-    header("Refresh:0");
+    echo 1;
 ?>

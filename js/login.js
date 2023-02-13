@@ -200,9 +200,14 @@ function getSessionData(){
             if(response == 0){
                 $.ajax({
                     url: "scripts/logout.php",
-                    type: "POST"
+                    type: "POST",
+                    data: { },
+                    success: function(response){
+                        if(response == 1){
+                            reloadPage()
+                        }
+                    }
                 })
-                //reloadPage()
             } else {
                 let resSplit = response.split('_')
                 _currentSidebarID = parseInt(resSplit[3])
