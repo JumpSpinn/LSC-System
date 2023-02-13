@@ -37,7 +37,7 @@ function checkLoginData(){
         warning('Bitte fülle alle Felder aus!')
         return
     }
-
+    toggleLoading(true)
     $.ajax({
         url: "scripts/requestLogin.php",
         type: "POST",
@@ -59,16 +59,19 @@ function checkLoginData(){
                 $('#login_lastname').val('')
                 $('#login_firstname').focus()
                 warning('Zugriff verweigert!')
+                toggleLoading(false)
             } else {
                 $('#requestLogin').css('display', 'none')
                 if(response == 1){ // Passwort existiert
                     _setNewPassword = false
                     $('#checkPassword').css('display', 'flex')
                     $('#login_checkPassword').focus()
+                    toggleLoading(false)
                 } else if(response == 2){ // Passwort muss gesetzt werden
                     _setNewPassword = true
                     $('#setPassword').css('display', 'flex')
                     $('#login_setPassword').focus()
+                    toggleLoading(false)
                 }
             }
         }
@@ -82,6 +85,7 @@ function checkPassword(){
         warning('Bitte fülle alle Felder aus!')
         return
     }
+    toggleLoading(true)
     $.ajax({
         url: "scripts/requestLoginPassword.php",
         type: "POST",
@@ -105,6 +109,7 @@ function checkPassword(){
                     $('.login_blocked_container').html(split[2])
                     $('.login_blocked_container').css('display', 'block')
                 }
+                toggleLoading(false)
             } else {
                 let resSplit = response.split('_')
                 _currentSidebarID = parseInt(resSplit[3])
@@ -125,6 +130,7 @@ function checkPassword(){
 
                     initSidebar()
                     $('.system_container').css('display', 'flex')
+                    toggleLoading(false)
                 })
             }
         }
@@ -143,6 +149,7 @@ function setNewPassword(){
         warning('Passwörter stimmen nicht überein!')
         return
     }
+    toggleLoading(true)
     $.ajax({
         url: "scripts/setNewPassword.php",
         type: "POST",
@@ -159,9 +166,11 @@ function setNewPassword(){
         success: function(response){
             if(response == 0){
                 warning("Unbekannter Fehler! #304")
+                toggleLoading(false)
             } else {
                 $('#setPassword').css('display', 'none')
                 $('#checkPassword').css('display', 'flex')
+                toggleLoading(false)
             }
         }
     })
