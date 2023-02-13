@@ -2,8 +2,8 @@
     require "../../config/database.inc.php";
     
     
-    ini_set('session.gc_maxlifetime', 86400);
-    session_set_cookie_params(86400);
+    ini_set('session.gc_maxlifetime', time() + (86400 * 14));
+    session_set_cookie_params(time() + (86400 * 14));
     session_start();
 
     $code = htmlspecialchars(stripslashes(trim($_POST['code'])));
