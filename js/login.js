@@ -116,6 +116,11 @@ function checkPassword(){
                 _currentSidebarSubMenuID = parseInt(resSplit[4])
                 _currentUsername = resSplit[0] + " " + resSplit[1]
 
+                console.log(resSplit)
+                console.log(_currentSidebarID)
+                console.log(_currentSidebarSubMenuID)
+                console.log(_currentUsername)
+
                 updateAccountActivity(_currentUsername + " hat sich eingeloggt!", LOGTYPE.LOGGEDIN)
                 $('#checkPassword').css('display', 'none')
 
