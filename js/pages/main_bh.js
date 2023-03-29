@@ -226,7 +226,10 @@ function showBuchhaltung(array = _buchhaltung){
 
     let containers = []
     for(const bh in filtered){
+        console.log(bh)
+        
         let mainDatas = JSON.parse(bh.mainData)[0]
+        return
         let container = '\
             <div class="bh_entry_container '+(mainDatas.isState ? 'isState' : (mainDatas.isServicePartner ? 'isServicePartner' : ''))+'" data-id="'+bh.id+'">\
                 <div class="bh_entry_content_container">\
