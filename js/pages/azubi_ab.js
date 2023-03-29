@@ -791,6 +791,7 @@ function initAuftragsblatt(){
     $('.mainab_auftragsblatt_row').html('')
     let appendCount = 0
     let withMarkup = false
+    _prices.sort((a,b) => { return a.id - b.id })
     _prices.forEach((price) => {
         let parkInTime = 0
         let displayPrice = price.vk
@@ -827,7 +828,7 @@ function initAuftragsblatt(){
         '
 
         if(!_currentCustomerFreeRepair){
-            if(appendCount > 15){
+            if(appendCount > 16){
                 $('.mainab_auftragsblatt_row.auftragsblatt_prices_2').append(container)
             } else {
                 $('.mainab_auftragsblatt_row.auftragsblatt_prices_1').append(container)
@@ -835,7 +836,7 @@ function initAuftragsblatt(){
         } else {
             let check = CUSTOMER_FREE_REPAIR.find(f => f.name == price.name)
             if(check != null){
-                if(appendCount > 15){
+                if(appendCount > 16){
                     $('.mainab_auftragsblatt_row.auftragsblatt_prices_2').append(container)
                 } else {
                     $('.mainab_auftragsblatt_row.auftragsblatt_prices_1').append(container)
