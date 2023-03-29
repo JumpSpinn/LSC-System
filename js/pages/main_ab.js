@@ -16,6 +16,7 @@ var HIGHLIGHT_NAMES = [
     { name: "Freisprechanlage" },
     { name: "Alarmsystem" },
     { name: "Kickstarter-Umbaukit" },
+    { name: "Megaphone-Modul" },
     { name: "Abschlepp/ Umdrehen Gebühren" },
 ]
 
