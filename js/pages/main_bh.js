@@ -224,82 +224,74 @@ function showBuchhaltung(array = _buchhaltung){
     let filtered = array.filter(f => f.syncedTo == 0)
     filtered.sort((a, b) => { return b.timestamp - a.timestamp; })
 
-    console.log(filtered)
-    console.log(filtered.length)
-    console.log(`###############`)
-
-    for(const bh of filtered){
-        console.log(bh)
-    }
-
     let containers = []
-    // for(const bh in filtered){
-    //     let mainDatas = JSON.parse(bh.mainData)[0]
-    //     let container = '\
-    //         <div class="bh_entry_container '+(mainDatas.isState ? 'isState' : (mainDatas.isServicePartner ? 'isServicePartner' : ''))+'" data-id="'+bh.id+'">\
-    //             <div class="bh_entry_content_container">\
-    //                 <div class="bh_entry_content_title">Auftrag #'+bh.id+'</div>\
-    //                 <div class="bh_entry_content_col">\
-    //                     <div class="bh_entry_content_row">\
-    //                         <span>Datum:</span>\
-    //                         <p>'+convertTimestamp(bh.timestamp)+'</p>\
-    //                     </div>\
-    //                     <div class="bh_entry_content_row">\
-    //                         <span>Mitarbeiter:</span>\
-    //                         <p>'+mainDatas.workerName+'</p>\
-    //                     </div>\
-    //                     <div class="bh_entry_content_row">\
-    //                         <span>Kunden-Nr.:</span>\
-    //                         <p>'+mainDatas.customerNumber+'</p>\
-    //                     </div>\
-    //                     <div class="bh_entry_content_row">\
-    //                         <span>Kunde:</span>\
-    //                         <p>'+mainDatas.customerName+'</p>\
-    //                     </div>\
-    //                     <div class="bh_entry_content_row">\
-    //                         <span>Rabatt</span>\
-    //                         <p>'+mainDatas.customerRabatt+'% '+(mainDatas.isServicePartner ? '(Servicevertrag)' : '')+'</p>\
-    //                     </div>\
-    //                     <div class="bh_entry_content_row">\
-    //                         <span>Fahrzeug:</span>\
-    //                         <p>'+mainDatas.vehicleModel+'</p>\
-    //                     </div>\
-    //                 </div>\
-    //                 <div class="bh_entry_content_col">\
-    //                     <div class="bh_entry_content_row">\
-    //                         <span>Einkaufspreis</span>\
-    //                         <p>$'+mainDatas.summe+'</p>\
-    //                     </div>\
-    //                     <div class="bh_entry_content_row">\
-    //                         <span>Gewinnspanne</span>\
-    //                         <p>$'+mainDatas.gewinnspanne+'</p>\
-    //                     </div>\
-    //                     <div class="bh_entry_content_row">\
-    //                         <span>Netto</span>\
-    //                         <p>$'+mainDatas.netto+'</p>\
-    //                     </div>\
-    //                     <div class="bh_entry_content_row">\
-    //                         <span>Steuern</span>\
-    //                         <p>$'+mainDatas.steuern+'</p>\
-    //                     </div>\
-    //                     <div class="bh_entry_content_row">\
-    //                         <span>Brutto</span>\
-    //                         <p>$'+mainDatas.brutto+'</p>\
-    //                     </div>\
-    //                     <div class="bh_entry_content_row">\
-    //                         <span>Gewinn</span>\
-    //                         <p class="'+(mainDatas.gewinn < 0 ? 'red' : 'green')+'">$'+mainDatas.gewinn+'</p>\
-    //                     </div>\
-    //                 </div>\
-    //             </div>\
-    //             <div class="bh_entry_content_btns">\
-    //                 <div class="bh_entry_content_btn viewEntry"><em class="mdi mdi-eye"></em></div>\
-    //                 <div class="bh_entry_content_btn deleteEntry" style="display: '+(_canDeleteBH ? 'flex' : 'none')+'"><em class="mdi mdi-delete"></em></div>\
-    //             </div>\
-    //         </div>\
-    //     '
-    //     containers.push(container)
-    // }
+    for(const bh of filtered){
+        let mainDatas = JSON.parse(bh.mainData)[0]
+        let container = '\
+            <div class="bh_entry_container '+(mainDatas.isState ? 'isState' : (mainDatas.isServicePartner ? 'isServicePartner' : ''))+'" data-id="'+bh.id+'">\
+                <div class="bh_entry_content_container">\
+                    <div class="bh_entry_content_title">Auftrag #'+bh.id+'</div>\
+                    <div class="bh_entry_content_col">\
+                        <div class="bh_entry_content_row">\
+                            <span>Datum:</span>\
+                            <p>'+convertTimestamp(bh.timestamp)+'</p>\
+                        </div>\
+                        <div class="bh_entry_content_row">\
+                            <span>Mitarbeiter:</span>\
+                            <p>'+mainDatas.workerName+'</p>\
+                        </div>\
+                        <div class="bh_entry_content_row">\
+                            <span>Kunden-Nr.:</span>\
+                            <p>'+mainDatas.customerNumber+'</p>\
+                        </div>\
+                        <div class="bh_entry_content_row">\
+                            <span>Kunde:</span>\
+                            <p>'+mainDatas.customerName+'</p>\
+                        </div>\
+                        <div class="bh_entry_content_row">\
+                            <span>Rabatt</span>\
+                            <p>'+mainDatas.customerRabatt+'% '+(mainDatas.isServicePartner ? '(Servicevertrag)' : '')+'</p>\
+                        </div>\
+                        <div class="bh_entry_content_row">\
+                            <span>Fahrzeug:</span>\
+                            <p>'+mainDatas.vehicleModel+'</p>\
+                        </div>\
+                    </div>\
+                    <div class="bh_entry_content_col">\
+                        <div class="bh_entry_content_row">\
+                            <span>Einkaufspreis</span>\
+                            <p>$'+mainDatas.summe+'</p>\
+                        </div>\
+                        <div class="bh_entry_content_row">\
+                            <span>Gewinnspanne</span>\
+                            <p>$'+mainDatas.gewinnspanne+'</p>\
+                        </div>\
+                        <div class="bh_entry_content_row">\
+                            <span>Netto</span>\
+                            <p>$'+mainDatas.netto+'</p>\
+                        </div>\
+                        <div class="bh_entry_content_row">\
+                            <span>Steuern</span>\
+                            <p>$'+mainDatas.steuern+'</p>\
+                        </div>\
+                        <div class="bh_entry_content_row">\
+                            <span>Brutto</span>\
+                            <p>$'+mainDatas.brutto+'</p>\
+                        </div>\
+                        <div class="bh_entry_content_row">\
+                            <span>Gewinn</span>\
+                            <p class="'+(mainDatas.gewinn < 0 ? 'red' : 'green')+'">$'+mainDatas.gewinn+'</p>\
+                        </div>\
+                    </div>\
+                </div>\
+                <div class="bh_entry_content_btns">\
+                    <div class="bh_entry_content_btn viewEntry"><em class="mdi mdi-eye"></em></div>\
+                    <div class="bh_entry_content_btn deleteEntry" style="display: '+(_canDeleteBH ? 'flex' : 'none')+'"><em class="mdi mdi-delete"></em></div>\
+                </div>\
+            </div>\
+        '
+        containers.push(container)
+    }
 
     $('.buchhaltung_list').append(containers)
     toggleLoading(false)

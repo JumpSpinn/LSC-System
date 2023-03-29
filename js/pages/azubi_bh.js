@@ -144,7 +144,7 @@ function showBuchhaltung(array = _buchhaltung){
     filtered.sort((a, b) => { return b.timestamp - a.timestamp; })
     let containers = []
 
-    for(const bh in filtered){
+    for(const bh of filtered){
         let mainDatas = JSON.parse(bh.mainData)[0]
         let container = '\
             <div class="bh_entry_container '+(mainDatas.isState ? 'isState' : (mainDatas.isServicePartner ? 'isServicePartner' : ''))+'" data-id="'+bh.id+'">\
