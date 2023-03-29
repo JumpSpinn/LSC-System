@@ -90,10 +90,12 @@ $(() => {
 function showKunden(array = _kunden){
     if(!_kundenLoaded) return
     $('.mitarbeiter_content_container').html('')
+
     array.sort((a, b) => { return a.number - b.number; })
     let filteredArray = array.filter(i => i.syncedTo == CUSTOMERS_SYNCEDTO.SCHOOL)
+
     let containers = []
-    filteredArray.forEach((kunde) => {
+    for(const kunde of filteredArray){
         let container = '\
             <div class="mitarbeiter_entry" data-id="'+kunde.id+'">\
                 <div class="mitarbeiter_entry_header">\
@@ -136,7 +138,7 @@ function showKunden(array = _kunden){
             </div>\
         '
         containers.push(container)
-    })
+    }
     $('.mitarbeiter_content_container').append(containers)
     toggleLoading(false)
 }
