@@ -793,6 +793,7 @@ function initAuftragsblatt(){
     $('.mainab_auftragsblatt_row').html('')
     let appendCount = 0
     let withMarkup = false
+    _prices.sort((a,b) => { return a.id - b.id })
     _prices.forEach((price) => {
         let parkInTime = 0
         let displayPrice = price.vk
