@@ -692,7 +692,7 @@ function updateGeneralData(type, value){
 function showCarTypes(array = _carTypes){
     $('.carTypes').html('')
     let containers = []
-    array.forEach((carType) => {
+    for(const carType of array){
         let container = '\
             <div class="bh_table_content" data-id="'+carType.id+'">\
                 <span>'+carType.name+'</span>\
@@ -703,14 +703,14 @@ function showCarTypes(array = _carTypes){
             </div>\
         '
         containers.push(container)
-    })
+    }
     $('.carTypes').append(containers)
 }
 
 function showInspections(array = _inspections){
     $('.inspections').html('')
     let containers = []
-    array.forEach((inspection) => {
+    for(const inspection of array){
         let container = '\
             <div class="bh_table_content" data-id="'+inspection.id+'">\
                 <span>'+inspection.name+'</span>\
@@ -719,14 +719,14 @@ function showInspections(array = _inspections){
             </div>\
         '
         containers.push(container)
-    })
+    }
     $('.inspections').append(containers)
 }
 
 function showParkHours(array = _parkHours){
     $('.parkHours').html('')
     let containers = []
-    array.forEach((parkHour) => {
+    for(const parkHour of array){
         let container = '\
             <div class="bh_table_content" data-id="'+parkHour.id+'">\
                 <span>'+parkHour.name+'</span>\
@@ -735,14 +735,14 @@ function showParkHours(array = _parkHours){
             </div>\
         '
         containers.push(container)
-    })
+    }
     $('.parkHours').append(containers)
 }
 
 function showPrices(array = _prices){
     $('.prices').html('')
     let containers = []
-    array.forEach((price) => {
+    for(const price of array){
         let container = '\
             <div class="bh_table_content" data-id="'+price.id+'">\
                 <span>'+price.name+'</span>\
@@ -753,6 +753,6 @@ function showPrices(array = _prices){
             </div>\
         '
         containers.push(container)
-    })
+    }
     $('.prices').append(containers)
 }
