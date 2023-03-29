@@ -277,6 +277,7 @@ function showMitarbeiter(array = _mitarbeiter){
     if(!_mitarbeiterLoaded || !_positionsLoaded) return
     $('.mitarbeiter_content_container').html('')
     array.sort((a, b) => { return b.positionID - a.positionID; })
+    let containers = []
     array.forEach((user) => {
         let diffTimestamp = getCurrentTimestamp() - user.memberSince
         let daysInDuty = (diffTimestamp / 86400).toFixed(0)
@@ -334,8 +335,9 @@ function showMitarbeiter(array = _mitarbeiter){
                 </div>\
             </div>\
         '
-        $('.mitarbeiter_content_container').append(container)
+        containers.push(container)
     })
+    $('.mitarbeiter_content_container').append(containers)
     toggleLoading(false)
 }
 

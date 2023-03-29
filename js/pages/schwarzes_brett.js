@@ -228,6 +228,7 @@ function showMessages(array = _messages){
     $('.schwarzes_brett_content_container').html('')
     array.sort((a, b) => { return b.lastEditTimestamp - a.lastEditTimestamp; })
     array.sort((a, b) => { return b.state - a.state; })
+    let containers = []
     array.forEach((msg) => {
         let state = MESSAGE_STATES.find(i => i.id == msg.state)
         let message = msg.message.replaceAll('&lt;br /&gt;', '<br />')
@@ -247,8 +248,9 @@ function showMessages(array = _messages){
                 <div class="schwarzes_brett_content">'+message+'</div>\
             </div>\
         '
-        $('.schwarzes_brett_content_container').append(container)
+        containers.push(container)
     })
+    $('.schwarzes_brett_content_container').append(containers)
     toggleLoading(false)
 
     $('.schwarzes_brett_content').each(function(){
@@ -264,10 +266,12 @@ function showStates(){
     let findStates = MESSAGE_STATES.filter(p => p.name.toLowerCase().includes(_currentEnteredState.toLowerCase()))
     if(findStates.length > 0){
         $('.page_popup_suggestions').html('')
+        let containers = []
         findStates.forEach((state) => {
             let container = '<div class="page_popup_suggestion changeMessageState" data-id="'+state.id+'">'+state.name+'</div>'
-            $('.page_popup_suggestions.messageStates').append(container)
+            containers.push(container)
         })
+        $('.page_popup_suggestions.messageStates').append(containers)
     }
     if(_currentEnteredState == ""){
         $('.page_popup_suggestions').html('')

@@ -24,9 +24,11 @@ function showLogs(array = _logs){
     if(!_logsLoaded) return
     $('.mitarbeiter_content_container').html('')
     array.sort((a, b) => { return b.timestamp - a.timestamp; })
+    let containers = []
     array.forEach((log) => {
         let container = '<div class="logs_entry logType_'+log.logType+'" data-id="'+log.id+'"><p>['+convertTimestamp(log.timestamp)+']</p> '+log.message+'</div>'
-        $('.mitarbeiter_content_container').append(container)
+        containers.push(container)
     })
+    $('.mitarbeiter_content_container').append(containers)
     toggleLoading(false)
 }

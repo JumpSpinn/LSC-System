@@ -142,6 +142,7 @@ function showBuchhaltung(array = _buchhaltung){
 
     let filtered = array.filter(f => f.syncedTo == 1)
     filtered.sort((a, b) => { return b.timestamp - a.timestamp; })
+    let containers = []
     filtered.forEach((bh) => {
         let mainDatas = JSON.parse(bh.mainData)[0]
         let container = '\
@@ -208,7 +209,8 @@ function showBuchhaltung(array = _buchhaltung){
                 </div>\
             </div>\
         '
-        $('.buchhaltung_list').append(container)
+        containers.push(container)
     })
+    $('.buchhaltung_list').append(containers)
     toggleLoading(false)
 }

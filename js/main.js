@@ -57,6 +57,7 @@ function initSidebar(){
     var _userPermissions = JSON.parse(_currentUserPosition.sidebarPermissions)
 
     $('.sidebar_links').html('')
+    let containers = []
     _sidebar.forEach((sidebar) => {
         let hasSidebarPermission = _userPermissions.find(i => i.id == sidebar.sidebarID)
         if(hasSidebarPermission != null){
@@ -84,7 +85,7 @@ function initSidebar(){
                         </ul>\
                     </li>\
                 '
-                $('.sidebar_links').append(sidebarContainer)
+                containers.push(sidebarContainer)
             } else {
                 let sidebarContainer = '\
                     <li class="sidebar '+(_currentSidebarID == sidebar.sidebarID ? 'active' : '')+'" data-sidebarid="'+sidebar.sidebarID+'">\
@@ -94,10 +95,11 @@ function initSidebar(){
                         </div>\
                     </li>\
                 '
-                $('.sidebar_links').append(sidebarContainer)
+                containers.push(sidebarContainer)
             }
         }
     })
+    $('.sidebar_links').append(containers)
 
     $.ajax({
         url: "scripts/updateAccountSidebar.php",

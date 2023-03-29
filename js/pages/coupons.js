@@ -170,6 +170,7 @@ function showGutscheine(array = _gutscheine){
     if(!_gutscheineLoaded) return
     $('.mitarbeiter_content_container').html('')
     array.sort((a, b) => { return a.id - b.id; })
+    let containers = []
     array.forEach((coupon) => {
         let container = '\
             <div class="mitarbeiter_entry" data-id="'+coupon.id+'">\
@@ -206,7 +207,8 @@ function showGutscheine(array = _gutscheine){
                 </div>\
             </div>\
         '
-        $('.mitarbeiter_content_container').append(container)
+        containers.push(container)
     })
+    $('.mitarbeiter_content_container').append(containers)
     toggleLoading(false)
 }

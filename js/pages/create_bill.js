@@ -131,6 +131,7 @@ $(() => {
 function showCreatedBills(array = _createdBills){
     $('.mitarbeiter_content_container').html('')
     array.sort((a,b) => { return b.createdTimestamp - a.createdTimestamp })
+    let containers = []
     array.forEach((bill) => {
         let billEntrys = JSON.parse(bill.data)
         let container = '\
@@ -171,8 +172,9 @@ function showCreatedBills(array = _createdBills){
                 </div>\
             </div>\
         '
-        $('.mitarbeiter_content_container').append(container)
+        containers.push(container)
     })
+    $('.mitarbeiter_content_container').append(containers)
     toggleLoading(false)
 }
 

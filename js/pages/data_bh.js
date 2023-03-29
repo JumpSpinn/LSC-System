@@ -691,6 +691,7 @@ function updateGeneralData(type, value){
 
 function showCarTypes(array = _carTypes){
     $('.carTypes').html('')
+    let containers = []
     array.forEach((carType) => {
         let container = '\
             <div class="bh_table_content" data-id="'+carType.id+'">\
@@ -701,12 +702,14 @@ function showCarTypes(array = _carTypes){
                 <div class="bh_table_btn"><em class="mdi mdi-lead-pencil editCarType"></em></div>\
             </div>\
         '
-        $('.carTypes').append(container)
+        containers.push(container)
     })
+    $('.carTypes').append(containers)
 }
 
 function showInspections(array = _inspections){
     $('.inspections').html('')
+    let containers = []
     array.forEach((inspection) => {
         let container = '\
             <div class="bh_table_content" data-id="'+inspection.id+'">\
@@ -715,12 +718,14 @@ function showInspections(array = _inspections){
                 <div class="bh_table_btn"><em class="mdi mdi-lead-pencil editInspection"></em></div>\
             </div>\
         '
-        $('.inspections').append(container)
+        containers.push(container)
     })
+    $('.inspections').append(containers)
 }
 
 function showParkHours(array = _parkHours){
     $('.parkHours').html('')
+    let containers = []
     array.forEach((parkHour) => {
         let container = '\
             <div class="bh_table_content" data-id="'+parkHour.id+'">\
@@ -729,12 +734,14 @@ function showParkHours(array = _parkHours){
                 <div class="bh_table_btn"><em class="mdi mdi-lead-pencil editParkHour"></em></div>\
             </div>\
         '
-        $('.parkHours').append(container)
+        containers.push(container)
     })
+    $('.parkHours').append(containers)
 }
 
 function showPrices(array = _prices){
     $('.prices').html('')
+    let containers = []
     array.forEach((price) => {
         let container = '\
             <div class="bh_table_content" data-id="'+price.id+'">\
@@ -745,6 +752,7 @@ function showPrices(array = _prices){
                 <div class="bh_table_btn"><em class="mdi mdi-lead-pencil editPrice"></em></div>\
             </div>\
         '
-        $('.prices').append(container)
+        containers.push(container)
     })
+    $('.prices').append(containers)
 }

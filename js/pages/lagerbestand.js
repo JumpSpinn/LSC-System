@@ -182,6 +182,7 @@ function showStorage(array = _storage){
     let canDelete = hasPermission(PAGE_PERMISSION_TYPES.LAGER_DELETE)
 
     array.sort((a, b) => { return a.currentAmount - b.currentAmount; })
+    let containers = []
     array.forEach((elm) => {
         let diff = 0
         let label = ""
@@ -220,7 +221,8 @@ function showStorage(array = _storage){
                 </div>\
             </div>\
         '
-        $('.storage_content_container').append(container)
+        containers.push(container)
     })
+    $('.storage_content_container').append(containers)
     toggleLoading(false)
 }
