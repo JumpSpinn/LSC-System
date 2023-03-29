@@ -5,8 +5,7 @@
     ini_set('session.gc_maxlifetime', time() + (86400 * 7));
     session_set_cookie_params(time() + (86400 * 7));
     session_start();
-
-    // $filterTimestamp = $_POST['filterTimestamp'];
+    
     $filterTimestamp = 0;
 
     if($_COOKIE['LOGGEDIN']){
