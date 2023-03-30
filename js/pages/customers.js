@@ -173,6 +173,7 @@ function showKunden(array = _kunden){
     $('.mitarbeiter_content_container').html('')
     array.sort((a, b) => { return a.number - b.number; })
     let filteredArray = array.filter(i => i.syncedTo == CUSTOMERS_SYNCEDTO.MAIN)
+    let containers = []
     filteredArray.forEach((kunde) => {
         let container = '\
             <div class="mitarbeiter_entry" data-id="'+kunde.id+'">\
@@ -219,7 +220,8 @@ function showKunden(array = _kunden){
                 </div>\
             </div>\
         '
-        $('.mitarbeiter_content_container').append(container)
+        containers.push(container)
     })
+    $('.mitarbeiter_content_container').append(containers)
     toggleLoading(false)
 }

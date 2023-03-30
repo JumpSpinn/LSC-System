@@ -2,8 +2,8 @@
     require "../../config/database.inc.php";
     
     
-    ini_set('session.gc_maxlifetime', 86400);
-    session_set_cookie_params(86400);
+    ini_set('session.gc_maxlifetime', time() + (86400 * 7));
+    session_set_cookie_params(time() + (86400 * 7));
     session_start();
     
 
@@ -12,7 +12,7 @@
     $markup = $_POST['markup'];
     $percent = $_POST['percent'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("INSERT INTO carTypes (`name`, `purchasingPrice`, `markup`, `percent`) VALUES (?,?,?,?)");
         $stmt->bind_param("siii", $name, $purchasingPrice, $markup, $percent);
     

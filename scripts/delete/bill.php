@@ -1,13 +1,13 @@
 <?php
     require "../../config/database.inc.php";
     
-    ini_set('session.gc_maxlifetime', 86400);
-    session_set_cookie_params(86400);
+    ini_set('session.gc_maxlifetime', time() + (86400 * 7));
+    session_set_cookie_params(time() + (86400 * 7));
     session_start();
 
     $id = $_POST['id'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("DELETE FROM createdBills WHERE id=?");
         $stmt->bind_param("i", $id);
         if(!$stmt->execute()){

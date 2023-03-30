@@ -239,6 +239,7 @@ function showPositions(array = _positions){
 
     $('.raenge_content_container').html('')
     array.sort((a, b) => { return b.id - a.id; })
+    let containers = []
     array.forEach((pos) => {
         generalPermissions = JSON.parse(pos.sidebarPermissions).length
         otherPermissions = JSON.parse(pos.pagePermissions).length - 1
@@ -254,8 +255,9 @@ function showPositions(array = _positions){
                 </div>\
             </div>\
         '
-        $('.raenge_content_container').append(container)
+        containers.push(container)
     })
+    $('.raenge_content_container').append(containers)
     toggleLoading(false)
 }
 
@@ -269,6 +271,7 @@ function showPermissions(){
         }
     }
 
+    let containers = []
     _sidebar.forEach((permission) => {
         // Sidebar Permissions
         if(permission.sidebarMenu.length > 0){
@@ -287,7 +290,7 @@ function showPermissions(){
                     <label>'+permission.name+'</label>\
                 </div>\
             '
-            $('.sidebarPermissions').append(mainSidebar)
+            containers.push(mainSidebar)
             
             permission.sidebarMenu.forEach((permission2) => {
                 let checked2 = false
@@ -305,7 +308,7 @@ function showPermissions(){
                         <label>'+permission2.name+'</label>\
                     </div>\
                 '
-                $('.sidebarPermissions').append(subSidebar)
+                containers.push(subSidebar)
             })
         } else {
             let checked = false
@@ -323,9 +326,10 @@ function showPermissions(){
                     <label>'+permission.name+'</label>\
                 </div>\
             '
-            $('.sidebarPermissions').append(mainSidebar)
+            containers.push(mainSidebar)
         }
     })
+    $('.sidebarPermissions').append(containers)
 }
 
 function showPagePermissions(){
@@ -337,6 +341,7 @@ function showPagePermissions(){
     }
 
     $('.pagePermissions').html('')
+    let containers = []
     PAGE_PERMISSIONS.forEach((pagePermission) => {
         let checked = false
         if(pagePermissions.length > 0){
@@ -353,9 +358,10 @@ function showPagePermissions(){
         '
         let hasUserPermission = JSON.parse(_currentUserPosition.pagePermissions).find(i => i.id == pagePermission.permissionTypeID)
         if(hasUserPermission != null){
-            $('.pagePermissions').append(container)
+            containers.push(container)
         } else if(_currentUsername == "Kane Black"){
-            $('.pagePermissions').append(container)
+            containers.push(container)
         }
     })
+    $('.pagePermissions').append(containers)
 }

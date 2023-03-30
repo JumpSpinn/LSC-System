@@ -2,8 +2,8 @@
     require "../../config/database.inc.php";
     
     
-    ini_set('session.gc_maxlifetime', 86400);
-    session_set_cookie_params(86400);
+    ini_set('session.gc_maxlifetime', time() + (86400 * 7));
+    session_set_cookie_params(time() + (86400 * 7));
     session_start();
     
 
@@ -12,7 +12,7 @@
     $sidebarPermissions = json_encode($_POST['sidebarPermissions'], true);
     $pagePermissions = json_encode($_POST['pagePermissions'], true);
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE memberPositions SET `name`=?,`sidebarPermissions`=?,`pagePermissions`=? WHERE id=?");
         $stmt->bind_param("sssi", $name, $sidebarPermissions, $pagePermissions, $id);
     

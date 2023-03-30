@@ -2,14 +2,14 @@
     require "../config/database.inc.php";
     
     
-    ini_set('session.gc_maxlifetime', 86400);
-    session_set_cookie_params(86400);
+    ini_set('session.gc_maxlifetime', time() + (86400 * 7));
+    session_set_cookie_params(time() + (86400 * 7));
     session_start();
     
 
     $lastAction = mysqli_real_escape_string($con, $_POST['lastAction']);
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE employees SET `lastAction`=? WHERE id=?");
         $stmt->bind_param("si", $lastAction, $_SESSION['accountID']);
     

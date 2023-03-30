@@ -2,8 +2,8 @@
     require "../../config/database.inc.php";
     
     
-    ini_set('session.gc_maxlifetime', 86400);
-    session_set_cookie_params(86400);
+    ini_set('session.gc_maxlifetime', time() + (86400 * 7));
+    session_set_cookie_params(time() + (86400 * 7));
     session_start();
     
 
@@ -19,7 +19,7 @@
     $nextService = htmlspecialchars(stripslashes(trim($_POST['nextService'])));
     $currentMember = htmlspecialchars(stripslashes(trim($_POST['currentMember'])));
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE fleet SET `model`=?,`numberplate`=?,`km`=?,`oil`=?,`battery`=?,`lastService`=?,`lastServiceMember`=?,`nextService`=?,`currentMember`=? WHERE id=?");
         $stmt->bind_param("ssiiiisssi", $model, $numberplate, $km, $oil, $battery, $lastService, $lastServiceMember, $nextService, $currentMember, $id);
     

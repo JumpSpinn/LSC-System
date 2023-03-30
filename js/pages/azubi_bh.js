@@ -142,7 +142,9 @@ function showBuchhaltung(array = _buchhaltung){
 
     let filtered = array.filter(f => f.syncedTo == 1)
     filtered.sort((a, b) => { return b.timestamp - a.timestamp; })
-    filtered.forEach((bh) => {
+    let containers = []
+
+    for(const bh of filtered){
         let mainDatas = JSON.parse(bh.mainData)[0]
         let container = '\
             <div class="bh_entry_container '+(mainDatas.isState ? 'isState' : (mainDatas.isServicePartner ? 'isServicePartner' : ''))+'" data-id="'+bh.id+'">\
@@ -208,7 +210,9 @@ function showBuchhaltung(array = _buchhaltung){
                 </div>\
             </div>\
         '
-        $('.buchhaltung_list').append(container)
-    })
+        containers.push(container)
+    }
+
+    $('.buchhaltung_list').append(containers)
     toggleLoading(false)
 }

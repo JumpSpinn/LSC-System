@@ -87,6 +87,8 @@ function initResults(){
     $('.search_vehicle_result_container').css('display', 'flex')
     $('#new_searchVehicle').css('display', 'block')
 
+    let containers = []
+
     _searchedVehicles.forEach((entry) => {
         let mainData = JSON.parse(entry.mainData)[0]
         let container = '\
@@ -121,6 +123,7 @@ function initResults(){
                 </div>\
             </div>\
         '
-        $('.search_vehicle_result_container').append(container)
+        containers.push(container)
     })
+    $('.search_vehicle_result_container').append(containers)
 }

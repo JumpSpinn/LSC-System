@@ -2,8 +2,8 @@
     require "../../config/database.inc.php";
     
     
-    ini_set('session.gc_maxlifetime', 86400);
-    session_set_cookie_params(86400);
+    ini_set('session.gc_maxlifetime', time() + (86400 * 7));
+    session_set_cookie_params(time() + (86400 * 7));
     session_start();
     
 
@@ -16,7 +16,7 @@
     $enterState = htmlspecialchars(stripslashes(trim($_POST['enterState'])));
     $notice = htmlspecialchars(stripslashes(trim($_POST['notice'])));
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE customers SET `name`=?,`enterState`=?,`phonenumber`=?,`rabatt`=?,`notice`=?,`disabled`=?,`isState`=? WHERE id=?");
         $stmt->bind_param("ssiisiii", $name, $enterState, $phonenumber, $rabatt, $notice, $disabled, $isState, $id);
     

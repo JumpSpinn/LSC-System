@@ -1,8 +1,8 @@
 <?php
     require "../../config/database.inc.php";
     
-    ini_set('session.gc_maxlifetime', 86400);
-    session_set_cookie_params(86400);
+    ini_set('session.gc_maxlifetime', time() + (86400 * 7));
+    session_set_cookie_params(time() + (86400 * 7));
     session_start();
 
     $timestamp = $_POST['timestamp'];
@@ -13,7 +13,7 @@
     $createdBill = $_POST['createdBill'];
     $archived = $_POST['archived'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
 
         $stmt = $con->prepare("INSERT INTO bh (`timestamp`, `controlled`, `mainData`, `choosedData`, `syncedTo`, `createdBill`, `archived`) VALUES (?,?,?,?,?,?,?)");
         $stmt->bind_param("iissiii", $timestamp, $checked, $mainData, $choosedData, $syncedTo, $createdBill, $archived);

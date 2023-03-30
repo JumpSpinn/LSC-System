@@ -2,8 +2,8 @@
     require "../../config/database.inc.php";
     
     
-    ini_set('session.gc_maxlifetime', 86400);
-    session_set_cookie_params(86400);
+    ini_set('session.gc_maxlifetime', time() + (86400 * 7));
+    session_set_cookie_params(time() + (86400 * 7));
     session_start();
     
 
@@ -14,7 +14,7 @@
     $lastEditMember = $_SESSION["firstname"] . " " . $_SESSION["lastname"];
     $lastEditTimestamp = $_POST['lastEditTimestamp'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE stockpile SET `name`=?,`minAmount`=?,`currentAmount`=?,`lastEditMember`=?,`lastEditTimestamp`=? WHERE id=?");
         $stmt->bind_param("siisii", $name,$minAmount,$currentAmount,$lastEditMember,$lastEditTimestamp,$id);
     

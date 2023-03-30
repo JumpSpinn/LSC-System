@@ -2,8 +2,8 @@
     require "../../config/database.inc.php";
     
     
-    ini_set('session.gc_maxlifetime', 86400);
-    session_set_cookie_params(86400);
+    ini_set('session.gc_maxlifetime', time() + (86400 * 7));
+    session_set_cookie_params(time() + (86400 * 7));
     session_start();
     
 
@@ -12,7 +12,7 @@
     $percent = $_POST['percent'];
     $vk = $_POST['vk'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("INSERT INTO prices (`name`, `ek`, `percent`, `vk`) VALUES (?,?,?,?)");
         $stmt->bind_param("sdid", $name, $ek, $percent, $vk);
     

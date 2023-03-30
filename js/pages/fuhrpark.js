@@ -312,6 +312,7 @@ function showFleets(array = _fleet){
     let canDelete = hasPermission(PAGE_PERMISSION_TYPES.FUHRPARK_DELETE)
 
     array.sort((a, b) => { return a.id - b.id; })
+    let containers = []
     array.forEach((fleet) => {
         let container = '\
             <div class="mitarbeiter_entry" data-id="'+fleet.id+'">\
@@ -358,7 +359,8 @@ function showFleets(array = _fleet){
                 </div>\
             </div>\
         '
-        $('.mitarbeiter_content_container').append(container)
+        containers.push(container)
     })
+    $('.mitarbeiter_content_container').append(containers)
     toggleLoading(false)
 }

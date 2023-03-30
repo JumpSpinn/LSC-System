@@ -2,14 +2,13 @@
     require "../../config/database.inc.php";
     
     
-    ini_set('session.gc_maxlifetime', 86400);
-    session_set_cookie_params(86400);
+    ini_set('session.gc_maxlifetime', time() + (86400 * 7));
+    session_set_cookie_params(time() + (86400 * 7));
     session_start();
-
-    // $filterTimestamp = $_POST['filterTimestamp'];
+    
     $filterTimestamp = 0;
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $sql_query = "SELECT * FROM bh WHERE createdBill = 0 AND `timestamp` >= $filterTimestamp AND archived = 0";
         $result = mysqli_query($con, $sql_query);
         $json_array = array();

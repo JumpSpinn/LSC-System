@@ -1,13 +1,12 @@
 <?php
     require "../config/database.inc.php";
     
-    
-    ini_set('session.gc_maxlifetime', 86400);
-    session_set_cookie_params(86400);
+    ini_set('session.gc_maxlifetime', time() + (86400 * 7));
+    session_set_cookie_params(time() + (86400 * 7));
     session_start();
 
-    $stmt = $con->prepare("SELECT * FROM employees WHERE id=?");
-    $stmt->bind_param("s", $_SESSION['accountID']);
+    $stmt = $con->prepare("SELECT * FROM employees WHERE token=?");
+    $stmt->bind_param("s", $_COOKIE['LOGGEDIN']);
 
     if($stmt->execute()){
         $result = $stmt->get_result();

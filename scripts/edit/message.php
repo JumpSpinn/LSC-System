@@ -2,8 +2,8 @@
     require "../../config/database.inc.php";
     
     
-    ini_set('session.gc_maxlifetime', 86400);
-    session_set_cookie_params(86400);
+    ini_set('session.gc_maxlifetime', time() + (86400 * 7));
+    session_set_cookie_params(time() + (86400 * 7));
     session_start();
     
 
@@ -14,7 +14,7 @@
     $message = htmlspecialchars(stripslashes(trim($_POST['message'])));
     $state = htmlspecialchars(stripslashes(trim($_POST['state'])));
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE importantmessages SET `title`=?,`lastEditMember`=?,`lastEditTimestamp`=?,`message`=?,`state`=? WHERE id=?");
         $stmt->bind_param("ssisii", $title, $lastEditMember, $lastEditTimestamp, $message, $state, $id);
     

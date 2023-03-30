@@ -2,15 +2,15 @@
     require "../../config/database.inc.php";
     
     
-    ini_set('session.gc_maxlifetime', 86400);
-    session_set_cookie_params(86400);
+    ini_set('session.gc_maxlifetime', time() + (86400 * 7));
+    session_set_cookie_params(time() + (86400 * 7));
     session_start();
     
 
     $type = $_POST['type'];
     $value = $_POST['value'];
 
-    if($_SESSION['loggedIn']){
+    if($_COOKIE['LOGGEDIN']){
         $stmt = $con->prepare("UPDATE bd_data_general SET `value`=? WHERE `type`=?");
         $stmt->bind_param("ii", $value, $type);
     

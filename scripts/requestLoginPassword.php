@@ -1,9 +1,8 @@
 <?php
     require "../config/database.inc.php";
     
-    
-    ini_set('session.gc_maxlifetime', 86400);
-    session_set_cookie_params(86400);
+    ini_set('session.gc_maxlifetime', time() + (86400 * 7));
+    session_set_cookie_params(time() + (86400 * 7));
     session_start();
 
     $firstname = htmlspecialchars(stripslashes(trim($_POST['firstname'])));
@@ -13,6 +12,8 @@
 
     $stmt = $con->prepare("SELECT * FROM employees WHERE firstname=? AND lastname=?");
     $stmt->bind_param("ss", $firstname, $lastname);
+
+    $accountId = "";
 
     if($stmt->execute()){
         $result = $stmt->get_result();
@@ -29,6 +30,7 @@
                     $_SESSION['currentSubSidebarID'] = $row["currentSubSidebarID"];
                     $_SESSION['positionID'] = $row["positionID"];
 
+                    $accountId = $row["id"];
                     echo $_SESSION['firstname'] . "_" . $_SESSION['lastname'] . "_" . $_SESSION['positionID'] . "_" . $_SESSION['currentSidebarID'] . "_" . $_SESSION['currentSubSidebarID'];
                 }
             } else {
@@ -39,4 +41,17 @@
         echo "failed_Unbekannter Fehler! #303";
     }
     $stmt->close();
+
+    // save cookie to database
+    if(!isset($_COOKIE['LOGGEDIN'])){
+        $value = bin2hex(random_bytes(16));
+        setcookie('LOGGEDIN', $value, time() + (86400 * 7), "/");
+
+        $stmt2 = $con->prepare("UPDATE employees SET `token`=? WHERE id=?");
+        $stmt2->bind_param("si", $value, $accountId);
+        if(!$stmt2->execute()){
+            echo 0;
+        }
+        $stmt2->close();
+    }
 ?>

@@ -251,10 +251,12 @@ function showCustomers(){
     let findCustomers = _customers.filter(p => p.name.toLowerCase().includes(_currentEnteredCustomer.toLowerCase()))
     if(findCustomers.length > 0){
         $('.page_popup_suggestions').html('')
+        let containers = []
         findCustomers.forEach((customer) => {
             let container = '<div class="page_popup_suggestion changeCustomer" data-id="'+customer.id+'">'+customer.name+'</div>'
-            $('.page_popup_suggestions.customerName').append(container)
+            containers.push(container)
         })
+        $('.page_popup_suggestions.customerName').append(containers)
     }
     if(_currentEnteredCustomer == ""){
         $('.page_popup_suggestions').html('')
@@ -269,6 +271,7 @@ function showServicePartners(array = _servicePartners){
     let canDelete = hasPermission(PAGE_PERMISSION_TYPES.SERVICEPARTNER_DELETE)
 
     array.sort((a, b) => { return a.id - b.id; })
+    let containers = []
     array.forEach((partner) => {
         let message = partner.notice.replaceAll('&lt;br /&gt;', '<br />')
         let container = '\
@@ -308,7 +311,8 @@ function showServicePartners(array = _servicePartners){
                 </div>\
             </div>\
         '
-        $('.mitarbeiter_content_container').append(container)
+        containers.push(container)
     })
+    $('.mitarbeiter_content_container').append(containers)
     toggleLoading(false)
 }

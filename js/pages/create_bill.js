@@ -130,7 +130,16 @@ $(() => {
 
 function showCreatedBills(array = _createdBills){
     $('.mitarbeiter_content_container').html('')
+    array.sort((a,b) => { return b.createdTimestamp - a.createdTimestamp })
+    let containers = []
     array.forEach((bill) => {
+        let result = false
+        if(bill.state == 1 && (bill.createdTimestamp + 7889229) >= getCurrentTimestamp()){ // Staatliche Rechnungen
+            result = true
+        } else if(bill.state == 0 && (bill.createdTimestamp + 2629743) >= getCurrentTimestamp()){ // Serviceverträge
+            result = true
+        }
+
         let billEntrys = JSON.parse(bill.data)
         let container = '\
             <div class="mitarbeiter_entry" data-billid="'+bill.id+'">\
@@ -170,8 +179,9 @@ function showCreatedBills(array = _createdBills){
                 </div>\
             </div>\
         '
-        $('.mitarbeiter_content_container').append(container)
+        if(result){ containers.push(container) }
     })
+    $('.mitarbeiter_content_container').append(containers)
     toggleLoading(false)
 }
 
