@@ -1,25 +1,34 @@
+let _requestData = false
+
 // NEUEN KUNDEN ANLEGEN
 function ADD_NEW_CUSTOMER(name, enterState, phonenumber, rabatt, notice, disabled, isState, syncedTo = 0){
+    if(_requestData) return
+    _requestData = true
+
     if(name && enterState){
         if(phonenumber != ""){
             if(isNaN(phonenumber)){
                 new GNWX_NOTIFY({ text: "Telefonnummer darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
+                _requestData = false
                 return
             }
         }
         if(rabatt != ""){
             if(isNaN(rabatt)){
                 new GNWX_NOTIFY({ text: "Rabatt darf nur aus Zahlen bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
+                _requestData = false
                 return
             }
             if(rabatt > 100){
                 new GNWX_NOTIFY({ text: "Rabatt darf nicht höher als 100% sein!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
+                _requestData = false
                 return
             }
         }
         if(disabled != ""){
             if(isNaN(disabled)){
                 new GNWX_NOTIFY({ text: "Sperrstatus für den Kunden darf nur 0 oder 1 bestehen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
+                _requestData = false
                 return
             }
         }
@@ -34,10 +43,13 @@ function ADD_NEW_CUSTOMER(name, enterState, phonenumber, rabatt, notice, disable
             success: function(response) {
                 if(response == 2){
                     new GNWX_NOTIFY({ text: "Unbekannter Fehler! #305", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
+                    _requestData = false
                     return
                 }
                 if(response == 0){ // Kunde existiert bereits
                     new GNWX_NOTIFY({ text: "Kunde existiert bereits in der Kundenkartei!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
+                    _requestData = false
+                    return
                 } else { // Kunde wird in die Kundenkartei aufgenommen
                     var customerNumber = 0
                     GET_LATEST_CUSTOMER(function(array){
@@ -66,6 +78,7 @@ function ADD_NEW_CUSTOMER(name, enterState, phonenumber, rabatt, notice, disable
                             },
                             beforeSend: function() { },
                             success: function(response) {
+                                _requestData = false
                                 if(_currentPageFile == "customers"){
                                     getData_customers(function(array){
                                         _kunden = JSON.parse(array)
@@ -149,10 +162,12 @@ function ADD_NEW_CUSTOMER(name, enterState, phonenumber, rabatt, notice, disable
             },
             error: function(){
                 updateAccountActivity("[ERROR] " + _currentUsername + " | Kundenkartei | NEW", LOGTYPE.ERROR)
+                _requestData = false
             }
         })
     } else {
         new GNWX_NOTIFY({ text: "Bitte alle Pflichtfelder ausfüllen!", position: "bottom-left", class: "gnwx-danger", autoClose: 5000 });
+        _requestData = false
     }
 }
 
