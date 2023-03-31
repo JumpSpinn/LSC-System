@@ -423,6 +423,15 @@
     gap: 10px;
 }
 
+.page_header_txt{
+    color: white;
+    font-size: .85rem;
+}
+
+.page_header_txt.green{
+    color: rgb(115, 238, 176);
+}
+
 .page_header_btn{
     font-size: .85rem;
     background-color: rgb(57, 28, 87);

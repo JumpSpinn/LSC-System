@@ -35,6 +35,7 @@ var _searchedCustomerName = ""
 var _searchedCustomerNumber = ""
 var _redeemedGutschein = false
 var _currentEnteredVehicle = ""
+var _markBillAsPaid = false
 
 // Customer Data
 var _currentCustomerName = ""
@@ -121,6 +122,13 @@ $(() => {
         let value = $(this).val()
         _searchedCustomerName = value
         getSerachCustomerResults()
+    })
+
+    $('#billPaid').click(() => {
+        if(_markBillAsPaid) return
+        _markBillAsPaid = true
+        $('#billPaid').css('display', 'none')
+        $('#billPaid_txt').css('display', 'flex')
     })
 
     $("#search_customer_number").on("keypress", $(document), function(e) {
@@ -565,6 +573,11 @@ function switchState(state){
             $('#sendAuftrag').css('display', 'flex')
             $('#exitAuftrag').css('display', 'flex')
             $('.mainab_auftragsblatt_container').css('display', 'flex')
+
+            if(_currentCustomerIsServicePartner){
+                $('#billPaid').css('display', 'flex')
+            }
+
             startEinparkdauerTimer()
             break;
         case STATES.ADD_NEW_CUSTOMER:
@@ -942,6 +955,11 @@ function reset(){
 function addMainData(){
     let checkServicePartner = _servicePartner.find(i => i.customerName == _currentCustomerName)
     let _gewinn = parseFloat((_currentPrice_netto - _currentPrice_summe).toFixed(2))
+
+    if(_markBillAsPaid){
+        _currentCustomerPayType = "Sammelrechnung (bezahlt)"
+    }
+
     _mainDatas.push({
         payType: _currentCustomerPayType,
         isServicePartner: (checkServicePartner == null ? false : true),
