@@ -133,6 +133,14 @@
   background-color: rgb(155, 23, 34);
 }
 
+#billPaid{
+  background-color: rgb(12, 126, 73);
+}
+
+#billPaid:hover{
+  background-color: rgb(25, 167, 101);
+}
+
 .mainab_vehicle_container{
   display: flex;
   flex-direction: row;

@@ -423,6 +423,12 @@
     gap: 10px;
 }
 
+.page_header_txt{
+    color: rgb(115, 238, 176);
+    font-size: .8rem;
+    padding-right: 5px;
+}
+
 .page_header_btn{
     font-size: .85rem;
     background-color: rgb(57, 28, 87);

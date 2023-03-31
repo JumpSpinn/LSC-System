@@ -35,6 +35,7 @@ var _searchedCustomerName = ""
 var _searchedCustomerNumber = ""
 var _redeemedGutschein = false
 var _currentEnteredVehicle = ""
+var _markBillAsPaid = false
 
 // Customer Data
 var _currentCustomerName = ""
@@ -101,7 +102,6 @@ $(() => {
         switchState(STATES.SERACH_CUSTOMER)
     }
 
-    //switchState(STATES.AUFTRAGSBLATT)
     $('#auftrag_vehicle_model').val('')
     $('#auftrag_vehicle_numberplate').val('')
 
@@ -121,6 +121,13 @@ $(() => {
         let value = $(this).val()
         _searchedCustomerName = value
         getSerachCustomerResults()
+    })
+
+    $('#billPaid').click(() => {
+        if(_markBillAsPaid) return
+        _markBillAsPaid = true
+        $('#billPaid').css('display', 'none')
+        $('#billPaid_txt').css('display', 'flex')
     })
 
     $("#search_customer_number").on("keypress", $(document), function(e) {
@@ -511,6 +518,7 @@ function showVehicles(){
 
 function switchState(state){
     _main_ab_isLoading = false
+    _markBillAsPaid = false
     toggleLoading(false)
     $('#search_customer_modal').css('display', 'none')
     $('#cant_find_customer').css('display', 'none')
@@ -519,6 +527,8 @@ function switchState(state){
     $('#requestGutschein').css('display', 'none')
     $('#exitAuftrag').css('display', 'none')
     $('#add_new_customer').css('display', 'none')
+    $('#billPaid_txt').css('display', 'none')
+    $('#billPaid').css('display', 'none')
 
     _allCustomers = []
     getData_customers(function(array){
@@ -565,6 +575,9 @@ function switchState(state){
             $('#sendAuftrag').css('display', 'flex')
             $('#exitAuftrag').css('display', 'flex')
             $('.mainab_auftragsblatt_container').css('display', 'flex')
+            if(_currentCustomerIsServicePartner){
+                $('#billPaid').css('display', 'flex')
+            }
             startEinparkdauerTimer()
             break;
         case STATES.ADD_NEW_CUSTOMER:
@@ -942,6 +955,11 @@ function reset(){
 function addMainData(){
     let checkServicePartner = _servicePartner.find(i => i.customerName == _currentCustomerName)
     let _gewinn = parseFloat((_currentPrice_netto - _currentPrice_summe).toFixed(2))
+
+    if(_markBillAsPaid){
+        _currentCustomerPayType = "Sammelrechnung (bezahlt)"
+    }
+
     _mainDatas.push({
         payType: _currentCustomerPayType,
         isServicePartner: (checkServicePartner == null ? false : true),
