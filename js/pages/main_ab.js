@@ -102,7 +102,6 @@ $(() => {
         switchState(STATES.SERACH_CUSTOMER)
     }
 
-    //switchState(STATES.AUFTRAGSBLATT)
     $('#auftrag_vehicle_model').val('')
     $('#auftrag_vehicle_numberplate').val('')
 
@@ -573,11 +572,9 @@ function switchState(state){
             $('#sendAuftrag').css('display', 'flex')
             $('#exitAuftrag').css('display', 'flex')
             $('.mainab_auftragsblatt_container').css('display', 'flex')
-
             if(_currentCustomerIsServicePartner){
                 $('#billPaid').css('display', 'flex')
             }
-
             startEinparkdauerTimer()
             break;
         case STATES.ADD_NEW_CUSTOMER:
