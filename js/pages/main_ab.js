@@ -518,6 +518,7 @@ function showVehicles(){
 
 function switchState(state){
     _main_ab_isLoading = false
+    _markBillAsPaid = false
     toggleLoading(false)
     $('#search_customer_modal').css('display', 'none')
     $('#cant_find_customer').css('display', 'none')
