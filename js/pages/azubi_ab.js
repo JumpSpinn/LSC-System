@@ -526,6 +526,8 @@ function switchState(state){
     $('#requestGutschein').css('display', 'none')
     $('#exitAuftrag').css('display', 'none')
     $('#add_new_customer').css('display', 'none')
+    $('#billPaid_txt').css('display', 'none')
+    $('#billPaid').css('display', 'none')
 
     _allCustomers = []
     getData_customers(function(array){
